@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: white;
+      color: black;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 1000px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    nav a, a {
+      color: black;
+      text-decoration: underline;
+    }
+
+    .intro {
+      margin-bottom: 40px;
+      max-width: 700px;
+    }
+
+    .works {
+      margin-bottom: 56px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 2.5fr 0.8fr 1fr 1.5fr;
+      gap: 16px;
+      padding: 6px 0;
+    }
+
+    .row div:first-child a {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      margin: 40px 0 12px;
+    }
+
+    @media (max-width: 700px) {
+      .row {
+        grid-template-columns: 1fr;
+        gap: 2px;
+        margin-bottom: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    
+    <header>
+      <div>Your Name</div>
+      <nav>
+        <a href="#works">works</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
+      </nav>
+    </header>
+
+    <div class="intro">
+      Artist, designer, or writer based in Berlin. Add one or two short lines here.
+    </div>
+
+    <section id="works" class="works">
+      <div class="row">
+        <div><a href="#">Project Title</a></div>
+        <div>2026</div>
+        <div>Berlin</div>
+        <div>Venue Name</div>
+      </div>
+
+      <div class="row">
+        <div><a href="#">Another Work</a></div>
+        <div>2025</div>
+        <div>Vienna</div>
+        <div>Festival Name</div>
+      </div>
+
+      <div class="row">
+        <div><a href="#">Older Project</a></div>
+        <div>2024</div>
+        <div>Paris</div>
+        <div>Online</div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title">About</div>
+      <p>
+        Write a short biography here. Keep it simple and factual.
+      </p>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">Contact</div>
+      <p><a href="mailto:you@example.com">you@example.com</a></p>
+      <p><a href="#">Instagram</a></p>
+    </section>
+
+  </div>
+</body>
+</html>
