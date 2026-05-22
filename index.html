@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Yasaman Nedjati</title>
-  <meta name="description" content="Official website of Yasaman Nedjati. Portfolio, projects, sets, and contact." />
+
+  <meta name="description"
+    content="Yasaman Nedjati – set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
+
   <link rel="icon" type="image/png" href="favicon.png">
-  <meta name="google-site-verification" content="PNUtTJTSnU_oIEKCQLw7Zd9DuKsqo4nCWeqlc7Thvuw" />
 
   <style>
     body {
@@ -14,246 +18,269 @@
       padding: 24px;
       background: white;
       color: black;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.4;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      font-size: 14px;
+      line-height: 1.45;
     }
 
-    .container {
-      max-width: 1600px;
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.55;
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 48px;
-      flex-wrap: wrap;
-      gap: 12px;
+
+      margin-bottom: 90px;
     }
 
-    nav a, a {
-      color: black;
-      text-decoration: none;
+    h1 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    nav a {
+      margin-left: 14px;
     }
 
     .intro {
-      margin-bottom: 40px;
+      margin-bottom: 100px;
       max-width: 700px;
     }
 
-    .works {
-      margin-bottom: 56px;
+    .projects {
+      max-width: 1400px;
     }
 
-    .row {
+    .project {
+      margin-bottom: 110px;
+    }
+
+    .project img {
+      width: 100%;
+      max-width: 850px;
+
+      height: auto;
+
+      display: block;
+
+      margin-bottom: 14px;
+    }
+
+    .project-info {
       display: grid;
-      grid-template-columns: 4fr 1fr 1.6fr 2fr;
-      column-gap: 56px;
-      row-gap: 8px;
-      padding: 10px 0;
+
+      grid-template-columns:
+        420px
+        80px
+        180px
+        260px;
+
+      column-gap: 48px;
+
+      row-gap: 4px;
+
+      white-space: nowrap;
     }
 
-    .row div:first-child a {
-      text-decoration: none;
-    }
-
-    nav a:hover, a:hover {
-  opacity: 0.6;
+    .about,
+    .contact {
+      margin-top: 120px;
+      max-width: 650px;
     }
 
     .section-title {
-      margin: 40px 0 12px;
+      margin-bottom: 18px;
     }
 
-    @media (max-width: 700px) {
-      .row {
+    @media (max-width: 900px) {
+
+      header {
+        display: block;
+      }
+
+      nav {
+        margin-top: 12px;
+      }
+
+      nav a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+
+      .project-info {
         grid-template-columns: 1fr;
-        gap: 2px;
-        margin-bottom: 14px;
+
+        row-gap: 2px;
+
+        white-space: normal;
+      }
+
+      .project {
+        margin-bottom: 80px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    
-    <header>
-      <div>Yasaman Nedjati</div>
-      <nav>
-        <a href="#works">works</a>
-        <a href="#about">about</a>
-        <a href="#contact">contact</a>
-      </nav>
-    </header>
 
-    <div class="intro">
-      set designer and scenographer
-    </div>
+  <header>
 
-    <section id="works" class="works">
-      <div class="row">
-        <div><a href="#">What If Berlin?</a></div>
-        <div>2026</div>
-        <div>Berlin, Germany</div>
-        <div>Berliner Festspiele</div>
-      </div>
+    <h1>Yasaman Nedjati</h1>
 
-      <div class="row">
-        <div><a href="#">offstage</a></div>
-        <div>2025</div>
-        <div>Milan, Italy</div>
-        <div>Politecnico di Milano</div>
-      </div>
+    <nav>
+      <a href="#works">works</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </nav>
 
-            <div class="row">
-        <div><a href="#">Siegfried, Götterdämmerung, Fanny and Alexander</a></div>
-        <div>2024</div>
-        <div>Brussels, Belgium</div>
-        <div>La Monnaie / De Munt</div>
-      </div>
-      
-      <div class="row">
-        <div><a href="#">Moulin de Ferrières, Train World</a></div>
-        <div>2024</div>
-        <div>Héron, Belgium</div>
-        <div>KASCEN</div>
-      </div>
+  </header>
 
-      <div class="row">
-        <div><a href="#">VUB</a></div>
-        <div>2024</div>
-        <div>Louvain-la-Neuve, Belgium</div>
-        <div>KASCEN</div>
-      </div>
-      
-      <div class="row">
-        <div><a href="#">moody mazes</a></div>
-        <div>2024</div>
-        <div>Milan, Italy</div>
-        <div>Politecnico di Milano</div>
-      </div>
-      
-            <div class="row">
-        <div><a href="#">wandering spaces: interior design in motion</a></div>
-        <div>2019</div>
-        <div>Milan, Italy</div>
-        <div>Politecnico di Milano</div>
-      </div>
-      
-      <div class="row">
-        <div><a href="#">Valextra</a></div>
-        <div>2023</div>
-        <div>Milan, Italy</div>
-        <div>Poli Design</div>
-      </div>
+  <main>
 
-            <div class="row">
-        <div><a href="#">alone, together</a></div>
-        <div>2023</div>
-        <div>Milan, Italy</div>
-        <div>Politecnico di Milano</div>
-      </div>
-
-            <div class="row">
-        <div><a href="#">city lights</a></div>
-        <div>2022</div>
-        <div>Milan, Italy</div>
-        <div>Politecnico di Milano</div>
-      </div>
-
-            <div class="row">
-        <div><a href="#">Greyish-Blue</a></div>
-        <div>2022</div>
-        <div>Tehran, Iran</div>
-        <div>-</div>
-      </div>
-
-            <div class="row">
-        <div><a href="#">Acid Base</a></div>
-        <div>2021</div>
-        <div>Tehran, Iran</div>
-        <div>-</div>
-      </div>
-            <div class="row">
-        <div><a href="#">It's Your Lucky Day</a></div>
-        <div>2019</div>
-        <div>Tehran, Iran</div>
-        <div>Nahal Short Film Festival</div>
-      </div>
-      
-      <div class="row">
-        <div><a href="#">music house of Isfahan</a></div>
-        <div>2021</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
-      
-      <div class="row">
-        <div><a href="#">4+1 units</a></div>
-        <div>2020</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
-
-      <div class="row">
-        <div><a href="#">floated plates</a></div>
-        <div>2020</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
-
-      <div class="row">
-        <div><a href="#">nodeless network</a></div>
-        <div>2019</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
-
-      <div class="row">
-        <div><a href="#">house of visual arts</a></div>
-        <div>2019</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
-      
-      <div class="row">
-        <div><a href="#">high-rise</a></div>
-        <div>2019</div>
-        <div>Tehran, Iran</div>
-        <div>University of Geneva</div>
-      </div>
-
-      <div class="row">
-        <div><a href="#">saudade</a></div>
-        <div>2019</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
-
-            <div class="row">
-        <div><a href="#">plateau</a></div>
-        <div>2019</div>
-        <div>Tehran, Iran</div>
-        <div>University of Tehran</div>
-      </div>
+    <section class="intro">
+      Yasaman Nedjati is a set designer and scenographer working across
+      performance, exhibition, and spatial design.
     </section>
 
-    <section id="about">
-      <div class="section-title">About</div>
+    <section id="works" class="projects">
+
+      <article class="project">
+
+        <a href="what-if-berlin.html">
+          <img src="images/what-if-berlin.jpg" alt="What If Berlin?">
+        </a>
+
+        <div class="project-info">
+
+          <div>
+            <a href="what-if-berlin.html">
+              What If Berlin?
+            </a>
+          </div>
+
+          <div>2026</div>
+
+          <div>Berlin, Germany</div>
+
+          <div>Berliner Festspiele</div>
+
+        </div>
+
+      </article>
+
+      <article class="project">
+
+        <a href="offstage.html">
+          <img src="images/offstage.jpg" alt="Offstage">
+        </a>
+
+        <div class="project-info">
+
+          <div>
+            <a href="offstage.html">
+              offstage
+            </a>
+          </div>
+
+          <div>2025</div>
+
+          <div>Milan, Italy</div>
+
+          <div>Politecnico di Milano</div>
+
+        </div>
+
+      </article>
+
+      <article class="project">
+
+        <a href="siegfried.html">
+          <img src="images/siegfried.jpg"
+            alt="Siegfried, Götterdämmerung, Fanny and Alexander">
+        </a>
+
+        <div class="project-info">
+
+          <div>
+            <a href="siegfried.html">
+              Siegfried, Götterdämmerung, Fanny and Alexander
+            </a>
+          </div>
+
+          <div>2024</div>
+
+          <div>Brussels, Belgium</div>
+
+          <div>La Monnaie / De Munt</div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <section id="about" class="about">
+
+      <div class="section-title">
+        About
+      </div>
+
       <p>
-        As a set designer and architect, I enjoy working through design as a form of research. I’m drawn to how space is perceived by individuals, experiences of isolation in urban contexts, and the role of scenography and narrative in shaping spaces. I approach these questions through a multidisciplinary practice that treats design as a way of thinking, questioning, and making sense of the world.
+        Yasaman Nedjati is a set designer and scenographer based in Berlin,
+        working across performance, exhibition, and spatial design.
       </p>
+
     </section>
 
-    <section id="contact">
-      <div class="section-title">Contact</div>
-      <p><a href="mailto:yasamannedjati@gmail.com">yasamannedjati@gmail.com</a></p>
-      <p><a href="https://instagram.com/yasiizz/">Instagram</a></p>
-      <p><a href="https://linkedin.com/in/yasamannedjati/">Linkedin</a></p>
+    <section id="contact" class="contact">
+
+      <div class="section-title">
+        Contact
+      </div>
+
+      <p>
+        <a href="mailto:yasamannedjati@gmail.com">
+          yasamannedjati@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <a href="https://instagram.com/yasiizz/"
+          target="_blank"
+          rel="noopener noreferrer">
+          Instagram
+        </a>
+      </p>
+
+      <p>
+        <a href="https://linkedin.com/in/yasamannedjati/"
+          target="_blank"
+          rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </p>
+
     </section>
 
-  </div>
+  </main>
+
 </body>
+
 </html>
