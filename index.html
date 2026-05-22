@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -93,46 +93,44 @@
     }
 
     .projects {
-      width: min(62vw, 820px);
-      max-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 16px;
+      row-gap: 58px;
+      width: 100%;
+      max-width: 1380px;
     }
 
     .project {
-      margin: 0 0 42px;
+      margin: 0;
     }
 
     .project:nth-child(1) {
-      width: 100%;
+      grid-column: 1 / span 8;
     }
 
     .project:nth-child(2) {
-      width: 74%;
-      margin-left: 11%;
+      grid-column: 7 / span 6;
     }
 
     .project:nth-child(3) {
-      width: 58%;
-      margin-left: 42%;
+      grid-column: 2 / span 5;
     }
 
     .project:nth-child(4n) {
-      width: 64%;
-      margin-left: 0;
+      grid-column: 8 / span 4;
     }
 
     .project:nth-child(4n + 1):not(:nth-child(1)) {
-      width: 78%;
-      margin-left: 22%;
+      grid-column: 3 / span 6;
     }
 
     .project:nth-child(4n + 2):not(:nth-child(2)) {
-      width: 88%;
-      margin-left: 6%;
+      grid-column: 6 / span 7;
     }
 
     .project:nth-child(4n + 3):not(:nth-child(3)) {
-      width: 52%;
-      margin-left: 48%;
+      grid-column: 1 / span 5;
     }
 
     .project a {
@@ -283,6 +281,7 @@
       }
 
       .projects {
+        display: block;
         width: 100%;
       }
 
@@ -327,241 +326,241 @@
     <section id="works" class="projects" aria-label="Selected works">
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=what-if-berlin">
           <div class="project-media" aria-label="What If Berlin?">
             <img src="images/what-if-berlin.jpg" alt="What If Berlin?">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">What If Berlin?</a>
+          <a class="project-title" href="project.html?p=what-if-berlin">What If Berlin?</a>
           <div class="project-details">2026 / Berlin, Germany / <span class="venue">Berliner Festspiele</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=offstage">
           <div class="project-media" aria-label="offstage">
-            <img src="images/offstage.jpg" alt="offstage">
+            <img src="images/offstage/cover.jpg" alt="offstage">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">offstage</a>
+          <a class="project-title" href="project.html?p=offstage">offstage</a>
           <div class="project-details">2025 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=siegfried-gotterdammerung-fanny-and-alexander">
           <div class="project-media" aria-label="Siegfried, Götterdämmerung, Fanny and Alexander">
             <img src="images/siegfried.jpg" alt="Siegfried, Götterdämmerung, Fanny and Alexander">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">Siegfried, Götterdämmerung, Fanny and Alexander</a>
+          <a class="project-title" href="project.html?p=siegfried-gotterdammerung-fanny-and-alexander">Siegfried, Götterdämmerung, Fanny and Alexander</a>
           <div class="project-details">2024 / Brussels, Belgium / <span class="venue">La Monnaie / De Munt</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=moulin-de-ferrieres-train-world">
           <div class="project-media" aria-label="Moulin de Ferrières, Train World">
             <img src="images/moulin-de-ferrieres-train-world.jpg" alt="Moulin de Ferrières, Train World">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">Moulin de Ferrières, Train World</a>
+          <a class="project-title" href="project.html?p=moulin-de-ferrieres-train-world">Moulin de Ferrières, Train World</a>
           <div class="project-details">2024 / Héron, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=vub">
           <div class="project-media" aria-label="VUB">
             <img src="images/vub.jpg" alt="VUB">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">VUB</a>
+          <a class="project-title" href="project.html?p=vub">VUB</a>
           <div class="project-details">2024 / Louvain-la-Neuve, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=moody-mazes">
           <div class="project-media" aria-label="moody mazes">
             <img src="images/moody-mazes.jpg" alt="moody mazes">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">moody mazes</a>
+          <a class="project-title" href="project.html?p=moody-mazes">moody mazes</a>
           <div class="project-details">2024 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=wandering-spaces-interior-design-in-motion">
           <div class="project-media" aria-label="wandering spaces: interior design in motion">
             <img src="images/wandering-spaces-interior-design-in-motion.jpg" alt="wandering spaces: interior design in motion">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">wandering spaces: interior design in motion</a>
+          <a class="project-title" href="project.html?p=wandering-spaces-interior-design-in-motion">wandering spaces: interior design in motion</a>
           <div class="project-details">2019 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=valextra">
           <div class="project-media" aria-label="Valextra">
             <img src="images/valextra.jpg" alt="Valextra">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">Valextra</a>
+          <a class="project-title" href="project.html?p=valextra">Valextra</a>
           <div class="project-details">2023 / Milan, Italy / <span class="venue">Poli Design</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=alone-together">
           <div class="project-media" aria-label="alone, together">
             <img src="images/alone-together.jpg" alt="alone, together">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">alone, together</a>
+          <a class="project-title" href="project.html?p=alone-together">alone, together</a>
           <div class="project-details">2023 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=city-lights">
           <div class="project-media" aria-label="city lights">
             <img src="images/city-lights.jpg" alt="city lights">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">city lights</a>
+          <a class="project-title" href="project.html?p=city-lights">city lights</a>
           <div class="project-details">2022 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=greyish-blue">
           <div class="project-media" aria-label="Greyish-Blue">
             <img src="images/greyish-blue.jpg" alt="Greyish-Blue">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">Greyish-Blue</a>
+          <a class="project-title" href="project.html?p=greyish-blue">Greyish-Blue</a>
           <div class="project-details">2022 / Tehran, Iran / <span class="venue">-</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=acid-base">
           <div class="project-media" aria-label="Acid Base">
             <img src="images/acid-base.jpg" alt="Acid Base">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">Acid Base</a>
+          <a class="project-title" href="project.html?p=acid-base">Acid Base</a>
           <div class="project-details">2021 / Tehran, Iran / <span class="venue">-</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=its-your-lucky-day">
           <div class="project-media" aria-label="It's Your Lucky Day">
             <img src="images/its-your-lucky-day.jpg" alt="It's Your Lucky Day">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">It's Your Lucky Day</a>
+          <a class="project-title" href="project.html?p=its-your-lucky-day">It's Your Lucky Day</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">Nahal Short Film Festival</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=music-house-of-isfahan">
           <div class="project-media" aria-label="music house of Isfahan">
             <img src="images/music-house-of-isfahan.jpg" alt="music house of Isfahan">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">music house of Isfahan</a>
+          <a class="project-title" href="project.html?p=music-house-of-isfahan">music house of Isfahan</a>
           <div class="project-details">2021 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=4-1-units">
           <div class="project-media" aria-label="4+1 units">
             <img src="images/4-1-units.jpg" alt="4+1 units">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">4+1 units</a>
+          <a class="project-title" href="project.html?p=4-1-units">4+1 units</a>
           <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=floated-plates">
           <div class="project-media" aria-label="floated plates">
             <img src="images/floated-plates.jpg" alt="floated plates">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">floated plates</a>
+          <a class="project-title" href="project.html?p=floated-plates">floated plates</a>
           <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=nodeless-network">
           <div class="project-media" aria-label="nodeless network">
             <img src="images/nodeless-network.jpg" alt="nodeless network">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">nodeless network</a>
+          <a class="project-title" href="project.html?p=nodeless-network">nodeless network</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=house-of-visual-arts">
           <div class="project-media" aria-label="house of visual arts">
             <img src="images/house-of-visual-arts.jpg" alt="house of visual arts">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">house of visual arts</a>
+          <a class="project-title" href="project.html?p=house-of-visual-arts">house of visual arts</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=high-rise">
           <div class="project-media" aria-label="high-rise">
             <img src="images/high-rise.jpg" alt="high-rise">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">high-rise</a>
+          <a class="project-title" href="project.html?p=high-rise">high-rise</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Geneva</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="#">
+        <a href="project.html?p=saudade">
           <div class="project-media" aria-label="saudade">
             <img src="images/saudade.jpg" alt="saudade">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="#">saudade</a>
+          <a class="project-title" href="project.html?p=saudade">saudade</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
@@ -630,3 +629,4 @@
 </body>
 
 </html>
+
