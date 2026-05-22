@@ -8,279 +8,93 @@
   <title>Yasaman Nedjati</title>
 
   <meta name="description"
-    content="Yasaman Nedjati – set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
+    content="Yasaman Nedjati - set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
 
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
+    :root {
+      --background: #050505;
+      --foreground: #f4f2ee;
+      --muted: #f4f2ee;
+      --line: rgba(244, 242, 238, 0.22);
+      --panel: #11100f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 24px;
-      background: white;
-      color: black;
-
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        Helvetica,
-        Arial,
-        sans-serif;
-
-      font-size: 14px;
-      line-height: 1.45;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: "HK Grotesk", "Helvetica Neue", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.35;
     }
 
     a {
-      color: black;
+      color: inherit;
       text-decoration: none;
     }
 
     a:hover {
-      opacity: 0.55;
+      color: var(--muted);
     }
 
-    header {
+    .site-title {
+      margin: 28px 28px 8px 20px;
+      font-size: clamp(42px, 6.2vw, 86px);
+      font-weight: 400;
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-align: left;
+    }
+
+    nav {
+      position: fixed;
+      right: 28px;
+      bottom: 24px;
+      z-index: 5;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-
-      margin-bottom: 90px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 14px;
-      font-weight: normal;
+      align-items: center;
+      gap: 18px;
+      font-size: 18px;
     }
 
     nav a {
-      margin-left: 14px;
+      display: inline-flex;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    nav a:last-child {
+      font-size: inherit;
+      line-height: 1;
+    }
+
+    main {
+      min-height: 100vh;
+      padding: 0 28px 72px 20px;
     }
 
     .intro {
-      margin-bottom: 100px;
-      max-width: 700px;
+      width: min(520px, calc(100vw - 40px));
+      margin: 0 0 108px;
+      color: var(--muted);
+      font-size: 18px;
     }
 
     .projects {
-      max-width: 1400px;
-    }
-
-    .project {
-      margin-bottom: 110px;
-    }
-
-    .project img {
-      width: 100%;
-      max-width: 850px;
-
-      height: auto;
-
-      display: block;
-
-      margin-bottom: 14px;
-    }
-
-    .project-info {
       display: grid;
-
-      grid-template-columns:
-        420px
-        80px
-        180px
-        260px;
-
-      column-gap: 48px;
-
-      row-gap: 4px;
-
-      white-space: nowrap;
-    }
-
-    .about,
-    .contact {
-      margin-top: 120px;
-      max-width: 650px;
-    }
-
-    .section-title {
-      margin-bottom: 18px;
-    }
-
-    @media (max-width: 900px) {
-
-      header {
-        display: block;
-      }
-
-      nav {
-        margin-top: 12px;
-      }
-
-      nav a {
-        margin-left: 0;
-        margin-right: 12px;
-      }
-
-      .project-info {
-        grid-template-columns: 1fr;
-
-        row-gap: 2px;
-
-        white-space: normal;
-      }
-
-      .project {
-        margin-bottom: 80px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-
-    <h1>Yasaman Nedjati</h1>
-
-    <nav>
-      <a href="#works">works</a>
-      <a href="#about">about</a>
-      <a href="#contact">contact</a>
-    </nav>
-
-  </header>
-
-  <main>
-
-    <section class="intro">
-      Yasaman Nedjati is a set designer and scenographer working across
-      performance, exhibition, and spatial design.
-    </section>
-
-    <section id="works" class="projects">
-
-      <article class="project">
-
-        <a href="what-if-berlin.html">
-          <img src="images/what-if-berlin.jpg" alt="What If Berlin?">
-        </a>
-
-        <div class="project-info">
-
-          <div>
-            <a href="what-if-berlin.html">
-              What If Berlin?
-            </a>
-          </div>
-
-          <div>2026</div>
-
-          <div>Berlin, Germany</div>
-
-          <div>Berliner Festspiele</div>
-
-        </div>
-
-      </article>
-
-      <article class="project">
-
-        <a href="offstage.html">
-          <img src="images/offstage.jpg" alt="Offstage">
-        </a>
-
-        <div class="project-info">
-
-          <div>
-            <a href="offstage.html">
-              offstage
-            </a>
-          </div>
-
-          <div>2025</div>
-
-          <div>Milan, Italy</div>
-
-          <div>Politecnico di Milano</div>
-
-        </div>
-
-      </article>
-
-      <article class="project">
-
-        <a href="siegfried.html">
-          <img src="images/siegfried.jpg"
-            alt="Siegfried, Götterdämmerung, Fanny and Alexander">
-        </a>
-
-        <div class="project-info">
-
-          <div>
-            <a href="siegfried.html">
-              Siegfried, Götterdämmerung, Fanny and Alexander
-            </a>
-          </div>
-
-          <div>2024</div>
-
-          <div>Brussels, Belgium</div>
-
-          <div>La Monnaie / De Munt</div>
-
-        </div>
-
-      </article>
-
-    </section>
-
-    <section id="about" class="about">
-
-      <div class="section-title">
-        About
-      </div>
-
-      <p>
-        Yasaman Nedjati is a set designer and scenographer based in Berlin,
-        working across performance, exhibition, and spatial design.
-      </p>
-
-    </section>
-
-    <section id="contact" class="contact">
-
-      <div class="section-title">
-        Contact
-      </div>
-
-      <p>
-        <a href="mailto:yasamannedjati@gmail.com">
-          yasamannedjati@gmail.com
-        </a>
-      </p>
-
-      <p>
-        <a href="https://instagram.com/yasiizz/"
-          target="_blank"
-          rel="noopener noreferrer">
-          Instagram
-        </a>
-      </p>
-
-      <p>
-        <a href="https://linkedin.com/in/yasamannedjati/"
-          target="_blank"
-          rel="noopener noreferrer">
-          LinkedIn
-        </a>
-      </p>
-
-    </section>
-
-  </main>
-
-</body>
-
-</html>
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: 20px;
+      row-gap: 118px;
+      width: 100%;
