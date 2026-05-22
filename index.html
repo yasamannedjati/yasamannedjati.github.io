@@ -129,6 +129,10 @@
       grid-column: 6 / span 7;
     }
 
+    .project.moody-mazes {
+      grid-column: 8 / span 4;
+    }
+
     .project:nth-child(4n + 3):not(:nth-child(3)) {
       grid-column: 1 / span 5;
     }
@@ -187,6 +191,14 @@
 
     .project:nth-child(4n + 3):not(:nth-child(3)) .project-media {
       aspect-ratio: 3 / 4;
+    }
+
+    .project.moody-mazes .project-media {
+      aspect-ratio: 2 / 3;
+    }
+
+    .project.moody-mazes img {
+      object-fit: cover;
     }
 
     .project img {
@@ -385,9 +397,9 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project moody-mazes">
         <a href="project.html?p=moody-mazes">
-          <div class="project-media" aria-label="moody mazes">
+          <div class="project-media" aria-label="moody mazes" style="aspect-ratio: 2 / 3;">
             <img src="images/moody-mazes/cover.jpg" alt="moody mazes">
           </div>
         </a>
