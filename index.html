@@ -98,3 +98,535 @@
     }
 
     .project {
+      margin: 0 0 42px;
+    }
+
+    .project:nth-child(1) {
+      width: 100%;
+    }
+
+    .project:nth-child(2) {
+      width: 74%;
+      margin-left: 11%;
+    }
+
+    .project:nth-child(3) {
+      width: 58%;
+      margin-left: 42%;
+    }
+
+    .project:nth-child(4n) {
+      width: 64%;
+      margin-left: 0;
+    }
+
+    .project:nth-child(4n + 1):not(:nth-child(1)) {
+      width: 78%;
+      margin-left: 22%;
+    }
+
+    .project:nth-child(4n + 2):not(:nth-child(2)) {
+      width: 88%;
+      margin-left: 6%;
+    }
+
+    .project:nth-child(4n + 3):not(:nth-child(3)) {
+      width: 52%;
+      margin-left: 48%;
+    }
+
+    .project a {
+      display: block;
+    }
+
+    .project-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      min-height: 180px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .project-media::before {
+      content: attr(aria-label);
+      position: absolute;
+      inset: 18px;
+      display: flex;
+      align-items: flex-end;
+      color: var(--foreground);
+      font-size: 24px;
+      font-weight: 700;
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      transition: opacity 160ms ease;
+    }
+
+    .project:nth-child(1) .project-media {
+      aspect-ratio: 16 / 10;
+    }
+
+    .project:nth-child(2) .project-media {
+      aspect-ratio: 6237 / 3508;
+    }
+
+    .project:nth-child(3) .project-media {
+      aspect-ratio: 1 / 1;
+    }
+
+    .project:nth-child(4n) .project-media {
+      aspect-ratio: 1 / 1;
+    }
+
+    .project:nth-child(4n + 1):not(:nth-child(1)) .project-media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .project:nth-child(4n + 2):not(:nth-child(2)) .project-media {
+      aspect-ratio: 16 / 10;
+    }
+
+    .project:nth-child(4n + 3):not(:nth-child(3)) .project-media {
+      aspect-ratio: 3 / 4;
+    }
+
+    .project img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project:nth-child(2) img {
+      object-fit: cover;
+    }
+
+    .project img.is-missing {
+      display: none;
+    }
+
+    .project-media:hover::before,
+    .project-media.is-missing::before {
+      opacity: 1;
+    }
+
+
+    .project-info {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-title {
+      color: var(--foreground);
+      font-weight: 700;
+    }
+
+    .project-details {
+      text-align: right;
+    }
+
+    .venue {
+      font-weight: 700;
+    }
+
+    .about,
+    .contact {
+      width: min(560px, calc(100vw - 40px));
+      margin-top: 140px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      color: var(--foreground);
+      font-size: 28px;
+    }
+
+    .contact p,
+    .about p {
+      margin: 0 0 14px;
+    }
+
+    @media (max-width: 900px) {
+      .site-title {
+        margin: 78px 18px 10px;
+      }
+
+      nav {
+        right: 18px;
+        bottom: 14px;
+        gap: 12px;
+        font-size: 15px;
+      }
+
+      nav a:last-child {
+        font-size: inherit;
+      }
+
+      main {
+        padding: 18px 18px 74px;
+      }
+
+      .intro,
+      .projects,
+      .about,
+      .contact {
+        width: 100%;
+      }
+
+      .projects {
+        width: 100%;
+      }
+
+      .intro {
+        margin-bottom: 62px;
+      }
+
+      .project {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 76px;
+      }
+
+      .project-info {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .project-details {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="site-title">Yasaman<br>Nedjati</h1>
+
+  <nav aria-label="Main navigation">
+    <a href="#works">works</a>
+    <a href="#about">about</a>
+    <a href="#contact">contact</a>
+  </nav>
+
+  <main>
+
+    <section class="intro" aria-label="Introduction">
+      set designer and scenographer based in Berlin.
+    </section>
+
+    <section id="works" class="projects" aria-label="Selected works">
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="What If Berlin?">
+            <img src="images/what-if-berlin.jpg" alt="What If Berlin?">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">What If Berlin?</a>
+          <div class="project-details">2026 / Berlin, Germany / <span class="venue">Berliner Festspiele</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="offstage">
+            <img src="images/offstage.jpg" alt="offstage">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">offstage</a>
+          <div class="project-details">2025 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="Siegfried, Götterdämmerung, Fanny and Alexander">
+            <img src="images/siegfried.jpg" alt="Siegfried, Götterdämmerung, Fanny and Alexander">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">Siegfried, Götterdämmerung, Fanny and Alexander</a>
+          <div class="project-details">2024 / Brussels, Belgium / <span class="venue">La Monnaie / De Munt</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="Moulin de Ferrières, Train World">
+            <img src="images/moulin-de-ferrieres-train-world.jpg" alt="Moulin de Ferrières, Train World">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">Moulin de Ferrières, Train World</a>
+          <div class="project-details">2024 / Héron, Belgium / <span class="venue">KASCEN</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="VUB">
+            <img src="images/vub.jpg" alt="VUB">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">VUB</a>
+          <div class="project-details">2024 / Louvain-la-Neuve, Belgium / <span class="venue">KASCEN</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="moody mazes">
+            <img src="images/moody-mazes.jpg" alt="moody mazes">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">moody mazes</a>
+          <div class="project-details">2024 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="wandering spaces: interior design in motion">
+            <img src="images/wandering-spaces-interior-design-in-motion.jpg" alt="wandering spaces: interior design in motion">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">wandering spaces: interior design in motion</a>
+          <div class="project-details">2019 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="Valextra">
+            <img src="images/valextra.jpg" alt="Valextra">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">Valextra</a>
+          <div class="project-details">2023 / Milan, Italy / <span class="venue">Poli Design</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="alone, together">
+            <img src="images/alone-together.jpg" alt="alone, together">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">alone, together</a>
+          <div class="project-details">2023 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="city lights">
+            <img src="images/city-lights.jpg" alt="city lights">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">city lights</a>
+          <div class="project-details">2022 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="Greyish-Blue">
+            <img src="images/greyish-blue.jpg" alt="Greyish-Blue">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">Greyish-Blue</a>
+          <div class="project-details">2022 / Tehran, Iran / <span class="venue">-</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="Acid Base">
+            <img src="images/acid-base.jpg" alt="Acid Base">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">Acid Base</a>
+          <div class="project-details">2021 / Tehran, Iran / <span class="venue">-</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="It's Your Lucky Day">
+            <img src="images/its-your-lucky-day.jpg" alt="It's Your Lucky Day">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">It's Your Lucky Day</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">Nahal Short Film Festival</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="music house of Isfahan">
+            <img src="images/music-house-of-isfahan.jpg" alt="music house of Isfahan">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">music house of Isfahan</a>
+          <div class="project-details">2021 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="4+1 units">
+            <img src="images/4-1-units.jpg" alt="4+1 units">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">4+1 units</a>
+          <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="floated plates">
+            <img src="images/floated-plates.jpg" alt="floated plates">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">floated plates</a>
+          <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="nodeless network">
+            <img src="images/nodeless-network.jpg" alt="nodeless network">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">nodeless network</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="house of visual arts">
+            <img src="images/house-of-visual-arts.jpg" alt="house of visual arts">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">house of visual arts</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="high-rise">
+            <img src="images/high-rise.jpg" alt="high-rise">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">high-rise</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Geneva</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="#">
+          <div class="project-media" aria-label="saudade">
+            <img src="images/saudade.jpg" alt="saudade">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="#">saudade</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+    </section>
+
+    <section id="about" class="about">
+      <div class="section-title">About</div>
+
+      <p>
+        I’m interested in design as a form of research and a way of understanding
+        how people relate to space. My work often revolves around perceptions of
+        isolation within urban environments, and the role narrative and scenography
+        can play in shaping spatial experiences. I tend to approach projects
+        through a multidisciplinary process that treats design as a way of thinking,
+        questioning, and making sense of the world.
+      </p>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="section-title">Contact</div>
+
+      <p>
+        <a href="mailto:yasamannedjati@gmail.com">
+          yasamannedjati@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <a href="https://www.linkedin.com/in/yasamannedjati/"
+          target="_blank"
+          rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </p>
+
+      <p>
+        <a href="https://www.instagram.com/yasiizz/"
+          target="_blank"
+          rel="noopener noreferrer">
+          Instagram
+        </a>
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    const markMissingImage = (image) => {
+      const frame = image.closest(".project-media");
+      if (frame) {
+        frame.classList.add("is-missing");
+      }
+      image.classList.add("is-missing");
+    };
+
+    document.querySelectorAll(".project img").forEach((image) => {
+      image.addEventListener("error", () => markMissingImage(image));
+
+      if (image.complete && image.naturalWidth === 0) {
+        markMissingImage(image);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
