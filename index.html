@@ -133,6 +133,14 @@
       grid-column: 8 / span 4;
     }
 
+    .project.valextra {
+      grid-column: 4 / span 7;
+    }
+
+    .project.acid-base {
+      grid-column: 1 / span 4;
+    }
+
     .project:nth-child(4n + 3):not(:nth-child(3)) {
       grid-column: 1 / span 5;
     }
@@ -199,6 +207,14 @@
 
     .project.moody-mazes img {
       object-fit: cover;
+    }
+
+    .project.valextra .project-media {
+      aspect-ratio: 3021 / 2158;
+    }
+
+    .project.acid-base .project-media {
+      aspect-ratio: 3 / 4;
     }
 
     .project img {
@@ -421,10 +437,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project valextra">
         <a href="project.html?p=valextra">
           <div class="project-media" aria-label="Valextra">
-            <img src="images/valextra.jpg" alt="Valextra">
+            <img src="images/valextra/cover.png" alt="Valextra">
           </div>
         </a>
         <div class="project-info">
@@ -469,10 +485,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project acid-base">
         <a href="project.html?p=acid-base">
           <div class="project-media" aria-label="Acid Base">
-            <img src="images/acid-base.jpg" alt="Acid Base">
+            <img src="images/acid-base/cover.jpg" alt="Acid Base">
           </div>
         </a>
         <div class="project-info">
