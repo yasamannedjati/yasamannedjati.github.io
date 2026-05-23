@@ -48,10 +48,11 @@
     }
 
     .site-title {
+      width: fit-content;
       margin: 28px 28px 8px 20px;
-      font-size: clamp(42px, 6.2vw, 86px);
+      font-size: clamp(42px, 6vw, 84px);
       font-weight: 400;
-      line-height: 0.92;
+      line-height: 0.95;
       letter-spacing: 0;
       text-align: left;
     }
@@ -82,15 +83,16 @@
 
     main {
       min-height: 100vh;
-      padding: 0 28px 72px 20px;
+      padding: 0 28px 72px;
     }
 
     .intro {
-      width: min(520px, calc(100vw - 40px));
+      width: var(--title-width, fit-content);
+      max-width: calc(100vw - 56px);
       margin: 0 0 76px;
       color: var(--muted);
-      font-size: 18px;
-    }
+      font-size: clamp(22px, 2.25vw, 30px);
+      }
 
     .projects {
       display: grid;
@@ -98,7 +100,7 @@
       column-gap: 16px;
       row-gap: 58px;
       width: 100%;
-      max-width: 1380px;
+      max-width: none;
     }
 
     .project {
@@ -106,11 +108,15 @@
     }
 
     .project:nth-child(1) {
-      grid-column: 1 / span 8;
+      grid-column: 1 / span 7;
     }
 
     .project:nth-child(2) {
       grid-column: 7 / span 6;
+    }
+
+    .project.offstage {
+      grid-column: 1 / -1;
     }
 
     .project:nth-child(3) {
@@ -122,7 +128,7 @@
     }
 
     .project:nth-child(4n + 1):not(:nth-child(1)) {
-      grid-column: 3 / span 6;
+      grid-column: 4 / span 6;
     }
 
     .project:nth-child(4n + 2):not(:nth-child(2)) {
@@ -134,11 +140,23 @@
     }
 
     .project.valextra {
-      grid-column: 4 / span 7;
+      grid-column: 5 / span 7;
     }
 
     .project.acid-base {
-      grid-column: 1 / span 4;
+      grid-column: 2 / span 4;
+    }
+
+    .project.greyish-blue {
+      grid-column: 7 / span 4;
+    }
+
+    .project.vub {
+      grid-column: 1 / span 6;
+    }
+
+    .project.moulin-de-ferrieres {
+      grid-column: 7 / span 6;
     }
 
     .project:nth-child(4n + 3):not(:nth-child(3)) {
@@ -181,6 +199,10 @@
       aspect-ratio: 6237 / 3508;
     }
 
+    .project.offstage .project-media {
+      aspect-ratio: 6237 / 3508;
+    }
+
     .project:nth-child(3) .project-media {
       aspect-ratio: 1 / 1;
     }
@@ -215,6 +237,18 @@
 
     .project.acid-base .project-media {
       aspect-ratio: 3 / 4;
+    }
+
+    .project.greyish-blue .project-media {
+      aspect-ratio: 946 / 1165;
+    }
+
+    .project.vub .project-media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .project.moulin-de-ferrieres .project-media {
+      aspect-ratio: 2 / 3;
     }
 
     .project img {
@@ -337,7 +371,7 @@
 
 <body>
 
-  <h1 class="site-title">Yasaman<br>Nedjati</h1>
+  <h1 class="site-title">Yasaman Nedjati</h1>
 
   <nav aria-label="Main navigation">
     <a href="#works">works</a>
@@ -348,7 +382,7 @@
   <main>
 
     <section class="intro" aria-label="Introduction">
-      set designer and scenographer based in Berlin.
+      set designer and scenographer based in Berlin
     </section>
 
     <section id="works" class="projects" aria-label="Selected works">
@@ -365,7 +399,7 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project offstage">
         <a href="project.html?p=offstage">
           <div class="project-media" aria-label="offstage">
             <img src="images/offstage/cover.jpg" alt="offstage">
@@ -389,10 +423,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project moulin-de-ferrieres">
         <a href="project.html?p=moulin-de-ferrieres-train-world">
           <div class="project-media" aria-label="Moulin de Ferrières, Train World">
-            <img src="images/moulin-de-ferrieres-train-world.jpg" alt="Moulin de Ferrières, Train World">
+            <img src="images/moulin-de-ferrières/cover.jpg" alt="Moulin de Ferrières, Train World">
           </div>
         </a>
         <div class="project-info">
@@ -401,10 +435,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project vub">
         <a href="project.html?p=vub">
           <div class="project-media" aria-label="VUB">
-            <img src="images/vub.jpg" alt="VUB">
+            <img src="images/vub/cover.jpg" alt="VUB">
           </div>
         </a>
         <div class="project-info">
@@ -473,10 +507,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project greyish-blue">
         <a href="project.html?p=greyish-blue">
           <div class="project-media" aria-label="Greyish-Blue">
-            <img src="images/greyish-blue.jpg" alt="Greyish-Blue">
+            <img src="images/greyish-blue/cover.png" alt="Greyish-Blue">
           </div>
         </a>
         <div class="project-info">
@@ -637,6 +671,22 @@
   </main>
 
   <script>
+    const title = document.querySelector(".site-title");
+    const intro = document.querySelector(".intro");
+
+    const matchIntroToTitle = () => {
+      if (!title || !intro) return;
+
+      document.documentElement.style.setProperty(
+        "--title-width",
+        `${title.getBoundingClientRect().width}px`
+      );
+    };
+
+    window.addEventListener("load", matchIntroToTitle);
+    window.addEventListener("resize", matchIntroToTitle);
+    matchIntroToTitle();
+
     const markMissingImage = (image) => {
       const frame = image.closest(".project-media");
       if (frame) {
