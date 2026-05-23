@@ -48,7 +48,7 @@
     }
 
     .site-title {
-      width: fit-content;
+      width: min(780px, calc(100vw - 56px));
       margin: 28px 28px 8px 20px;
       font-size: clamp(42px, 6vw, 84px);
       font-weight: 400;
@@ -87,7 +87,7 @@
     }
 
     .intro {
-      width: var(--title-width, fit-content);
+      width: min(780px, calc(100vw - 56px));
       max-width: calc(100vw - 56px);
       margin: 0 0 76px;
       color: var(--muted);
@@ -285,6 +285,7 @@
     .project-title {
       color: var(--foreground);
       font-weight: 700;
+      visibility: hidden;
     }
 
     .project-details {
@@ -671,22 +672,6 @@
   </main>
 
   <script>
-    const title = document.querySelector(".site-title");
-    const intro = document.querySelector(".intro");
-
-    const matchIntroToTitle = () => {
-      if (!title || !intro) return;
-
-      document.documentElement.style.setProperty(
-        "--title-width",
-        `${title.getBoundingClientRect().width}px`
-      );
-    };
-
-    window.addEventListener("load", matchIntroToTitle);
-    window.addEventListener("resize", matchIntroToTitle);
-    matchIntroToTitle();
-
     const markMissingImage = (image) => {
       const frame = image.closest(".project-media");
       if (frame) {
