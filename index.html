@@ -18,7 +18,7 @@
       --foreground: #f4f2ee;
       --muted: #f4f2ee;
       --line: rgba(244, 242, 238, 0.22);
-      --panel: #11100f;
+      --panel: #000000;
     }
 
     * {
@@ -97,8 +97,8 @@
     .projects {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: 16px;
-      row-gap: 58px;
+      column-gap: 6px;
+      row-gap: 44px;
       width: 100%;
       max-width: none;
     }
@@ -136,7 +136,7 @@
     }
 
     .project.moody-mazes {
-      grid-column: 8 / span 4;
+      grid-column: 6 / span 6;
     }
 
     .project.valextra {
@@ -144,7 +144,7 @@
     }
 
     .project.acid-base {
-      grid-column: 2 / span 4;
+      grid-column: 2 / span 3;
     }
 
     .project.greyish-blue {
@@ -152,11 +152,32 @@
     }
 
     .project.vub {
-      grid-column: 1 / span 6;
+      grid-column: 2 / span 4;
     }
 
     .project.moulin-de-ferrieres {
-      grid-column: 7 / span 6;
+      grid-column: 1 / span 6;
+    }
+
+    .project.fanny-and-alexander {
+      grid-column: 5 / span 8;
+    }
+
+    .project.train-world {
+      grid-column: 9 / span 3;
+    }
+
+    .project.its-your-lucky-day {
+      grid-column: 2 / span 6;
+    }
+
+    .project.floated-plates {
+      grid-column: 5 / span 7;
+    }
+
+    .project.music-house-of-isfahan .project-media,
+    .project.music-house-of-isfahan img {
+      background: var(--background);
     }
 
     .project:nth-child(4n + 3):not(:nth-child(3)) {
@@ -183,7 +204,7 @@
       display: flex;
       align-items: flex-end;
       color: var(--foreground);
-      font-size: 24px;
+      font-size: clamp(14px, 1.25vw, 18px);
       font-weight: 700;
       opacity: 0;
       z-index: 2;
@@ -247,14 +268,15 @@
       aspect-ratio: 4 / 3;
     }
 
-    .project.moulin-de-ferrieres .project-media {
-      aspect-ratio: 2 / 3;
+    .project.train-world .project-media {
+      aspect-ratio: 1 / 1;
     }
 
     .project img {
       display: block;
       width: 100%;
       height: 100%;
+      background: var(--background);
       object-fit: cover;
     }
 
@@ -391,7 +413,7 @@
       <article class="project">
         <a href="project.html?p=what-if-berlin">
           <div class="project-media" aria-label="What If Berlin?">
-            <img src="images/what-if-berlin.jpg" alt="What If Berlin?">
+            <img src="images/what-if-berlin/cover.jpg" alt="What If Berlin?">
           </div>
         </a>
         <div class="project-info">
@@ -413,26 +435,50 @@
       </article>
 
       <article class="project">
-        <a href="project.html?p=siegfried-gotterdammerung-fanny-and-alexander">
-          <div class="project-media" aria-label="Siegfried, Götterdämmerung, Fanny and Alexander">
-            <img src="images/siegfried.jpg" alt="Siegfried, Götterdämmerung, Fanny and Alexander">
+        <a href="project.html?p=gotterdammerung">
+          <div class="project-media" aria-label="Götterdämmerung">
+            <img src="images/götterdämmerung/cover.jpg" alt="Götterdämmerung">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=siegfried-gotterdammerung-fanny-and-alexander">Siegfried, Götterdämmerung, Fanny and Alexander</a>
+          <a class="project-title" href="project.html?p=gotterdammerung">Götterdämmerung</a>
+          <div class="project-details">2024 / Brussels, Belgium / <span class="venue">La Monnaie / De Munt</span></div>
+        </div>
+      </article>
+
+      <article class="project fanny-and-alexander">
+        <a href="project.html?p=fanny-and-alexander">
+          <div class="project-media" aria-label="Fanny and Alexander">
+            <img src="images/fanny-and-alexander/cover.jpg" alt="Fanny and Alexander">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="project.html?p=fanny-and-alexander">Fanny and Alexander</a>
           <div class="project-details">2024 / Brussels, Belgium / <span class="venue">La Monnaie / De Munt</span></div>
         </div>
       </article>
 
       <article class="project moulin-de-ferrieres">
-        <a href="project.html?p=moulin-de-ferrieres-train-world">
-          <div class="project-media" aria-label="Moulin de Ferrières, Train World">
-            <img src="images/moulin-de-ferrières/cover.jpg" alt="Moulin de Ferrières, Train World">
+        <a href="project.html?p=moulin-de-ferriere">
+          <div class="project-media" aria-label="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
+            <img src="images/moulin-de-ferrières/cover.jpg" alt="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=moulin-de-ferrieres-train-world">Moulin de Ferrières, Train World</a>
+          <a class="project-title" href="project.html?p=moulin-de-ferriere">Centre d’interprétation de la Meunerie - Moulin de Ferrières</a>
           <div class="project-details">2024 / Héron, Belgium / <span class="venue">KASCEN</span></div>
+        </div>
+      </article>
+
+      <article class="project train-world">
+        <a href="project.html?p=train-world">
+          <div class="project-media" aria-label="Dessine-moi un train - Train World">
+            <img src="images/train-world/cover.jpg" alt="Dessine-moi un train - Train World">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="project.html?p=train-world">Dessine-moi un train - Train World</a>
+          <div class="project-details">2024 / Brussels, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
@@ -463,7 +509,7 @@
       <article class="project">
         <a href="project.html?p=wandering-spaces-interior-design-in-motion">
           <div class="project-media" aria-label="wandering spaces: interior design in motion">
-            <img src="images/wandering-spaces-interior-design-in-motion.jpg" alt="wandering spaces: interior design in motion">
+            <img src="images/wandering-spaces/cover.jpg" alt="wandering spaces: interior design in motion">
           </div>
         </a>
         <div class="project-info">
@@ -487,7 +533,7 @@
       <article class="project">
         <a href="project.html?p=alone-together">
           <div class="project-media" aria-label="alone, together">
-            <img src="images/alone-together.jpg" alt="alone, together">
+            <img src="images/alone-together/cover.png" alt="alone, together">
           </div>
         </a>
         <div class="project-info">
@@ -499,7 +545,7 @@
       <article class="project">
         <a href="project.html?p=city-lights">
           <div class="project-media" aria-label="city lights">
-            <img src="images/city-lights.jpg" alt="city lights">
+            <img src="images/city-lights/cover.jpg" alt="city lights">
           </div>
         </a>
         <div class="project-info">
@@ -532,10 +578,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project its-your-lucky-day">
         <a href="project.html?p=its-your-lucky-day">
           <div class="project-media" aria-label="It's Your Lucky Day">
-            <img src="images/its-your-lucky-day.jpg" alt="It's Your Lucky Day">
+            <img src="images/it's-your-lucky-day/cover.png" alt="It's Your Lucky Day">
           </div>
         </a>
         <div class="project-info">
@@ -544,10 +590,10 @@
         </div>
       </article>
 
-      <article class="project">
+      <article class="project music-house-of-isfahan">
         <a href="project.html?p=music-house-of-isfahan">
           <div class="project-media" aria-label="music house of Isfahan">
-            <img src="images/music-house-of-isfahan.jpg" alt="music house of Isfahan">
+            <img src="images/music-house-of-isfahan/cover.png" alt="music house of Isfahan">
           </div>
         </a>
         <div class="project-info">
@@ -556,22 +602,10 @@
         </div>
       </article>
 
-      <article class="project">
-        <a href="project.html?p=4-1-units">
-          <div class="project-media" aria-label="4+1 units">
-            <img src="images/4-1-units.jpg" alt="4+1 units">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="project.html?p=4-1-units">4+1 units</a>
-          <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
-        </div>
-      </article>
-
-      <article class="project">
+      <article class="project floated-plates">
         <a href="project.html?p=floated-plates">
           <div class="project-media" aria-label="floated plates">
-            <img src="images/floated-plates.jpg" alt="floated plates">
+            <img src="images/floated-plates/cover.png" alt="floated plates">
           </div>
         </a>
         <div class="project-info">
@@ -581,50 +615,14 @@
       </article>
 
       <article class="project">
-        <a href="project.html?p=nodeless-network">
-          <div class="project-media" aria-label="nodeless network">
-            <img src="images/nodeless-network.jpg" alt="nodeless network">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="project.html?p=nodeless-network">nodeless network</a>
-          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
-        </div>
-      </article>
-
-      <article class="project">
-        <a href="project.html?p=house-of-visual-arts">
-          <div class="project-media" aria-label="house of visual arts">
-            <img src="images/house-of-visual-arts.jpg" alt="house of visual arts">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="project.html?p=house-of-visual-arts">house of visual arts</a>
-          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
-        </div>
-      </article>
-
-      <article class="project">
         <a href="project.html?p=high-rise">
           <div class="project-media" aria-label="high-rise">
-            <img src="images/high-rise.jpg" alt="high-rise">
+            <img src="images/high-rise/cover.jpg" alt="high-rise">
           </div>
         </a>
         <div class="project-info">
           <a class="project-title" href="project.html?p=high-rise">high-rise</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Geneva</span></div>
-        </div>
-      </article>
-
-      <article class="project">
-        <a href="project.html?p=saudade">
-          <div class="project-media" aria-label="saudade">
-            <img src="images/saudade.jpg" alt="saudade">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="project.html?p=saudade">saudade</a>
-          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
@@ -634,12 +632,11 @@
       <div class="section-title">About</div>
 
       <p>
-        I’m interested in design as a form of research and a way of understanding
-        how people relate to space. My work often revolves around perceptions of
-        isolation within urban environments, and the role narrative and scenography
-        can play in shaping spatial experiences. I tend to approach projects
-        through a multidisciplinary process that treats design as a way of thinking,
-        questioning, and making sense of the world.
+        I work across architecture, scenography, and design. I'm interested in how
+        people experience space, especially in cities, and how stories can change
+        the way a place is perceived. For me, projects are often a way to
+        investigate a question and understand a subject rather than arrive at a
+        fixed answer.
       </p>
     </section>
 
@@ -680,11 +677,21 @@
       image.classList.add("is-missing");
     };
 
+    const fitFrameToImage = (image) => {
+      const frame = image.closest(".project-media");
+      if (!frame || !image.naturalWidth || !image.naturalHeight) return;
+
+      frame.style.aspectRatio = `${image.naturalWidth} / ${image.naturalHeight}`;
+    };
+
     document.querySelectorAll(".project img").forEach((image) => {
       image.addEventListener("error", () => markMissingImage(image));
+      image.addEventListener("load", () => fitFrameToImage(image));
 
       if (image.complete && image.naturalWidth === 0) {
         markMissingImage(image);
+      } else if (image.complete) {
+        fitFrameToImage(image);
       }
     });
   </script>
