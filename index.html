@@ -3,13 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="0JdkrukxrwNq5Ds8OpLqXFoGlrsoApT8o5tBXfLmXHg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Yasaman Nedjati</title>
 
   <meta name="description"
-    content="Yasaman Nedjati - set designer and scenographer based in Berlin. Portfolio, projects, exhibitions, and contact." />
+    content="Yasaman Nedjati - set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
 
   <link rel="icon" type="image/png" href="favicon.png">
 
@@ -56,6 +55,30 @@
       line-height: 0.95;
       letter-spacing: 0;
       text-align: left;
+    }
+
+    .compact-brand {
+      position: fixed;
+      top: 16px;
+      left: 20px;
+      z-index: 6;
+      padding: 6px 10px 6px 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .compact-brand-name {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    body.is-scrolled .compact-brand {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
 
     nav {
@@ -307,10 +330,6 @@
       text-align: right;
     }
 
-    .venue {
-      font-weight: 700;
-    }
-
     .about,
     .contact {
       width: min(560px, calc(100vw - 40px));
@@ -334,6 +353,11 @@
     @media (max-width: 900px) {
       .site-title {
         margin: 78px 18px 10px;
+      }
+
+      .compact-brand {
+        top: 12px;
+        left: 18px;
       }
 
       nav {
@@ -388,6 +412,9 @@
 <body>
 
   <h1 class="site-title">Yasaman Nedjati</h1>
+  <a class="compact-brand" href="#top" aria-label="Back to top">
+    <span class="compact-brand-name">Yasaman Nedjati</span>
+  </a>
 
   <nav aria-label="Main navigation">
     <a href="#works">works</a>
@@ -452,49 +479,49 @@
       </article>
 
       <article class="project moulin-de-ferrieres">
-        <a href="project.html?p=moulin-de-ferriere">
+        <a href="moulin-de-ferrieres.html">
           <div class="project-media" aria-label="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
             <img src="images/moulin-de-ferrières/cover.jpg" alt="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=moulin-de-ferriere">Centre d’interprétation de la Meunerie - Moulin de Ferrières</a>
+          <a class="project-title" href="moulin-de-ferrieres.html">Centre d’interprétation de la Meunerie - Moulin de Ferrières</a>
           <div class="project-details">2024 / Héron, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
       <article class="project train-world">
-        <a href="project.html?p=train-world">
+        <a href="train-world.html">
           <div class="project-media" aria-label="Dessine-moi un train - Train World">
             <img src="images/train-world/cover.jpg" alt="Dessine-moi un train - Train World">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=train-world">Dessine-moi un train - Train World</a>
+          <a class="project-title" href="train-world.html">Dessine-moi un train - Train World</a>
           <div class="project-details">2024 / Brussels, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
       <article class="project vub">
-        <a href="project.html?p=vub">
+        <a href="vub.html">
           <div class="project-media" aria-label="VUB">
             <img src="images/vub/cover.jpg" alt="VUB">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=vub">VUB</a>
+          <a class="project-title" href="vub.html">VUB</a>
           <div class="project-details">2024 / Louvain-la-Neuve, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
       <article class="project moody-mazes">
-        <a href="project.html?p=moody-mazes">
+        <a href="moody-mazes.html">
           <div class="project-media" aria-label="moody mazes" style="aspect-ratio: 2 / 3;">
             <img src="images/moody-mazes/cover.jpg" alt="moody mazes">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=moody-mazes">moody mazes</a>
+          <a class="project-title" href="moody-mazes.html">moody mazes</a>
           <div class="project-details">2024 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
@@ -512,109 +539,109 @@
       </article>
 
       <article class="project valextra">
-        <a href="project.html?p=valextra">
+        <a href="valextra.html">
           <div class="project-media" aria-label="Valextra">
             <img src="images/valextra/cover.png" alt="Valextra">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=valextra">Valextra</a>
+          <a class="project-title" href="valextra.html">Valextra</a>
           <div class="project-details">2023 / Milan, Italy / <span class="venue">Poli Design</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="project.html?p=alone-together">
+        <a href="alone-together.html">
           <div class="project-media" aria-label="alone, together">
             <img src="images/alone-together/cover.png" alt="alone, together">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=alone-together">alone, together</a>
+          <a class="project-title" href="alone-together.html">alone, together</a>
           <div class="project-details">2023 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project">
-        <a href="project.html?p=city-lights">
+        <a href="city-lights.html">
           <div class="project-media" aria-label="city lights">
             <img src="images/city-lights/cover.jpg" alt="city lights">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=city-lights">city lights</a>
+          <a class="project-title" href="city-lights.html">city lights</a>
           <div class="project-details">2022 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
         </div>
       </article>
 
       <article class="project greyish-blue">
-        <a href="project.html?p=greyish-blue">
+        <a href="greyish-blue.html">
           <div class="project-media" aria-label="Greyish-Blue">
             <img src="images/greyish-blue/cover.png" alt="Greyish-Blue">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=greyish-blue">Greyish-Blue</a>
+          <a class="project-title" href="greyish-blue.html">Greyish-Blue</a>
           <div class="project-details">2022 / Tehran, Iran / <span class="venue">-</span></div>
         </div>
       </article>
 
       <article class="project acid-base">
-        <a href="project.html?p=acid-base">
+        <a href="acid-base.html">
           <div class="project-media" aria-label="Acid Base">
             <img src="images/acid-base/cover.jpg" alt="Acid Base">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=acid-base">Acid Base</a>
+          <a class="project-title" href="acid-base.html">Acid Base</a>
           <div class="project-details">2021 / Tehran, Iran / <span class="venue">-</span></div>
         </div>
       </article>
 
       <article class="project its-your-lucky-day">
-        <a href="project.html?p=its-your-lucky-day">
+        <a href="its-your-lucky-day.html">
           <div class="project-media" aria-label="It's Your Lucky Day">
             <img src="images/it's-your-lucky-day/cover.png" alt="It's Your Lucky Day">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=its-your-lucky-day">It's Your Lucky Day</a>
+          <a class="project-title" href="its-your-lucky-day.html">It's Your Lucky Day</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">Nahal Short Film Festival</span></div>
         </div>
       </article>
 
       <article class="project music-house-of-isfahan">
-        <a href="project.html?p=music-house-of-isfahan">
+        <a href="music-house-of-isfahan.html">
           <div class="project-media" aria-label="music house of Isfahan">
             <img src="images/music-house-of-isfahan/cover.png" alt="music house of Isfahan">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=music-house-of-isfahan">music house of Isfahan</a>
+          <a class="project-title" href="music-house-of-isfahan.html">music house of Isfahan</a>
           <div class="project-details">2021 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project floated-plates">
-        <a href="project.html?p=floated-plates">
+        <a href="floated-plates.html">
           <div class="project-media" aria-label="floated plates">
             <img src="images/floated-plates/cover.png" alt="floated plates">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=floated-plates">floated plates</a>
+          <a class="project-title" href="floated-plates.html">floated plates</a>
           <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
         </div>
       </article>
 
       <article class="project high-rise">
-        <a href="project.html?p=high-rise">
+        <a href="high-rise.html">
           <div class="project-media" aria-label="high-rise">
             <img src="images/high-rise/cover.jpg" alt="high-rise">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="project.html?p=high-rise">high-rise</a>
+          <a class="project-title" href="high-rise.html">high-rise</a>
           <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Geneva</span></div>
         </div>
       </article>
@@ -662,6 +689,14 @@
   </main>
 
   <script>
+    document.body.id = "top";
+
+    const headerObserver = new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle("is-scrolled", !entry.isIntersecting);
+    }, { threshold: 0 });
+
+    headerObserver.observe(document.querySelector(".intro"));
+
     const markMissingImage = (image) => {
       const frame = image.closest(".project-media");
       if (frame) {
