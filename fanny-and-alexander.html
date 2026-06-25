@@ -48,6 +48,30 @@
       font-size: clamp(22px, 2.25vw, 30px);
     }
 
+    .compact-brand {
+      position: fixed;
+      top: 16px;
+      left: 20px;
+      z-index: 6;
+      padding: 6px 10px 6px 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1), transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .compact-brand-name {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    body.is-scrolled .compact-brand {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
     nav {
       position: fixed;
       right: 28px;
@@ -93,8 +117,6 @@
     }
 
     .meta-label { opacity: 0.7; }
-    .venue { font-weight: 700; }
-
     .project-feature {
       width: min(100%, 1280px);
       margin-top: 28px;
@@ -161,6 +183,11 @@
         margin: 0 18px 62px;
       }
 
+      .compact-brand {
+        top: 12px;
+        left: 18px;
+      }
+
       nav {
         right: 18px;
         bottom: 14px;
@@ -178,6 +205,10 @@
   <section class="site-subtitle" aria-label="Introduction">
     set designer and scenographer based in Berlin
   </section>
+
+  <a class="compact-brand" href="index.html">
+    <span class="compact-brand-name">Yasaman Nedjati</span>
+  </a>
 
   <main>
     <section class="project-header">
@@ -262,6 +293,12 @@
   </nav>
 
   <script>
+    const headerObserver = new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle("is-scrolled", !entry.isIntersecting);
+    }, { threshold: 0 });
+
+    headerObserver.observe(document.querySelector(".site-subtitle"));
+
     if (window.location.protocol === "file:") {
       document.getElementById("fanny-and-alexander-video").hidden = true;
       document.getElementById("fanny-and-alexander-video-fallback").hidden = false;
