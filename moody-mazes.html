@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>moody mazes - Yasaman Nedjati</title>
+  <meta name="description" content="Moody Mazes, a time-based installation project for Milan by Yasaman Nedjati and team.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root { --background:#fff; --foreground:#111; --line:rgba(17,17,17,.22); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--background); color:var(--foreground); font-family:"HK Grotesk","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.42; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { opacity:.62; }
+    .site-title { width:min(780px,calc(100vw - 56px)); margin:28px 28px 8px 20px; font-size:clamp(42px,6vw,84px); font-weight:400; line-height:.95; }
+    .site-subtitle { width:min(780px,calc(100vw - 56px)); margin:0 0 76px 28px; font-size:clamp(22px,2.25vw,30px); }
+    .compact-brand { position:fixed; top:16px; left:20px; z-index:6; padding:6px 10px 6px 0; opacity:0; transform:translateY(-10px); pointer-events:none; transition:opacity 420ms cubic-bezier(.22,1,.36,1),transform 420ms cubic-bezier(.22,1,.36,1); background:rgba(255,255,255,.88); backdrop-filter:blur(8px); }
+    .compact-brand-name { display:block; font-size:24px; line-height:1; }
+    body.is-scrolled .compact-brand { opacity:1; transform:translateY(0); pointer-events:auto; }
+    nav { position:fixed; right:28px; bottom:24px; z-index:8; display:flex; gap:18px; align-items:center; font-size:18px; }
+    nav a { display:inline-flex; min-width:44px; min-height:44px; align-items:center; justify-content:center; }
+    main { padding:0 28px 92px 20px; }
+    .project-header { width:min(1100px,100%); margin-bottom:54px; }
+    h1 { margin:0 0 10px; font-size:24px; font-weight:400; line-height:1.1; }
+    .project-deck { margin:0 0 28px; font-size:18px; }
+    .meta { display:grid; grid-template-columns:150px minmax(0,1fr); gap:7px 18px; padding-top:12px; border-top:1px solid var(--line); }
+    .meta-label { opacity:.68; }
+    .stream { width:min(1280px,100%); }
+    .video { display:block; width:100%; aspect-ratio:16/9; margin:0 0 44px; border:0; background:#000; }
+    .copy { width:min(980px,100%); margin:30px 0 38px; }
+    .copy p { margin:0 0 15px; }
+    .chapter { margin-top:100px; }
+    .chapter-heading { margin:0 0 34px; }
+    .chapter-heading h2 { margin:0 0 5px; font-size:28px; line-height:1.08; font-weight:400; text-transform:none; }
+    .chapter-heading p { margin:0; }
+    figure { margin:0; }
+    img { display:block; width:100%; height:auto; }
+    .image-grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:28px 10px; align-items:center; }
+    .image-grid figure { grid-column:span 6; }
+    .image-grid figure.full { grid-column:1 / -1; }
+    .image-grid figure.centered { grid-column:3 / 11; }
+    .editorial-pair { display:grid; grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr); gap:36px; align-items:center; margin:30px 0 48px; }
+    .editorial-pair .copy { margin:0; }
+    .editorial-pair figure { margin:0; }
+    .about,.contact { width:min(560px,calc(100vw - 40px)); margin-top:140px; padding-top:18px; border-top:1px solid var(--line); }
+    .section-title { margin-bottom:20px; font-size:28px; }
+    .about p,.contact p { margin:0 0 14px; }
+    @media (max-width:800px) {
+      body { font-size:14px; }
+      .site-title { margin:78px 18px 10px; }
+      .site-subtitle { width:calc(100vw - 36px); margin:0 18px 62px; }
+      .compact-brand { top:12px; left:18px; }
+      nav { right:18px; bottom:14px; gap:12px; font-size:15px; }
+      main { padding:0 18px 74px; }
+      .meta { grid-template-columns:118px minmax(0,1fr); gap:8px 12px; }
+      .chapter { margin-top:72px; }
+      .image-grid,.editorial-pair { display:block; }
+      .image-grid figure { margin-bottom:18px; }
+      .editorial-pair figure { margin-bottom:18px; }
+    }
+      /* moody-specific-small: selected images requested smaller */
+    :is(
+      img[src*="images/moody-mazes/2."],
+      img[src*="images/moody-mazes/5."],
+      img[src*="images/moody-mazes/10."],
+      img[src*="images/moody-mazes/11."],
+      img[src*="images/moody-mazes/12."],
+      img[src*="images/moody-mazes/18."],
+      img[src*="images/moody-mazes/19."],
+      img[src*="images/moody-mazes/20."],
+      img[src*="images/moody-mazes/23."],
+      img[src*="images/moody-mazes/26."],
+      img[src*="images/moody-mazes/28."],
+      img[src*="images/moody-mazes/29."],
+      img[src*="images/moody-mazes/37."],
+      img[src*="images/moody-mazes/39."],
+      img[src*="images/moody-mazes/40."],
+      img[src*="images/moody-mazes/42."],
+      img[src*="images/moody-mazes/43."],
+      img[src*="images/moody-mazes/52."],
+      img[src*="images/moody-mazes/57."],
+      img[src*="images/moody-mazes/58."],
+      img[src*="images/moody-mazes/69."],
+      img[src*="images/moody-mazes/71."],
+      img[src*="images/moody-mazes/74."]
+    ) {
+      width: min(620px, 74vw) !important;
+      max-width: 100% !important;
+      max-height: 640px;
+      object-fit: contain;
+      display: block;
+      margin-left: 0;
+      margin-right: auto;
+    }
+</style>
+</head>
+<body>
+  <h1 class="site-title">Yasaman Nedjati</h1>
+  <section class="site-subtitle" aria-label="Introduction">set designer and scenographer based in Berlin</section>
+  <a class="compact-brand" href="index.html"><span class="compact-brand-name">Yasaman Nedjati</span></a>
+  <main>
+    <section class="project-header">
+      <h1>moody mazes</h1>
+      <p class="project-deck">an event in Milan for Milan</p>
+      <div class="meta">
+        <div class="meta-label">project</div><div>academic project / Contest Design Studio</div>
+        <div class="meta-label">institution</div><div>Politecnico di Milano</div>
+        <div class="meta-label">format</div><div>group project</div>
+        <div class="meta-label">period</div><div>winter 2024</div>
+        <div class="meta-label">city</div><div>Milan, Italy</div>
+        <div class="meta-label">supervisors</div><div>Peter Di Sabatino / Frank Clementi / Monica Mozzolani</div>
+        <div class="meta-label">teammates</div><div>Sofia Marietti / Fiorenza Ratti / Benedetta Spada / Nihan Taspinar</div>
+      </div>
+    </section>
+    <article class="stream">
+      <iframe class="video" src="https://drive.google.com/file/d/1Tmsj2GYspTL470FOKir9Qj7MCDqkfORi/preview" title="Moody Mazes opening video" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="copy"><p>We created four different mazes, entirely moon time-based, that can reveal, during the lunar phases, hidden environments where visitors can lose themselves and be guided by glares and games of light to find the right way to the moon and exit from those immersive spaces that envelop them.</p></div>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Moon analysis</h2></header><div class="copy"><p>The phases of the moon play a foundational role in the magical realm and are essential for aligning with cosmic influences. Each phase comes with its unique symbols, powers, and correspondences. It affects not only water and crops but also has significant impacts on the physical and spiritual energies of animals and humans.</p></div><div class="image-grid analysis-grid"><figure class=""><img src="images/moody-mazes/1.gif" alt="Moody Mazes project image 1" loading="eager"></figure><figure class=""><img src="images/moody-mazes/2.png" alt="Moody Mazes project image 2" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/3.png" alt="Moody Mazes project image 3" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/4.png" alt="Moody Mazes project image 4" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/5.png" alt="Moody Mazes project image 5" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/6.png" alt="Moody Mazes project image 6" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/7.png" alt="Moody Mazes project image 7" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/8.gif" alt="Moody Mazes project image 8" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/9.png" alt="Moody Mazes project image 9" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Phasing + transformation</h2></header><div class="copy"><p>A plan of action crafted to accomplish our time-based design incorporated strategies of phasing and transformation, guiding us effectively through the design process.</p><p>These two strategies served as guides, enabling us to develop the project. Every design choice supports the creation of a time-based project in which the elements continually change in relation to the lunar phases.</p></div><div class="image-grid analysis-grid"><figure class=""><img src="images/moody-mazes/10.png" alt="Moody Mazes project image 10" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/11.png" alt="Moody Mazes project image 11" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/12.png" alt="Moody Mazes project image 12" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/13.png" alt="Moody Mazes project image 13" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/14.png" alt="Moody Mazes project image 14" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/15.png" alt="Moody Mazes project image 15" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/16.png" alt="Moody Mazes project image 16" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/17.png" alt="Moody Mazes project image 17" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/18.png" alt="Moody Mazes project image 18" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/19.png" alt="Moody Mazes project image 19" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Concept</h2></header><div class="copy"><p>We established a series of labyrinths adjacent to significant landmarks in Milan. Each labyrinth has distinct characteristics of shape, material, and structure, adapting to its context while sharing a path to lose oneself in, a central core, and a source of light.</p><p>The Moon enters each core through a sequence of transformations: a mirror ball, mirror walls, a water mirror, and finally pure light.</p></div><div class="image-grid"><figure class=""><img src="images/moody-mazes/20.png" alt="Moody Mazes project image 20" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/21.png" alt="Moody Mazes project image 21" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/22.png" alt="Moody Mazes project image 22" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/23.png" alt="Moody Mazes project image 23" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Discomoon</h2><p>Colonne di San Lorenzo</p></header><div class="copy"><p>The first maze transforms the Moon into a mirror ball. Circular blocks move counterclockwise with its orbit, producing changing passages and reflections. The path to the core is guided by light whose intensity changes throughout the lunar phases.</p></div><div class="image-grid maze-grid"><figure class=""><img src="images/moody-mazes/24.png" alt="Moody Mazes project image 24" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/25.gif" alt="Moody Mazes project image 25" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/26.png" alt="Moody Mazes project image 26" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/27.png" alt="Moody Mazes project image 27" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/28.png" alt="Moody Mazes project image 28" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/29.png" alt="Moody Mazes project image 29" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/30.png" alt="Moody Mazes project image 30" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/31.png" alt="Moody Mazes project image 31" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/32.png" alt="Moody Mazes project image 32" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/33.png" alt="Moody Mazes project image 33" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/34.png" alt="Moody Mazes project image 34" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/35.png" alt="Moody Mazes project image 35" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/36.png" alt="Moody Mazes project image 36" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/37.png" alt="Moody Mazes project image 37" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/38.png" alt="Moody Mazes project image 38" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/39.png" alt="Moody Mazes project image 39" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/40.png" alt="Moody Mazes project image 40" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Spacemoon</h2><p>Università Statale di Milano</p></header><div class="copy"><p>At the center of the second labyrinth, four mirror walls and a mirror roof form an immersive core. The walls open gradually through the lunar cycle, revealing reflected light and pathways through the maze.</p></div><div class="image-grid maze-grid"><figure class=""><img src="images/moody-mazes/41.png" alt="Moody Mazes project image 41" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/42.png" alt="Moody Mazes project image 42" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/43.png" alt="Moody Mazes project image 43" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/44.png" alt="Moody Mazes project image 44" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/45.png" alt="Moody Mazes project image 45" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/46.png" alt="Moody Mazes project image 46" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/47.png" alt="Moody Mazes project image 47" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/48.png" alt="Moody Mazes project image 48" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/49.png" alt="Moody Mazes project image 49" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/50.png" alt="Moody Mazes project image 50" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/51.png" alt="Moody Mazes project image 51" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/52.png" alt="Moody Mazes project image 52" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/53.png" alt="Moody Mazes project image 53" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/54.png" alt="Moody Mazes project image 54" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/55.png" alt="Moody Mazes project image 55" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Watermoon</h2><p>Villa Belgiojoso</p></header><div class="copy"><p>The third labyrinth is formed by a water-covered platform and a dense layer of fog. A circular grid at its center releases rain with an intensity synchronized to the Moon, creating a reflective surface and an ephemeral space.</p></div><div class="image-grid maze-grid"><figure class=""><img src="images/moody-mazes/56.png" alt="Moody Mazes project image 56" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/57.png" alt="Moody Mazes project image 57" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/58.png" alt="Moody Mazes project image 58" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/59.png" alt="Moody Mazes project image 59" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/60.png" alt="Moody Mazes project image 60" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/61.png" alt="Moody Mazes project image 61" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/62.png" alt="Moody Mazes project image 62" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/63.png" alt="Moody Mazes project image 63" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/64.png" alt="Moody Mazes project image 64" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/65.png" alt="Moody Mazes project image 65" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/66.png" alt="Moody Mazes project image 66" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/67.png" alt="Moody Mazes project image 67" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/68.png" alt="Moody Mazes project image 68" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/69.png" alt="Moody Mazes project image 69" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/70.png" alt="Moody Mazes project image 70" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Darkmoon</h2><p>Piazza Cairoli</p></header><div class="copy"><p>The fourth maze is a sphere divided into two halves across the city and the underground metro. Its mirrored exterior and changing internal light move between darkness and brightness as the lunar phases progress.</p></div><div class="image-grid maze-grid"><figure class=""><img src="images/moody-mazes/71.png" alt="Moody Mazes project image 71" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/72.png" alt="Moody Mazes project image 72" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/73.png" alt="Moody Mazes project image 73" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/74.png" alt="Moody Mazes project image 74" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/75.png" alt="Moody Mazes project image 75" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/76.png" alt="Moody Mazes project image 76" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/77.png" alt="Moody Mazes project image 77" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/78.png" alt="Moody Mazes project image 78" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/79.png" alt="Moody Mazes project image 79" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/80.png" alt="Moody Mazes project image 80" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/81.png" alt="Moody Mazes project image 81" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/82.png" alt="Moody Mazes project image 82" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/83.png" alt="Moody Mazes project image 83" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/84.png" alt="Moody Mazes project image 84" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/85.png" alt="Moody Mazes project image 85" loading="lazy"></figure></div></section>
+
+      <section class="chapter"><header class="chapter-heading"><h2>Schedule and navigation</h2><p>an all-year event</p></header><div class="copy"><p>Moody Mazes spans one year in Milan. The four installations are constructed and activated in different months according to the lunar calendar, with the communication system guiding visitors between their locations.</p></div><div class="image-grid navigation-grid"><figure class=""><img src="images/moody-mazes/86.png" alt="Moody Mazes project image 86" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/87.png" alt="Moody Mazes project image 87" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/88.png" alt="Moody Mazes project image 88" loading="lazy"></figure><figure class=""><img src="images/moody-mazes/89.png" alt="Moody Mazes project image 89" loading="lazy"></figure></div></section>
+
+      <header class="chapter-heading"><h2>Project video</h2></header>
+      <iframe class="video" src="https://drive.google.com/file/d/1ioQtGZphGKPmdVSMnngAf28a8m031LAs/preview" title="Moody Mazes project video" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </article>
+    <section id="about" class="about"><div class="section-title">About</div><p>I work across architecture, scenography, and design. I'm interested in how people experience space, especially in cities, and how stories can change the way a place is perceived. For me, projects are often a way to investigate a question and understand a subject rather than arrive at a fixed answer.</p></section>
+    <section id="contact" class="contact"><div class="section-title">Contact</div><p><a href="mailto:yasamannedjati@gmail.com">yasamannedjati@gmail.com</a></p><p><a href="https://www.linkedin.com/in/yasamannedjati/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><p><a href="https://www.instagram.com/yasiizz/" target="_blank" rel="noopener noreferrer">Instagram</a></p></section>
+  </main>
+  <nav aria-label="Main navigation"><a href="index.html#works">works</a><a href="#about">about</a><a href="#contact">contact</a></nav>
+  <script>const headerObserver=new IntersectionObserver(([entry])=>{document.body.classList.toggle("is-scrolled",!entry.isIntersecting);},{threshold:0});headerObserver.observe(document.querySelector(".site-subtitle"));</script>
+  <script>
+    const moodyFull=new Set([1,5,6,8,9,13,14,15,17,20,21,23,24,25,27,28,30,31,32,33,36,41,42,43,45,48,51,56,57,60,61,67,73,74,77,78,79,83,84,86,87,88,89]);
+    const moodyCentered=new Set([2,7,10,11,12,16,18,19,22,26,29,34,35,37,38,39,40,44,46,47,49,50,52,53,54,55,58,59,62,63,64,65,66,68,69,70,71,72,75,76,80,81,82,85]);
+    document.querySelectorAll(".image-grid figure").forEach((figure)=>{
+      const match=figure.querySelector("img").getAttribute("src").match(/\/(\d+)\./);
+      if(!match) return;
+      const number=Number(match[1]);
+      if(moodyFull.has(number)) figure.classList.add("full");
+      else if(moodyCentered.has(number)) figure.classList.add("centered");
+    });
+    document.querySelectorAll(".chapter").forEach((chapter)=>{
+      const title=chapter.querySelector("h2")?.textContent.trim();
+      if(!["Discomoon","Spacemoon","Watermoon","Darkmoon"].includes(title)) return;
+      const copy=chapter.querySelector(":scope > .copy");
+      const firstFigure=chapter.querySelector(".image-grid figure");
+      if(!copy||!firstFigure) return;
+      const pair=document.createElement("div");
+      pair.className="editorial-pair";
+      pair.append(copy,firstFigure);
+      chapter.querySelector(".chapter-heading").insertAdjacentElement("afterend",pair);
+      firstFigure.classList.remove("full","centered");
+    });
+  </script>
+</body>
+</html>
