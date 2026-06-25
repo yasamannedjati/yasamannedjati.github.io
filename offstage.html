@@ -1,635 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>offstage - Yasaman Nedjati</title>
-  <meta name="description" content="offstage - settings for adjacent solitude, liminal spaces for the enjoyment of knee plays." />
+  <meta name="description" content="Offstage, Yasaman Nedjati's master's thesis project on adjacent solitude, observation, and liminal public space.">
   <link rel="icon" type="image/png" href="favicon.png">
-
   <style>
-    :root {
-      --background: #ffffff;
-      --foreground: #050505;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--background);
-      color: var(--foreground);
-      font-family: "HK Grotesk", "Helvetica Neue", Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.35;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    a:hover { opacity: 0.65; }
-
-    .site-title {
-      width: min(780px, calc(100vw - 56px));
-      margin: 28px 28px 8px 20px;
-      font-size: clamp(42px, 6vw, 84px);
-      font-weight: 400;
-      line-height: 0.95;
-      letter-spacing: 0;
-      text-align: left;
-    }
-
-    .site-subtitle {
-      width: min(780px, calc(100vw - 56px));
-      max-width: calc(100vw - 56px);
-      margin: 0 0 76px 28px;
-      color: var(--foreground);
-      font-size: clamp(22px, 2.25vw, 30px);
-      line-height: 1.35;
-    }
-
-    .page {
-      width: min(1040px, calc(100vw - 44px));
-      margin: 0 auto;
-      padding: 0 0 72px;
-    }
-
-    nav {
-      position: fixed;
-      right: 28px;
-      bottom: 24px;
-      z-index: 5;
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 18px;
-    }
-
-    nav a {
-      display: inline-flex;
-      min-width: 44px;
-      min-height: 44px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .intro {
-      max-width: 720px;
-      margin: 0 0 48px;
-      text-align: left;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .subtitle {
-      margin: 0 0 22px;
-      color: var(--foreground);
-      font-size: 15px;
-    }
-
-    .story {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 26px 18px;
-      align-items: start;
-    }
-
-    .text-block {
-      grid-column: 1 / span 8;
-      margin: 8px 0 4px;
-      text-align: left;
-    }
-
-    .text-block p {
-      margin: 0;
-      max-width: 720px;
-      font-family: "HK Grotesk", "Helvetica Neue", Arial, sans-serif;
-      font-size: 15px;
-      line-height: 1.35;
-    }
-
-    .text-block.heading {
-      margin-top: 34px;
-      margin-bottom: -10px;
-    }
-
-    .text-block.heading p {
-      font-family: "HK Grotesk", "Helvetica Neue", Arial, sans-serif;
-      font-size: 28px;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .text-block.subheading {
-      margin-top: -12px;
-      margin-bottom: 12px;
-    }
-
-    .text-block.subheading p {
-      color: var(--foreground);
-      font-size: 15px;
-    }
-
-    .image-block {
-      position: relative;
-      grid-column: span 6;
-      margin: 0;
-      min-width: 0;
-    }
-
-    .image-block.full { grid-column: 1 / -1; }
-    .image-block.narrow { grid-column: 1 / span 6; }
-    .image-block.small { grid-column: 1 / span 4; }
-
-    .image-block img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .image-block figcaption { display: none; }
-
-    .image-block[data-caption]::after {
-      content: attr(data-caption);
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--foreground);
-      font-size: 14px;
-      line-height: 1.35;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 160ms ease;
-    }
-
-    .image-block[data-caption]:hover::after {
-      opacity: 1;
-    }
-
-    .about,
-    .contact {
-      width: min(560px, calc(100vw - 40px));
-      margin-top: 140px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(5, 5, 5, 0.22);
-      color: var(--foreground);
-    }
-
-    .section-title {
-      margin-bottom: 20px;
-      color: var(--foreground);
-      font-size: 28px;
-    }
-
-    .contact p,
-    .about p {
-      margin: 0 0 14px;
-    }
-
-    @media (max-width: 760px) {
-      .site-title {
-        margin: 78px 18px 10px;
-        font-size: clamp(42px, 6vw, 84px);
-      }
-
-      .site-subtitle {
-        width: calc(100vw - 36px);
-        max-width: calc(100vw - 36px);
-        margin: 0 18px 62px;
-        font-size: clamp(22px, 2.25vw, 30px);
-      }
-
-      .page {
-        width: min(100vw - 28px, 1040px);
-      }
-
-      nav {
-        right: 18px;
-        bottom: 14px;
-        gap: 12px;
-        font-size: 15px;
-      }
-
-      .story { display: block; }
-      .text-block { margin: 24px 0; }
-      .image-block { margin: 0 0 24px; }
+    :root { --background:#fff; --foreground:#111; --line:rgba(17,17,17,.22); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--background); color:var(--foreground); font-family:"HK Grotesk","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.42; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { opacity:.62; }
+    .site-title { width:min(780px,calc(100vw - 56px)); margin:28px 28px 8px 20px; font-size:clamp(42px,6vw,84px); font-weight:400; line-height:.95; }
+    .site-subtitle { width:min(780px,calc(100vw - 56px)); margin:0 0 76px 28px; font-size:clamp(22px,2.25vw,30px); }
+    .compact-brand { position:fixed; top:16px; left:20px; z-index:6; padding:6px 10px 6px 0; opacity:0; transform:translateY(-10px); pointer-events:none; transition:opacity 420ms cubic-bezier(.22,1,.36,1),transform 420ms cubic-bezier(.22,1,.36,1); }
+    .compact-brand-name { display:block; font-size:24px; line-height:1; }
+    body.is-scrolled .compact-brand { opacity:1; transform:translateY(0); pointer-events:auto; }
+    nav { position:fixed; right:28px; bottom:24px; z-index:8; display:flex; gap:18px; align-items:center; font-size:18px; }
+    nav a { display:inline-flex; min-width:44px; min-height:44px; align-items:center; justify-content:center; }
+    main { padding:0 28px 92px 20px; }
+    .project-header { width:min(980px,100%); margin-bottom:72px; }
+    h1 { margin:0 0 20px; font-size:24px; font-weight:400; line-height:1.1; }
+    .project-deck { margin:0 0 30px; font-size:18px; }
+    .meta { display:grid; grid-template-columns:150px minmax(0,1fr); gap:7px 18px; padding-top:12px; border-top:1px solid var(--line); }
+    .meta-label { opacity:.68; }
+    .stream { width:min(1280px,100%); }
+    .copy { width:min(960px,100%); margin:34px 0; }
+    .copy p { margin:0 0 16px; }
+    .section-heading { margin:96px 0 34px; }
+    .section-heading h2 { margin:0 0 5px; font-size:28px; line-height:1.05; font-weight:400; text-transform:none; }
+    .section-heading p { margin:0; font-size:14px; }
+    figure { margin:0; }
+    img { display:block; width:100%; height:auto; }
+    .wide-figure,.stage-wide { margin:28px 0; }
+    .stream > figure:first-of-type { width:min(560px,100%); }
+    .grid-two { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:28px 0; align-items:start; }
+    .research-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:44px 8px; margin:34px 0; }
+    .research-grid figure:last-child:nth-child(odd) { grid-column:1 / -1; width:50%; justify-self:center; }
+    .small-study { width:min(520px,100%); margin:56px 0; }
+    .survey-list { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:28px 18px; align-items:center; width:min(1280px,100%); margin:40px 0; }
+    .survey-item { display:contents; }
+    .survey-copy { padding:20px 26px; }
+    .survey-copy h3 { margin:0 0 12px; font-size:15px; font-weight:400; text-transform:none; }
+    .survey-copy p { margin:0 0 12px; }
+    .chapter { margin-top:120px; }
+    .city-study .copy { width:min(960px,100%); }
+    .studies { align-items:center; gap:26px; }
+    .editorial-pair { display:grid; grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr); gap:34px; align-items:center; margin:34px 0; }
+    .editorial-pair.reverse { grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr); }
+    .editorial-pair.reverse figure { order:2; }
+    .editorial-pair .copy { width:auto; margin:0; }
+    .editorial-pair figure { margin:0; }
+    .stage .section-heading { margin-top:110px; }
+    .stage .dark-study { width:min(620px,58%); margin:0 0 28px; }
+    .stage-pair { gap:0; align-items:center; }
+    .video { width:min(1280px,100%); aspect-ratio:16/9; margin:28px 0 38px; border:0; display:block; background:#000; }
+    .final-pair { margin-top:38px; }
+    .about,.contact { width:min(560px,calc(100vw - 40px)); margin-top:140px; padding-top:18px; border-top:1px solid var(--line); }
+    .section-title { margin-bottom:20px; font-size:28px; }
+    .about p,.contact p { margin:0 0 14px; }
+    @media (max-width:800px) {
+      body { font-size:14px; }
+      .site-title { margin:78px 18px 10px; }
+      .site-subtitle { width:calc(100vw - 36px); margin:0 18px 62px; }
+      .compact-brand { top:12px; left:18px; }
+      nav { right:18px; bottom:14px; gap:12px; font-size:15px; }
+      main { padding:0 18px 74px; }
+      .meta { grid-template-columns:118px minmax(0,1fr); gap:8px 12px; }
+      .grid-two,.research-grid,.editorial-pair,.editorial-pair.reverse { grid-template-columns:1fr; }
+      .survey-list { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+      .editorial-pair.reverse figure { order:0; }
+      .survey-copy { padding:16px 0 26px; }
+      .research-grid figure:last-child:nth-child(odd),.stage .dark-study { width:100%; }
+      .section-heading { margin-top:70px; }
+      .chapter { margin-top:86px; }
     }
   </style>
 </head>
-
 <body>
   <h1 class="site-title">Yasaman Nedjati</h1>
-  <section class="site-subtitle" aria-label="Introduction">
-    set designer and scenographer based in Berlin
-  </section>
-
-  <main class="page">
-    <section class="intro" aria-label="Project introduction">
+  <section class="site-subtitle" aria-label="Introduction">set designer and scenographer based in Berlin</section>
+  <a class="compact-brand" href="index.html"><span class="compact-brand-name">Yasaman Nedjati</span></a>
+  <main>
+    <section class="project-header">
       <h1>offstage</h1>
-      <p class="subtitle">settings for adjacent solitude - liminal spaces for the enjoyment of knee plays</p>
+      <p class="project-deck">settings for adjacent solitude - liminal spaces for the enjoyment of knee plays</p>
+      <div class="meta">
+        <div class="meta-label">project</div><div>Master's thesis project</div>
+        <div class="meta-label">institution</div><div>Politecnico di Milano</div>
+        <div class="meta-label">format</div><div>individual project</div>
+        <div class="meta-label">period</div><div>spring 2025</div>
+        <div class="meta-label">city</div><div>Milan, Italy</div>
+        <div class="meta-label">supervisor</div><div>Frank Clementi</div>
+      </div>
     </section>
-
-    <section class="story" id="story" aria-label="Offstage project in PDF order"></section>
-
-    <section id="about" class="about">
-      <div class="section-title">About</div>
-
-      <p>
-        I work across architecture, scenography, and design. I'm interested in how
-        people experience space, especially in cities, and how stories can change
-        the way a place is perceived. For me, projects are often a way to
-        investigate a question and understand a subject rather than arrive at a
-        fixed answer.
-      </p>
-    </section>
-
-    <section id="contact" class="contact">
-      <div class="section-title">Contact</div>
-
-      <p>
-        <a href="mailto:yasamannedjati@gmail.com">
-          yasamannedjati@gmail.com
-        </a>
-      </p>
-
-      <p>
-        <a href="https://www.linkedin.com/in/yasamannedjati/"
-          target="_blank"
-          rel="noopener noreferrer">
-          LinkedIn
-        </a>
-      </p>
-
-      <p>
-        <a href="https://www.instagram.com/yasiizz/"
-          target="_blank"
-          rel="noopener noreferrer">
-          Instagram
-        </a>
-      </p>
-    </section>
+    <article class="stream">
+      <div class="copy"><p>Taking half a step back from the crowd, one can enter new zones of quiet that lie alongside but separate from all that is happening in the outside world. As if one is outside in mind but inside in space, maintaining a relationship with the external world while still retaining a sense of personal space. Here, there is pleasure in the solitude that comes from being alone yet surrounded, allowing the external world to be observed without the pressure to engage, remaining adjacent, in another layer.</p><p>Space is filled with both physical and metaphysical liminalities. Light, sound, walls, and trees can all create layers within a space. The visibility of these divisions between layers can vary, from firm, like walls or doors, to more fluid boundaries, such as noise or shadows. Within these layers, the roles of the observer and the observed can interchange, as if we are always simultaneously onstage and offstage, with the definition of the stage shaped by the point of view. We are almost always being seen while observing.</p></div>
+      <figure class="wide-figure"><img src="images/offstage/1.png" alt="Offstage project image 1" loading="eager"></figure>
+      <div class="copy"><p>Theatre has long separated the staged from the unstaged, the space of performance from the world that exists around it. Yet, what lies just beyond the frame, just outside the spectacle, carries its own significance. This thesis explores the offstage, not as absence, but as an active space, a liminal condition where presence is redefined and solitude unfolds adjacent to the crowd.</p><p>The fundamental question driving this thesis is: What do urban spaces offer to individuals who wish to spend time on their own, not indoors, but within the public?At the core of this exploration is the concept of adjacent solitude, being alone, yet not isolated; present, yet not participating. We’re looking for spaces where one can exist alongside others without the pressure of engagement. And finding them in spaces that resist singular definition. Which is where the notionof liminality further complicates this condition, emphasizing transitional states, blurred boundaries, spaces without fixed meaning, where one can have a quiet, personal negotiation with the public realm.</p><p>Knee Plays, borrowing their name from Einstein on the Beach by Robert Wilson and Philip Glass, function as interludes between acts, with the term ‘knee’ referring to the way human knees act as joints, connecting separate movements into a continuous flow. In the original production, the Knee Plays were shorter, recurring moments that provided the necessary time to change the scenery while also maintaining continuity between acts. As the primary stage shifted, focus moved to an intermediate space in front of the curtain, another liminal zone.</p><p>In spatial terms, these moments of in-betweenness parallel the kinds of urban spaces that exist at the edges of activity, places that are neither fully engaged nor entirely apart, but instead function as transitional zones. Just as Knee Plays restructure the rhythm of a performance, these spaces shape how solitude is experienced in public, providing an alternative mode of being, present, yet at a distance.</p><p>Through different chapters, the experience of being ‘offstage’ in the city is explored:</p><p>on being; examines how one can exist in public with minimal contact, present but unengaged, outside in mind, inside in space.on observing; focuses on the interchangeable roles of observor and observed, looking at how spatial conditions mediate spectatorship.on narrative; considers how architectural works can engage in a dialogue to construct fragmented narratives.on space; explores the spatial qualities on ine-betweenness and unclaimed spaces.on perception; addresses how spatial experience is shaped by point of view, and the act of seeing itself.</p><p>Between the main sections of this thesis, transitional chapters function as Knee Plays. Rather than ntroducing entirely new discussions, these chapters act as joints that bridge themes.</p></div>
+      <header class="section-heading"><h2>Meditation vs. action</h2><p>framing the play</p></header>
+      <div class="grid-two"><figure class=""><img src="images/offstage/2.png" alt="Offstage project image 2" loading="lazy"></figure><figure class=""><img src="images/offstage/3.png" alt="Offstage project image 3" loading="lazy"></figure></div>
+      <div class="grid-two"><figure class=""><img src="images/offstage/4.png" alt="Offstage project image 4" loading="lazy"></figure><figure class=""><img src="images/offstage/5.png" alt="Offstage project image 5" loading="lazy"></figure></div>
+      <div class="copy"><p>In a gallery, people looking at art can become part of what’s being seen. The onlooker watches not just the works but also the way people move through them, how they pause, how they react.</p></div>
+      <figure class="wide-figure"><img src="images/offstage/6.png" alt="Offstage project image 6" loading="lazy"></figure>
+      <header class="section-heading"><h2>Observant / observed</h2><p>voyeurism in Edward Hopper's work</p></header>
+      <div class="copy"><p>Populated by people alone, or in uneasy, uncommunicative groupings of twos and threes, fastened into poses that seem indicative of distress, Hopper’s paintings show a layering of subjects and spectators. The figures exhibit a sense of unease at being seen or looked over through windows, streets, or other architectural elements that produce the spatial sensation of being close but separated from other people. This view, often characterized as voyeuristic, replicates one of the primary feelings of loneliness: the combination of a sense of near-unbearable exposure with a sense of isolation, of being walled off or confined.</p><p>In his paintings, the voyeurs expand beyond the actual painting to us, the audience, giving us the impression that we are gazing in to view a scene that is not meant to be seen. Voyeurism works to isolate the viewer as well as the viewed. He declares barriers and boundaries, wanted things at a distance and unwanted things too close, and an erotics of insufficient intimacy in his paintings.</p><p>Hopper uses strange perspectives and sites of blockage and exposure to combat the insularity of loneliness, forcing the viewer to enter imaginatively into an experience that is otherwise notable for its profound impenetrability, its multiple barriers, its walls like windows, its windows like walls. The color green powerfully communicates urban alienation and the atomization of human beings.</p></div>
+      <div class="research-grid"><figure class=""><img src="images/offstage/7.png" alt="Offstage project image 7" loading="lazy"></figure><figure class=""><img src="images/offstage/8.png" alt="Offstage project image 8" loading="lazy"></figure><figure class=""><img src="images/offstage/9.png" alt="Offstage project image 9" loading="lazy"></figure><figure class=""><img src="images/offstage/10.png" alt="Offstage project image 10" loading="lazy"></figure><figure class=""><img src="images/offstage/11.png" alt="Offstage project image 11" loading="lazy"></figure></div>
+      <div class="grid-two"><figure class=""><img src="images/offstage/12.jpg" alt="Offstage project image 12" loading="lazy"></figure><figure class=""><img src="images/offstage/13.jpg" alt="Offstage project image 13" loading="lazy"></figure></div>
+      <div class="copy"><p>physical models of the layered deconstruction of edward hopper's paintings</p></div>
+      <header class="section-heading"><h2>In the frame of confinement</h2><p>the bridge of sighs and the reversed spectacle of observation</p></header>
+      <figure class="small-study"><img src="images/offstage/14.png" alt="Offstage project image 14" loading="lazy"></figure>
+      <div class="copy"><p>As prisoners took their last glimpse of freedom before confinement, their view framed by the bridge’s openings, they were simultaneously staged as subjects to be observed in a reversed spectacle where passersby become the audience. The passage itself becomes performance, turning the act of looking into an asymmetrical exchange.</p></div>
+      <header class="section-heading"><h2>Exchanging with the white noise</h2><p>liminality and its materiality in space</p></header>
+      <figure class="wide-figure"><img src="images/offstage/15.jpg" alt="Offstage project image 15" loading="lazy"></figure>
+      <div class="copy"><p>A background sound, like a TV show you’ve watched countless times, can create a subtle, almost invisible yet distinct layer of spatial experience. While you remain aware of the sound, it becomes a form of white noise, present in the background of your activities, not demanding active attention, but not entirely ignored either. Despite its peripheral presence, you still give and receive from it, creating an ongoing reciprocal interaction with the environment. It offers a sense of continuity, anchoring you in the spaces while letting the mind drift, much like the steady hum of a city outside an open window. There is an almost invisible exchange between the individual and these layers of ambient sound that seeps into awareness, filling the space without making it feel crowded.</p></div>
+      <header class="section-heading"><h2>Spotting pleasurable alone-ness in mass presence</h2><p>a study of adjacent solitude in public places through words and images</p></header>
+      <div class="copy"><p>The adjacent solitude in question carries within it the notion of unfolding in a different layer. It exists in the space between the stage and the audience, where the knee play happens, acting as an invisible barrier that separates you from the outside world and creates room for simply being, even if only slightly distanced, among others. It’s a place with a sense of boundary, but no real division. This solitude happens in a space shaped by various physical features, layers, and transitional spots. Following a few images and descriptions of these areas from various individuals, a few examples are studied to demonstrate how the layering is either purposefully or inadvertently placed in these areas to describe that non-literal zone where people can feel at ease in a public situation.</p></div>
+      <div class="copy"><p>Describe a public space or a place in the city where you felt at ease being alone, even in the presence of a crowd, without feeling isolated or detached.</p></div>
+      <section class="survey-list"><article class="survey-item "><figure class=""><img src="images/offstage/16.jpg" alt="Offstage project image 16" loading="lazy"></figure><div class="survey-copy"><h3>KIMIA, 26</h3><p>Two years ago in Lund’s city center, by the ice skating rink near a massive Christmas tree, its lights soon to be switched on. It was a weekend night, and the place was packed with poeple all busy with their own activities. Every corner was buzzing with movement and sound. I enjoyed sitting on the wooden benches, people-watching as everyone engaged in fun activities around me.Going alone to the cinema, feels like being part of something bigger, a crowd of strangers drawn together by a shared love for the movie. Though we don’t know each other, we are united in the experience, laughing, tearing up, and celebrating each moment as it unfolds on screen. It’s a simple but powerful feeling of connection through a common purpose.</p></div></article><article class="survey-item reverse"><figure class=""><img src="images/offstage/17.jpg" alt="Offstage project image 17" loading="lazy"></figure><div class="survey-copy"><h3>ZAHRA, 27Coming back from work, especially on weekends, I often feel isolated. Everyone around is loud, laughing, enjoying themselves, which only heightens that feeling. I tend to prefer quieter, open spaces, like a gallery where I can sit and watch people silently engaging with art, or a bench by the canal where I can watch kids play or take in small, beautiful scenes.When people are having fun in semi-public spaces, like bars spilling onto the street, it feels even more isolating. They’re visible but separate, with an unspoken boundary. In fully public spaces, though, that boundary dissolves; seeing someone seated in a park, you could sit nearby and feel like you’re sharing the same space. In contrast, in private, chic galleries, if you don’t feel welcome or comfortable joining in, it can deepen that sense of being alone. For some, especially introverts, that invisible border can feel like a real hurdle.</h3></div></article><article class="survey-item "><figure class=""><img src="images/offstage/18.jpg" alt="Offstage project image 18" loading="lazy"></figure><div class="survey-copy"><h3>RONAK, 29</h3><p>In galleries with seating, I enjoy viewing the artworks on my own first, then sitting for as long as I can to observe people’s reactions to them. In bookstores, I like finding a quiet spot to read away from the crowd, a habit I don’t have anywhere else.</p></div></article><article class="survey-item reverse"><figure class=""><img src="images/offstage/19.PNG" alt="Offstage project image 19" loading="lazy"></figure><div class="survey-copy"><h3>MARYAM, 63</h3><p>Maybe the park counts; it’s a place where you can have solitude, even with people around. Other than that, I can’t really think of another spot.</p></div></article><article class="survey-item "><figure class=""><img src="images/offstage/20.jpg" alt="Offstage project image 20" loading="lazy"></figure><div class="survey-copy"><h3>SAJJAD, 26Each of these places has a story for me, it’s not just the space itself, but the memories tied to it. In Iran, there was a workspace where my friend worked, and I’d go there after my own job to wait for her. I’d sit with a coffee, watching people work in those quiet moments when I had nothing else to do. It was a workshop with a café upstairs, and just sitting there observing felt oddly relaxing.In Oman, it was different. That trip was my first time abroad, and one night we sat in a bar with friends. It was the first time I’d ever felt completely at ease, with no worries. I was there on an internship, everything was organized, and it all just flowed, no concerns, just that feeling of everything going right.Then there was a small pizza place I found while waiting to kill some time. The owner was incredibly friendly, welcoming people, even taking pictures with them. I stayed there because it was interesting and felt safe, watching him make pizzas and seeing the young crowd coming in. It was a simple place, but it had a warm, fun vibe.</h3></div></article><article class="survey-item reverse"><figure class=""><img src="images/offstage/21.jpg" alt="Offstage project image 21" loading="lazy"></figure><div class="survey-copy"><h3>REZA, 26</h3><p>I don’t usually feel comfortable in public spaces and only find privacy in places that feel more secluded. It’s not easy for me to feel safe around people or in open areas.I felt comfortable sitting on my own to work in some of Tehran’s cafes. In Hamburg, though, there was a Vietnamese restaurant I often went to for lunch. It was relatively big, with an upper floor, but I always sat at a small two-person table by the ground-floor window. It felt like my own little spot where I could put on my headphones, look outside, and feel alone, regardless of how crowded the place was.In Hamburg’s Stadtpark, a huge city park, I’d go alone on nice summer days and sit on the grass. There was enough space to find a quiet spot by a tree and feel separated from everyone else. And in the R.S.O. techno club in Berlin, there were cozy corners with sofas where I could talk with friends without being disturbed by people or loud music. It felt private, just the two of us. I imagine that even if I went alone, I’d be able to go there, sit, and get some peace if I ever felt overwhelmed.</p></div></article><article class="survey-item "><figure class=""><img src="images/offstage/22.jpg" alt="Offstage project image 22" loading="lazy"></figure><div class="survey-copy"><h3>FARANK, 33I often sit in cafés—not just any, but the ones where other people are alone too. I like the benches around the city theatre park for people-watching, and I also enjoy spending time in Laleh Park, where I can sit back and take in the surroundings.Also in Shahrdari Square in Rasht, everyone sits around the square, talking together, whether they know each other or not. There are people singing, and it creates a really friendly vibe.</h3></div></article><article class="survey-item reverse"><figure class=""><img src="images/offstage/23.jpg" alt="Offstage project image 23" loading="lazy"></figure><div class="survey-copy"><h3>MEHDI, 66</h3><p>In my opinion, the ideal space could be a museum, an art gallery, or a historical exhibition, where, even though you’re among people, you can still be in your own solitude, engaging in something you enjoy that brings peace and pleasure in a public urban environment. Other ideal spaces could be a city park, a theater, a cinema, or visiting historical sites.</p></div></article><article class="survey-item "><figure class=""><img src="images/offstage/24.jpg" alt="Offstage project image 24" loading="lazy"></figure><div class="survey-copy"><h3>MADI, 28</h3><p>Central city squares with benches or somewhere to sit.Then there are the cozier, tucked-away spots. These smaller spaces can feel less secure at night, but with some lighting and seating, they’d be inviting, especially for a quick smoke. A long corridor between buildings, opening to an empty back area. I enjoy people-watching or simply sitting in front of a nice view. Ideally, I’d like it if there was a bench with a transparent cover around it; something that keeps out the cold or rain without blocking the view.</p></div></article><article class="survey-item reverse"><figure class=""><img src="images/offstage/25.jpg" alt="Offstage project image 25" loading="lazy"></figure><div class="survey-copy"><h3>AHMAD, 27</h3><p>The first place that comes to mind is the swimming pool—I’ve always felt something unusual about it, but I think it’s this sense of calm. There’s a stillness there, especially when I’m leaning against a corner, or even sitting quietly in the jacuzzi or sauna. I can watch people without anyone minding me, and it’s really calming.</p></div></article><article class="survey-item "><figure class=""><img src="images/offstage/26.png" alt="Offstage project image 26" loading="lazy"></figure><div class="survey-copy"><h3>MARIA, 24I immediately thought of the movies. Places like cinemas, libraries, and viewpoints let me be alone without feeling lonely. Coffee shops and bookstores too, but it depends on my mindset, sometimes they feel comforting, other times, seeing people with company makes me feel lonelier.</h3></div></article><article class="survey-item reverse"><figure class=""><img src="images/offstage/27.jpeg" alt="Offstage project image 27" loading="lazy"></figure><div class="survey-copy"><h3>SAHAR, 26</h3><p>Sitting on a bench next to a tree, you don’t feel like people are watching you. Everyone is just passing by, running, walking their dogs, or biking. You can sit in peace, looking out from the top of what was once the city’s wall, watching the sunset without the pressure of being watched.</p></div></article></section>
+      <figure class="wide-figure"><img src="images/offstage/28.jpg" alt="Offstage project image 28" loading="lazy"></figure>
+      <header class="section-heading"><h2>Project sites</h2></header>
+      <div class="copy"><p>This project unfolds across five cities; Venice, Milan, Brussels, Berlin, and Tehran, each selected for its capacity, or lack thereof, to accommodate an individual onlooker’s presence. Each site is examined through its layers within the urban landscape and the ways in which it interacts with them.</p></div>
+      <figure class="wide-figure"><img src="images/offstage/29.jpg" alt="Offstage project image 29" loading="lazy"></figure>
+      <header class="section-heading"><h2>The pre-show</h2><p>nine settings, three cities</p></header>
+      <div class="copy"><p>Nine settings have been designed across three of the selected cities; Venice, Milan, and Brussels, each with three distinct placements. All five cities; Venice, Milan, Brussels, Berlin, and Tehran—have been studied and analyzed for their spatial and observational qualities, but the interventions focus on three. Berlin and Tehran remain as essential points of reference, informing the broader exploration of liminality and the act of looking within the urban landscape.</p></div>
+      <figure class="small-study"><img src="images/offstage/30.jpg" alt="Offstage project image 30" loading="lazy"></figure>
+      <section class="chapter city-study"><header class="section-heading"><h2>Venice</h2></header><div class="copy"><p>To understand the liminality of Venice, one cannot overlook water, the defining element that has shaped the city’s very surface. Venice responds only as much as necessary to the immediate conditions it faces, remaining closely tied to its surface. When water levels rise, the city adapts just enough, with acqua alta temporarily lifting daily life above the tide.Venice is constantly shifting between land and water. Narrow streets (calli) and bridges frame the water, creating passages that define the city’s horizontal layers. Canals thread through these layers, while campos, the small city squares, act as open rooms within them.</p></div><div class="copy"><p>Where does an onlooker settle in Venice?</p><p>The edges of canals, where one can sit on stone ledges or lean against iron railings, watching gondolas slip by. Bridges, providing a sense of hovering above waterEven at ground level, benches at the margins of campos, allowing one to settle, facing either the movement of people or gondolas on water.Unlike cities where one can step back to gain an overview, Venice demands observation from within.</p></div><div class="copy"><p>Piazza San Marco, one of Venice’s most visited sites and home to Basilica San Marco, the Campanile, Palazzo Ducale, and other monumental buildings, draws crowds year-round to its vast open space. Framed by its surrounding architecture, the square becomes a stage for constant movement—visitors entering the basilica, lingering in the piazza, walking beneath the arches of the colonnades, or making their way to and from the water.</p></div><div class="grid-two studies"><figure class=""><img src="images/offstage/31.png" alt="Offstage project image 31" loading="lazy"></figure><figure class=""><img src="images/offstage/32.png" alt="Offstage project image 32" loading="lazy"></figure></div><div class="grid-two studies"><figure class=""><img src="images/offstage/33.png" alt="Offstage project image 33" loading="lazy"></figure><figure class=""><img src="images/offstage/34.png" alt="Offstage project image 34" loading="lazy"></figure></div><figure class="wide-figure"><img src="images/offstage/35.JPG" alt="Offstage project image 35" loading="lazy"></figure><figure class="wide-figure"><img src="images/offstage/36.jpg" alt="Offstage project image 36" loading="lazy"></figure></section>
+      <section class="chapter city-study"><header class="section-heading"><h2>Milan</h2></header><div class="copy"><p>Looking forward while maintaining a conversation with its past, Milan is where the modern and the historical coexist in a continuous dialogue. This duality is embeded in its architecture: sleek glass towers rise through the shorter, older fabric of the city, creating a vertical juxtaposition of time and layering its temporality. Events like Design Week and Fashion Week reinforce a sense of cyclical reinvention, where the city is continually reshaped. Yet beyond its outward transformations, Milan holds invisible layers within seen in the courtyards houses (case di ringhiera) that are tucked away behind street facades, in contrast to the outward facing vertical landmarks.</p></div><div class="copy"><p>Where does an onlooker settle in milan?</p><p>Observation in Milan happens at multiple levels. Benches in piazzas and small parks provide resting points for people-watching.Stairs at historic sites frame perspectives, offering structured viewpoints.Elevated vantage points, like the Galleria, allow for a layered view of the city, where its historical and modern elements stack upon one another.</p></div><div class="copy"><p>Within the walls of Castello Sforzesco, the Cortile delle Armi forms an open-air urban stage, welcoming both castle visitors and passersby as they move through or pause within its enclosure.</p></div><div class="grid-two studies"><figure class=""><img src="images/offstage/37.png" alt="Offstage project image 37" loading="lazy"></figure><figure class=""><img src="images/offstage/38.png" alt="Offstage project image 38" loading="lazy"></figure></div><div class="grid-two studies"><figure class=""><img src="images/offstage/39.png" alt="Offstage project image 39" loading="lazy"></figure><figure class=""><img src="images/offstage/40.png" alt="Offstage project image 40" loading="lazy"></figure></div><figure class="wide-figure"><img src="images/offstage/41.jpg" alt="Offstage project image 41" loading="lazy"></figure><figure class="wide-figure"><img src="images/offstage/42.jpg" alt="Offstage project image 42" loading="lazy"></figure></section>
+      <section class="chapter city-study"><header class="section-heading"><h2>Brussels</h2></header><div class="copy"><p>A city of both physical and cultural transitions, Brussels’ topography creates a natural layering, where streets shift in elevation, offering multiple vantage points across the urban fabric. This physical layering mirrors the city’s linguistic divisions, with neighborhoods transitioning from French-speaking to Dutch-speaking, sometimes fluidly, sometimes with visible tension, interwoven with the city’s international character as the home of the European Union.Brussels also negotiates between modernity and history. The Grand Place remains a centerpiece of the city’s past, while contemporary developments push outward. Meanwhile, the city’s Art Nouveau heritage, adds another layer to the dialogue.</p></div><div class="copy"><p>Where does an onlooker settle in Brussels?</p><p>Observation in Brussels happens from its terraced transitions, where shifting elevations reveal different layers of the city.Parks scattered across neighborhoods offering resting points.</p></div><div class="copy"><p>Grand Place frames the square like a stage, constantly filled with a large crowd as one of Brussels’ main tourist sites. It offers no place for pause, people move through it, observing everything around them as an audience, while the surrounding buildings stand as a second audience, watching over the scene.</p></div><div class="grid-two studies"><figure class=""><img src="images/offstage/43.png" alt="Offstage project image 43" loading="lazy"></figure><figure class=""><img src="images/offstage/44.png" alt="Offstage project image 44" loading="lazy"></figure></div><div class="grid-two studies"><figure class=""><img src="images/offstage/45.png" alt="Offstage project image 45" loading="lazy"></figure><figure class=""><img src="images/offstage/46.png" alt="Offstage project image 46" loading="lazy"></figure></div><figure class="wide-figure"><img src="images/offstage/47.png" alt="Offstage project image 47" loading="lazy"></figure><figure class="wide-figure"><img src="images/offstage/48.jpg" alt="Offstage project image 48" loading="lazy"></figure></section>
+      <section class="chapter city-study"><header class="section-heading"><h2>Berlin</h2></header><div class="copy"><p>The memory of division is inscribed in Berlin’s urban fabric, evident in the contrast between eastern and western blocks, while the Spree River acts as both a connector and a divider. This layered history coexists with a contemporary city that has reinvented itself as a hub for culture, nightlife, and alternative spaces.Berlin is a city without a singular center, instead forming a constellation of neighborhoods, each carrying its own layered identity. The techno scene, rooted in the city’s post-reunification era, thrives in repurposed industrial spaces. Abandoned sites become cultural hubs, and historical structures take on new meanings, reflecting the city’s continuous reinvention.</p></div><div class="copy"><p>Where does an onlooker settle in Berlin?</p><p>Observation in Berlin is tied to movement, one does not settle in a single spot but experiences the city through shifting perspectives.Elevated platforms, whether on U-Bahn stations or repurposed industrial rooftops, provide vantage points over a fragmented cityscape. Parks, particularly Tempelhofer Feld, offer a vast open space for observation.</p></div><div class="copy"><p>The Berlin site is located at a break in the Berlin Wall, an open space overlooking the river and the western part of the city and emboding Berlin’s liminality as a threshold. Situated in the city center, it attracts many visitors who gather around, exploring the remnants of the wall.</p></div><div class="grid-two studies"><figure class=""><img src="images/offstage/49.png" alt="Offstage project image 49" loading="lazy"></figure><figure class=""><img src="images/offstage/50.png" alt="Offstage project image 50" loading="lazy"></figure></div><div class="grid-two studies"><figure class=""><img src="images/offstage/51.png" alt="Offstage project image 51" loading="lazy"></figure><figure class=""><img src="images/offstage/52.jpg" alt="Offstage project image 52" loading="lazy"></figure></div><figure class="wide-figure"><img src="images/offstage/53.png" alt="Offstage project image 53" loading="lazy"></figure></section>
+      <section class="chapter city-study"><header class="section-heading"><h2>Tehran</h2></header><div class="copy"><p>Tehran’s liminality is rooted in contrasts, between the private and the public, the visible and the hidden. Small alleys open abruptly onto highways, shifting the city’s scale and rhythm in unexpected ways. Its architecture is defined by controlled visibility, revealing fragments without full exposure, maintaining a careful negotiation between interior and exterior.The city’s stratification is also physical. Tehran’s topography plays a crucial role in how one experiences it. The northern districts sit at a higher elevation, offering a literal view over the rest of the city, while lower areas remain more densely woven. These differences shape not only the visual landscape but also the socio-economic divisions within the city.</p></div><div class="copy"><p>Where does an onlooker settle in Tehran?</p><p>In Tehran, the act of looking is often filtered, through trees framing the streets, through the gaps between buildings, or from the vantage points of pedestrian bridges.Steps in front of buildings become informal gathering points, while benches in parks or along streets allow for quiet observation of the city’s movement.The onlooker in Tehran does not simply watch; rather, they navigate between moments of openness and enclosure, between the city’s outward energy and its quieter internal spaces.</p></div><div class="copy"><p>In the central part of Tehran, in front of the monumental Golestan Palace, a small square offers a place to sit and gather. Unlike the grandeur of the palace, it exists modestly, serving as a quiet, everyday space within the city.</p></div><div class="grid-two studies"><figure class=""><img src="images/offstage/54.png" alt="Offstage project image 54" loading="lazy"></figure><figure class=""><img src="images/offstage/55.png" alt="Offstage project image 55" loading="lazy"></figure></div><div class="grid-two studies"><figure class=""><img src="images/offstage/56.png" alt="Offstage project image 56" loading="lazy"></figure><figure class=""><img src="images/offstage/57.jpeg" alt="Offstage project image 57" loading="lazy"></figure></div><figure class="wide-figure"><img src="images/offstage/58.png" alt="Offstage project image 58" loading="lazy"></figure></section>
+      <header class="section-heading"><h2>The cast</h2></header>
+      <figure class="wide-figure"><img src="images/offstage/59.jpg" alt="Offstage project image 59" loading="lazy"></figure>
+      <section class="chapter stage"><header class="section-heading"><h2>Venice, act 1</h2></header><div class="copy"><p>In Venice, the settings are made of oak, a material that connects to the city’s wooden foundations and long history with water. In setting one, the viewer’s position is carefully chosen to face the terraces of the Basilica di San Marco, with the first setting offering a vantage point that looks through openings into the second space. This positioning creates a visual hierarchy, where the first setting acts as a frame through which the viewer anticipates the larger scene. The second structure, positioned with panoramic windows, offers an expansive view of the terraces, establishing a dialogue between the observer and the vast, open backdrop of the basilica. The viewer moves from a contained, intimate space to a more open and expansive field of vision.</p></div><figure class="dark-study"><img src="images/offstage/60.png" alt="Offstage project image 60" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/61.png" alt="Offstage project image 61" loading="lazy"></figure><figure class=""><img src="images/offstage/62.jpg" alt="Offstage project image 62" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/63.png" alt="Offstage project image 63" loading="lazy"></figure><figure class=""><img src="images/offstage/64.jpg" alt="Offstage project image 64" loading="lazy"></figure></div><figure class="stage-wide"><img src="images/offstage/65.jpg" alt="Offstage project image 65" loading="lazy"></figure></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Venice, act 2</h2></header><figure class="dark-study"><img src="images/offstage/66.png" alt="Offstage project image 66" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/67.png" alt="Offstage project image 67" loading="lazy"></figure><figure class=""><img src="images/offstage/68.jpg" alt="Offstage project image 68" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/69.png" alt="Offstage project image 69" loading="lazy"></figure><figure class=""><img src="images/offstage/70.jpg" alt="Offstage project image 70" loading="lazy"></figure></div><figure class="stage-wide"><img src="images/offstage/71.jpg" alt="Offstage project image 71" loading="lazy"></figure></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Venice, act 3</h2></header><figure class="dark-study"><img src="images/offstage/72.png" alt="Offstage project image 72" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/73.png" alt="Offstage project image 73" loading="lazy"></figure><figure class=""><img src="images/offstage/74.jpg" alt="Offstage project image 74" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/75.png" alt="Offstage project image 75" loading="lazy"></figure><figure class=""><img src="images/offstage/76.jpg" alt="Offstage project image 76" loading="lazy"></figure></div><figure class="stage-wide"><img src="images/offstage/77.jpg" alt="Offstage project image 77" loading="lazy"></figure></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Milan, act 1</h2></header><figure class="dark-study"><img src="images/offstage/78.png" alt="Offstage project image 78" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/79.png" alt="Offstage project image 79" loading="lazy"></figure><figure class=""><img src="images/offstage/80.jpg" alt="Offstage project image 80" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/81.png" alt="Offstage project image 81" loading="lazy"></figure><figure class=""><img src="images/offstage/82.jpg" alt="Offstage project image 82" loading="lazy"></figure></div><figure class="stage-wide"><img src="images/offstage/83.jpg" alt="Offstage project image 83" loading="lazy"></figure></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Milan, act 2</h2></header><div class="copy"><p>The layers in this setting are interwoven seamlessly within the structure itself. The viewer, standing at the base of the staircase, serves as the first layer, where they begin their visual journey. The action layer, composed of a ramp, is the central part of the experience, offering a transition between the different spatial planes. As the viewer moves through the space, their perspective shifts, revealing the backdrop layer—the vertical structure made of translucent materials.</p></div><figure class="dark-study"><img src="images/offstage/84.png" alt="Offstage project image 84" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/85.png" alt="Offstage project image 85" loading="lazy"></figure><figure class=""><img src="images/offstage/86.jpg" alt="Offstage project image 86" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/87.jpg" alt="Offstage project image 87" loading="lazy"></figure><figure class=""><img src="images/offstage/88.jpg" alt="Offstage project image 88" loading="lazy"></figure></div></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Milan, act 3</h2></header><figure class="dark-study"><img src="images/offstage/89.png" alt="Offstage project image 89" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/90.png" alt="Offstage project image 90" loading="lazy"></figure><figure class=""><img src="images/offstage/91.jpg" alt="Offstage project image 91" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/92.png" alt="Offstage project image 92" loading="lazy"></figure><figure class=""><img src="images/offstage/93.jpg" alt="Offstage project image 93" loading="lazy"></figure></div><figure class="stage-wide"><img src="images/offstage/94.jpg" alt="Offstage project image 94" loading="lazy"></figure></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Brussels, act 1</h2></header><div class="copy"><p>The layers in this setting are all intricately built into the architecture. The first layer, the viewer, is positioned on the staircase, offering an elevated perspective of the surrounding space. The action layer exists within the built-in terraces, where the activities and movements of people add life and interaction to the scene. These terraces are visible from the viewer’s position, enhancing the sense of engagement. The backdrop layer, composed of the steps seen through the windows, acts as a frame for the entire composition.</p></div><figure class="dark-study"><img src="images/offstage/95.png" alt="Offstage project image 95" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/96.png" alt="Offstage project image 96" loading="lazy"></figure><figure class=""><img src="images/offstage/97.jpg" alt="Offstage project image 97" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/98.jpg" alt="Offstage project image 98" loading="lazy"></figure><figure class=""><img src="images/offstage/99.jpg" alt="Offstage project image 99" loading="lazy"></figure></div></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Brussels, act 2</h2></header><figure class="dark-study"><img src="images/offstage/100.png" alt="Offstage project image 100" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/101.png" alt="Offstage project image 101" loading="lazy"></figure><figure class=""><img src="images/offstage/102.jpg" alt="Offstage project image 102" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/103.png" alt="Offstage project image 103" loading="lazy"></figure><figure class=""><img src="images/offstage/104.jpg" alt="Offstage project image 104" loading="lazy"></figure></div><figure class="stage-wide"><img src="images/offstage/105.jpg" alt="Offstage project image 105" loading="lazy"></figure></section>
+      <section class="chapter stage"><header class="section-heading"><h2>Brussels, act 3</h2></header><figure class="dark-study"><img src="images/offstage/106.png" alt="Offstage project image 106" loading="lazy"></figure><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/107.png" alt="Offstage project image 107" loading="lazy"></figure><figure class=""><img src="images/offstage/108.jpg" alt="Offstage project image 108" loading="lazy"></figure></div><div class="grid-two stage-pair"><figure class=""><img src="images/offstage/109.png" alt="Offstage project image 109" loading="lazy"></figure><figure class=""><img src="images/offstage/110.jpg" alt="Offstage project image 110" loading="lazy"></figure></div></section>
+      <header class="section-heading"><h2>The curtain-call</h2><p>the script</p></header>
+      <iframe class="video" src="https://drive.google.com/file/d/1kg_0sgyOsu35sVkyn5gibrUROMSwDwpq/preview" title="Offstage timeline video" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="copy"><p>The project follows a calendar that sets when each setting appears and disappears, shaping its rhythm over time. In Venice, the first setting takes place from January to March, during winter and Carnival. The second follows from April to June, through spring and Easter. The third happens in August and September, during the summer and peak gondola season. In Milan, the first setting runs from January to April, marking the shift from winter to spring. The second, from April to May, includes Design Week. The third, from September to November, unfolds in autumn. In Brussels, the first setting appears from March to April, overlapping with early spring and festival season. The second, from May to July, stretches into summer. The third, from October to December, leads into winter and the Christmas period.</p></div>
+      <div class="grid-two final-pair"><figure class=""><img src="images/offstage/111.jpg" alt="Offstage project image 111" loading="lazy"></figure><figure class=""><img src="images/offstage/112.jpg" alt="Offstage project image 112" loading="lazy"></figure></div>
+    </article>
+    <section id="about" class="about"><div class="section-title">About</div><p>I work across architecture, scenography, and design. I'm interested in how people experience space, especially in cities, and how stories can change the way a place is perceived. For me, projects are often a way to investigate a question and understand a subject rather than arrive at a fixed answer.</p></section>
+    <section id="contact" class="contact"><div class="section-title">Contact</div><p><a href="mailto:yasamannedjati@gmail.com">yasamannedjati@gmail.com</a></p><p><a href="https://www.linkedin.com/in/yasamannedjati/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><p><a href="https://www.instagram.com/yasiizz/" target="_blank" rel="noopener noreferrer">Instagram</a></p></section>
   </main>
-
-  <nav aria-label="Main navigation">
-    <a href="index.html#works">works</a>
-    <a href="#about">about</a>
-    <a href="#contact">contact</a>
-  </nav>
-
+  <nav aria-label="Main navigation"><a href="index.html#works">works</a><a href="#about">about</a><a href="#contact">contact</a></nav>
+  <script>const headerObserver=new IntersectionObserver(([entry])=>{document.body.classList.toggle("is-scrolled",!entry.isIntersecting);},{threshold:0});headerObserver.observe(document.querySelector(".site-subtitle"));</script>
   <script>
-    const events = [
-      { type: "text", value: "Academic Project / Master's Thesis / Politecnico di Milano / Individual Project / Spring 2025 / Milan, Italy Supervisors: Frank clementi" },
-      { type: "text", value: "Taking half a step back from the crowd, one can enter new zones of quiet that lie alongside but separate from all that is happening in the outside world. As if one is outside in mind but inside in space, maintaining a relationship with the external world while still retaining a sense of personal space. Here, there is pleasure in the solitude that comes from being alone yet surrounded, allowing the external world to be observed without the pressure to engage, remaining adjacent, in another layer. Space is filled with both physical and metaphysical liminalities. Light, sound, walls, and trees can all create layers within a space. The visibility of these divisions between layers can vary, from firm, like walls or doors, to more fluid boundaries, such as noise or shadows. Within these layers, the roles of the observer and the observed can interchange, as if we are always simultaneously onstage and offstage, with the definition of the stage shaped by the point of view. We are almost always being seen while observing." },
-      { type: "image", value: "1.png" },
-      { type: "text", value: "the primary stage shifts to the intermediate space in front of the curtain during the course of the knee play I" },
-      { type: "text", value: "Theatre has long separated the staged from the unstaged, the space of performance from the world that exists around it. Yet, what lies just beyond the frame, just outside the spectacle, carries its own significance. This thesis explores the offstage, not as absence, but as an active space, a liminal condition where presence is redefined and solitude unfolds adjacent to the crowd. The fundamental question driving this thesis is: What do urban spaces offer to individuals who wish to spend time on their own, not indoors, but within the public? At the core of this exploration is the concept of adjacent solitude, being alone, yet not isolated; present, yet not participating. We’re looking for spaces where one can exist alongside others without the pressure of engagement. And finding them in spaces that resist singular definition. Which is where the notionof liminality further complicates this condition, emphasizing transitional states, blurred boundaries, spaces without fixed meaning, where one can have a quiet, personal negotiation with the public realm. Knee Plays, borrowing their name from Einstein on the Beach by Robert Wilson and Philip Glass, function as interludes between acts, with the term ‘knee’ referring to the way human knees act as joints, connecting separate movements into a continuous flow. In the original production, the Knee Plays were shorter, recurring moments that provided the necessary time to change the scenery while also maintaining continuity between acts. As the primary stage shifted, focus moved to an intermediate space in front of the curtain, another liminal zone. In spatial terms, these moments of in-betweenness parallel the kinds of urban spaces that exist at the edges of activity, places that are neither fully engaged nor entirely apart, but instead function as transitional zones. Just as Knee Plays restructure the rhythm of a performance, these spaces shape how solitude is experienced in public, providing an alternative mode of being, present, yet at a distance. Through different chapters, the experience of being ‘offstage’ in the city is explored: on being; examines how one can exist in public with minimal contact, present but unengaged, outside in mind, inside in space. on observing; focuses on the interchangeable roles of observor and observed, looking at how spatial conditions mediate spectatorship. on narrative; considers how architectural works can engage in a dialogue to construct fragmented narratives. on space; explores the spatial qualities on ine-betweenness and unclaimed spaces. on perception; addresses how spatial experience is shaped by point of view, and the act of seeing itself. Between the main sections of this thesis, transitional chapters function as Knee Plays. Rather than ntroducing entirely new discussions, these chapters act as joints that bridge themes." },
-      { type: "text", value: "MEDITATION VS. ACTION framing the play" },
-      { type: "image", value: "2.png" },
-      { type: "text", value: "negating interaction soliciting interaction" },
-      { type: "image", value: "3.png" },
-      { type: "text", value: "not inward, not outward, but toward" },
-      { type: "image", value: "4.png" },
-      { type: "image", value: "5.png" },
-      { type: "text", value: "In a gallery, people looking at art can become part of what’s being seen. The onlooker watches not just the works but also the way people move through them, how they pause, how they react." },
-      { type: "image", value: "6.png" },
-      { type: "text", value: "OBSERVANT / OBSERVED voyeurism in Edward Hopper’s work" },
-      { type: "text", value: "Populated by people alone, or in uneasy, uncommunicative groupings of twos and threes, fastened into poses that seem indicative of distress, Hopper’s paintings show a layering of subjects and spectators. The figures exhibit a sense of unease at being seen or looked over through windows, streets, or other architectural elements that produce the spatial sensation of being close but separated from other people. This view, often characterized as voyeuristic, replicates one of the primary feelings of loneliness: the combination of a sense of near-unbearable exposure with a sense of isolation, of being walled off or confined. In his paintings, the voyeurs expand beyond the actual painting to us, the audience, giving us the impression that we are gazing in to view a scene that is not meant to be seen. Voyeurism works to isolate the viewer as well as the viewed. He declares barriers and boundaries, wanted things at a distance and unwanted things too close, and an erotics of insufficient intimacy in his paintings. Hopper uses strange perspectives and sites of blockage and exposure to combat the insularity of loneliness, forcing the viewer to enter imaginatively into an experience that is otherwise notable for its profound impenetrability, its multiple barriers, its walls like windows, its windows like walls. The color green powerfully communicates urban alienation and the atomization of human beings." },
-      { type: "image", value: "7.png" },
-      { type: "text", value: "layered deconstruction of edward hopper’s morning in a city" },
-      { type: "image", value: "8.png" },
-      { type: "text", value: "layered deconstruction of edward hopper’s nighthawks" },
-      { type: "image", value: "9.png" },
-      { type: "text", value: "layered deconstruction of edward hopper’s night windows" },
-      { type: "image", value: "10.png" },
-      { type: "text", value: "layered deconstruction of edward hopper’s hotel window" },
-      { type: "image", value: "11.png" },
-      { type: "text", value: "layered deconstruction of edward hopper’s new york cinema" },
-      { type: "image", value: "12.jpg" },
-      { type: "image", value: "13.jpg" },
-      { type: "text", value: "physical models of the layered deconstruction of edward hopper's paintings" },
-      { type: "text", value: "IN THE FRAME OF CONFINEMENT the bridge of sighs and the reversed spectacle of observation" },
-      { type: "image", value: "14.png" },
-      { type: "text", value: "As prisoners took their last glimpse of freedom before confinement, their view framed by the bridge’s openings, they were simultaneously staged as subjects to be observed in a reversed spectacle where passersby become the audience. The passage itself becomes performance, turning the act of looking into an asymmetrical exchange." },
-      { type: "text", value: "EXCHANGING WITH THE WHITE NOISE liminality and its materiality in space" },
-      { type: "image", value: "15.jpg" },
-      { type: "text", value: "background sound, like a TV show you’ve watched countless times, can create a subtle, almost invisible yet distinct layer of spatial experience. While you remain aware of the sound, it becomes a form of white noise, present in the background of your activities, not demanding active attention, but not entirely ignored either. Despite its peripheral presence, you still give and receive from it, creating an ongoing reciprocal interaction with the environment. It offers a sense of continuity, anchoring you in the spaces while letting the mind drift, much like the steady hum of a city outside an open window. There is an almost invisible exchange between the individual and these layers of ambient sound that seeps into awareness, filling the space without making it feel crowded." },
-      { type: "text", value: "SPOTTING PLEASURABLE ALONE-NESS IN MASS PRESENCE a study of adjacent solitude in public places through words and images" },
-      { type: "text", value: "The adjacent solitude in question carries within it the notion of unfolding in a different layer. It exists in the space between the stage and the audience, where the knee play happens, acting as an invisible barrier that separates you from the outside world and creates room for simply being, even if only slightly distanced, among others. It’s a place with a sense of boundary, but no real division. This solitude happens in a space shaped by various physical features, layers, and transitional spots. Following a few images and descriptions of these areas from various individuals, a few examples are studied to demonstrate how the layering is either purposefully or inadvertently placed in these areas to describe that non-literal zone where people can feel at ease in a public situation." },
-      { type: "text", value: "Describe a public space or a place in the city where you felt at ease being alone, even in the presence of a crowd, without feeling isolated or detached." },
-      { type: "image", value: "16.jpg" },
-      { type: "text", value: "KIMIA, 26 Two years ago in Lund’s city center, by the ice skating rink near a massive Christmas tree, its lights soon to be switched on. It was a weekend night, and the place was packed with poeple all busy with their own activities. Every corner was buzzing with movement and sound. I enjoyed sitting on the wooden benches, people-watching as everyone engaged in fun activities around me. Going alone to the cinema, feels like being part of something bigger, a crowd of strangers drawn together by a shared love for the movie. Though we don’t know each other, we are united in the experience, laughing, tearing up, and celebrating each moment as it unfolds on screen. It’s a simple but powerful feeling of connection through a common purpose." },
-      { type: "text", value: "ZAHRA, 27 Coming back from work, especially on weekends, I often feel isolated. Everyone around is loud, laughing, enjoying themselves, which only heightens that feeling. I tend to prefer quieter, open spaces, like a gallery where I can sit and watch people silently engaging with art, or a bench by the canal where I can watch kids play or take in small, beautiful scenes. When people are having fun in semi-public spaces, like bars spilling onto the street, it feels even more isolating. They’re visible but separate, with an unspoken boundary. In fully public spaces, though, that boundary dissolves; seeing someone seated in a park, you could sit nearby and feel like you’re sharing the same space. In contrast, in private, chic galleries, if you don’t feel welcome or comfortable joining in, it can deepen that sense of being alone. For some, especially introverts, that invisible border can feel like a real hurdle." },
-      { type: "image", value: "17.jpg" },
-      { type: "image", value: "18.jpg" },
-      { type: "text", value: "RONAK, 29 In galleries with seating, I enjoy viewing the artworks on my own first, then sitting for as long as I can to observe people’s reactions to them. In bookstores, I like finding a quiet spot to read away from the crowd, a habit I don’t have anywhere else." },
-      { type: "text", value: "MARYAM, 63 Maybe the park counts; it’s a place where you can have solitude, even with people around. Other than that, I can’t really think of another spot." },
-      { type: "image", value: "19.PNG" },
-      { type: "image", value: "20.jpg" },
-      { type: "text", value: "SAJJAD, 26 Each of these places has a story for me, it’s not just the space itself, but the memories tied to it. In Iran, there was a workspace where my friend worked, and I’d go there after my own job to wait for her. I’d sit with a coffee, watching people work in those quiet moments when I had nothing else to do. It was a workshop with a café upstairs, and just sitting there observing felt oddly relaxing. In Oman, it was different. That trip was my first time abroad, and one night we sat in a bar with friends. It was the first time I’d ever felt completely at ease, with no worries. I was there on an internship, everything was organized, and it all just flowed, no concerns, just that feeling of everything going right. Then there was a small pizza place I found while waiting to kill some time. The owner was incredibly friendly, welcoming people, even taking pictures with them. I stayed there because it was interesting and felt safe, watching him make pizzas and seeing the young crowd coming in. It was a simple place, but it had a warm, fun vibe." },
-      { type: "text", value: "REZA, 26 don’t usually feel comfortable in public spaces and only find privacy in places that feel more secluded. It’s not easy for me to feel safe around people or in open areas. I felt comfortable sitting on my own to work in some of Tehran’s cafes. In Hamburg, though, there was a Vietnamese restaurant I often went to for lunch. It was relatively big, with an upper floor, but I always sat at a small two-person table by the ground-floor window. It felt like my own little spot where I could put on my headphones, look outside, and feel alone, regardless of how crowded the place was. In Hamburg’s Stadtpark, a huge city park, I’d go alone on nice summer days and sit on the grass. There was enough space to find a quiet spot by a tree and feel separated from everyone else. And in the R.S.O. techno club in Berlin, there were cozy corners with sofas where I could talk with friends without being disturbed by people or loud music. It felt private, just the two of us. I imagine that even if I went alone, I’d be able to go there, sit, and get some peace if I ever felt overwhelmed." },
-      { type: "image", value: "21.jpg" },
-      { type: "image", value: "22.jpg" },
-      { type: "text", value: "FARANK, 33 often sit in cafés—not just any, but the ones where other people are alone too. I like the benches around the city theatre park for people-watching, and I also enjoy spending time in Laleh Park, where I can sit back and take in the surroundings. Also in Shahrdari Square in Rasht, everyone sits around the square, talking together, whether they know each other or not. There are people singing, and it creates a really friendly vibe." },
-      { type: "text", value: "MEHDI, 66 In my opinion, the ideal space could be a museum, an art gallery, or a historical exhibition, where, even though you’re among people, you can still be in your own solitude, engaging in something you enjoy that brings peace and pleasure in a public urban environment. Other ideal spaces could be a city park, a theater, a cinema, or visiting historical sites." },
-      { type: "image", value: "23.jpg" },
-      { type: "image", value: "24.jpg" },
-      { type: "text", value: "MADI, 28 Central city squares with benches or somewhere to sit. Then there are the cozier, tucked-away spots. These smaller spaces can feel less secure at night, but with some lighting and seating, they’d be inviting, especially for a quick smoke. A long corridor between buildings, opening to an empty back area. I enjoy people-watching or simply sitting in front of a nice view. Ideally, I’d like it if there was a bench with a transparent cover around it; something that keeps out the cold or rain without blocking the view." },
-      { type: "text", value: "AHMAD, 27 The first place that comes to mind is the swimming pool—I’ve always felt something unusual about it, but I think it’s this sense of calm. There’s a stillness there, especially when I’m leaning against a corner, or even sitting quietly in the jacuzzi or sauna. I can watch people without anyone minding me, and it’s really calming." },
-      { type: "image", value: "25.jpg" },
-      { type: "image", value: "26.png" },
-      { type: "text", value: "MARIA, 24 immediately thought of the movies. Places like cinemas, libraries, and viewpoints let me be alone without feeling lonely. Coffee shops and bookstores too, but it depends on my mindset, sometimes they feel comforting, other times, seeing people with company makes me feel lonelier." },
-      { type: "text", value: "SAHAR, 26 Sitting on a bench next to a tree, you don’t feel like people are watching you. Everyone is just passing by, running, walking their dogs, or biking. You can sit in peace, looking out from the top of what was once the city’s wall, watching the sunset without the pressure of being watched." },
-      { type: "image", value: "27.jpeg" },
-      { type: "image", value: "28.jpg" },
-      { type: "text", value: "PROJECT SITES" },
-      { type: "text", value: "This project unfolds across five cities; Venice, Milan, Brussels, Berlin, and Tehran, each selected for its capacity, or lack thereof, to accommodate an individual onlooker’s presence. Each site is examined through its layers within the urban landscape and the ways in which it interacts with them." },
-      { type: "image", value: "29.jpg" },
-      { type: "text", value: "THE PRE-SHOW nine settings, three cities" },
-      { type: "text", value: "Nine settings have been designed across three of the selected cities; Venice, Milan, and Brussels, each with three distinct placements. All five cities; Venice, Milan, Brussels, Berlin, and Tehran—have been studied and analyzed for their spatial and observational qualities, but the interventions focus on three. Berlin and Tehran remain as essential points of reference, informing the broader exploration of liminality and the act of looking within the urban landscape." },
-      { type: "image", value: "30.jpg" },
-      { type: "text", value: "VENICE" },
-      { type: "image", value: "31.png" },
-      { type: "text", value: "To understand the liminality of Venice, one cannot overlook water, the defining element that has shaped the city’s very surface. Venice responds only as much as necessary to the immediate conditions it faces, remaining closely tied to its surface. When water levels rise, the city adapts just enough, with acqua alta temporarily lifting daily life above the tide. Venice is constantly shifting between land and water. Narrow streets (calli) and bridges frame the water, creating passages that define the city’s horizontal layers. Canals thread through these layers, while campos, the small city squares, act as open rooms within them." },
-      { type: "text", value: "Where does an onlooker settle in Venice? The edges of canals, where one can sit on stone ledges or lean against iron railings, watching gondolas slip by. Bridges, providing a sense of hovering above water Even at ground level, benches at the margins of campos, allowing one to settle, facing either the movement of people or gondolas on water. Unlike cities where one can step back to gain an overview, Venice demands observation from within." },
-      { type: "image", value: "32.png" },
-      { type: "text", value: "venice constantly shifting between land and water" },
-      { type: "image", value: "33.png" },
-      { type: "text", value: "venice responding to its surface conditions by adapting precisely to the shifting water levels" },
-      { type: "text", value: "Piazza San Marco, one of Venice’s most visited sites and home to Basilica San Marco, the Campanile, Palazzo Ducale, and other monumental buildings, draws crowds year-round to its vast open space. Framed by its surrounding architecture, the square becomes a stage for constant movement—visitors entering the basilica, lingering in the piazza, walking beneath the arches of the colonnades, or making their way to and from the water." },
-      { type: "image", value: "34.png" },
-      { type: "image", value: "35.JPG" },
-      { type: "image", value: "36.jpg" },
-      { type: "text", value: "MILAN" },
-      { type: "image", value: "37.png" },
-      { type: "text", value: "Looking forward while maintaining a conversation with its past, Milan is where the modern and the historical coexist in a continuous dialogue. This duality is embeded in its architecture: sleek glass towers rise through the shorter, older fabric of the city, creating a vertical juxtaposition of time and layering its temporality. Events like Design Week and Fashion Week reinforce a sense of cyclical reinvention, where the city is continually reshaped. Yet beyond its outward transformations, Milan holds invisible layers within seen in the courtyards houses (case di ringhiera) that are tucked away behind street facades, in contrast to the outward facing vertical landmarks." },
-      { type: "text", value: "Where does an onlooker settle in milan? Observation in Milan happens at multiple levels. Benches in piazzas and small parks provide resting points for people-watching. Stairs at historic sites frame perspectives, offering structured viewpoints. Elevated vantage points, like the Galleria, allow for a layered view of the city, where its historical and modern elements stack upon one another." },
-      { type: "image", value: "38.png" },
-      { type: "text", value: "case ringhiera: looking in / towers: looking out" },
-      { type: "image", value: "39.png" },
-      { type: "text", value: "modern and historical coexisting in milan" },
-      { type: "text", value: "Within the walls of Castello Sforzesco, the Cortile delle Armi forms an open-air urban stage, welcoming both castle visitors and passersby as they move through or pause within its enclosure." },
-      { type: "image", value: "40.png" },
-      { type: "image", value: "41.jpg" },
-      { type: "image", value: "42.jpg" },
-      { type: "text", value: "BRUSSELS" },
-      { type: "image", value: "43.png" },
-      { type: "text", value: "city of both physical and cultural transitions, Brussels’ topography creates a natural layering, where streets shift in elevation, offering multiple vantage points across the urban fabric. This physical layering mirrors the city’s linguistic divisions, with neighborhoods transitioning from French-speaking to Dutch-speaking, sometimes fluidly, sometimes with visible tension, interwoven with the city’s international character as the home of the European Union. Brussels also negotiates between modernity and history. The Grand Place remains a centerpiece of the city’s past, while contemporary developments push outward. Meanwhile, the city’s Art Nouveau heritage, adds another layer to the dialogue." },
-      { type: "text", value: "Where does an onlooker settle in Brussels? Observation in Brussels happens from its terraced transitions, where shifting elevations reveal different layers of the city. Parks scattered across neighborhoods offering resting points." },
-      { type: "image", value: "44.png" },
-      { type: "text", value: "spoken languages in brussels" },
-      { type: "image", value: "45.png" },
-      { type: "text", value: "grand place enclosing the square like a stage" },
-      { type: "text", value: "Grand Place frames the square like a stage, constantly filled with a large crowd as one of Brussels’ main tourist sites. It offers no place for pause, people move through it, observing everything around them as an audience, while the surrounding buildings stand as a second audience, watching over the scene." },
-      { type: "image", value: "46.png" },
-      { type: "image", value: "47.png" },
-      { type: "image", value: "48.jpg" },
-      { type: "text", value: "BERLIN" },
-      { type: "image", value: "49.png" },
-      { type: "text", value: "The memory of division is inscribed in Berlin’s urban fabric, evident in the contrast between eastern and western blocks, while the Spree River acts as both a connector and a divider. This layered history coexists with a contemporary city that has reinvented itself as a hub for culture, nightlife, and alternative spaces. Berlin is a city without a singular center, instead forming a constellation of neighborhoods, each carrying its own layered identity. The techno scene, rooted in the city’s post-reunification era, thrives in repurposed industrial spaces. Abandoned sites become cultural hubs, and historical structures take on new meanings, reflecting the city’s continuous reinvention." },
-      { type: "text", value: "Where does an onlooker settle in Berlin? Observation in Berlin is tied to movement, one does not settle in a single spot but experiences the city through shifting perspectives. Elevated platforms, whether on U-Bahn stations or repurposed industrial rooftops, provide vantage points over a fragmented cityscape. Parks, particularly Tempelhofer Feld, offer a vast open space for observation." },
-      { type: "image", value: "50.png" },
-      { type: "text", value: "the berlin wall dividing the city into two blocks" },
-      { type: "text", value: "The Berlin site is located at a break in the Berlin Wall, an open space overlooking the river and the western part of the city and emboding Berlin’s liminality as a threshold. Situated in the city center, it attracts many visitors who gather around, exploring the remnants of the wall." },
-      { type: "image", value: "51.png" },
-      { type: "image", value: "52.jpg" },
-      { type: "image", value: "53.png" },
-      { type: "text", value: "TEHRAN" },
-      { type: "image", value: "54.png" },
-      { type: "text", value: "Tehran’s liminality is rooted in contrasts, between the private and the public, the visible and the hidden. Small alleys open abruptly onto highways, shifting the city’s scale and rhythm in unexpected ways. Its architecture is defined by controlled visibility, revealing fragments without full exposure, maintaining a careful negotiation between interior and exterior. The city’s stratification is also physical. Tehran’s topography plays a crucial role in how one experiences it. The northern districts sit at a higher elevation, offering a literal view over the rest of the city, while lower areas remain more densely woven. These differences shape not only the visual landscape but also the socio-economic divisions within the city." },
-      { type: "text", value: "Where does an onlooker settle in Tehran? In Tehran, the act of looking is often filtered, through trees framing the streets, through the gaps between buildings, or from the vantage points of pedestrian bridges. Steps in front of buildings become informal gathering points, while benches in parks or along streets allow for quiet observation of the city’s movement. The onlooker in Tehran does not simply watch; rather, they navigate between moments of openness and enclosure, between the city’s outward energy and its quieter internal spaces." },
-      { type: "image", value: "55.png" },
-      { type: "text", value: "narrow streets leading to highways in tehran" },
-      { type: "text", value: "In the central part of Tehran, in front of the monumental Golestan Palace, a small square offers a place to sit and gather. Unlike the grandeur of the palace, it exists modestly, serving as a quiet, everyday space within the city." },
-      { type: "image", value: "56.png" },
-      { type: "image", value: "57.jpeg" },
-      { type: "image", value: "58.png" },
-      { type: "text", value: "THE CAST" },
-      { type: "image", value: "59.jpg" },
-      { type: "text", value: "VENICE, ACT 1" },
-      { type: "text", value: "In Venice, the settings are made of oak, a material that connects to the city’s wooden foundations and long history with water. In setting one, the viewer’s position is carefully chosen to face the terraces of the Basilica di San Marco, with the first setting offering a vantage point that looks through openings into the second space. This positioning creates a visual hierarchy, where the first setting acts as a frame through which the viewer anticipates the larger scene. The second structure, positioned with panoramic windows, offers an expansive view of the terraces, establishing a dialogue between the observer and the vast, open backdrop of the basilica. The viewer moves from a contained, intimate space to a more open and expansive field of vision." },
-      { type: "image", value: "60.png" },
-      { type: "image", value: "61.png" },
-      { type: "image", value: "62.jpg" },
-      { type: "image", value: "63.png" },
-      { type: "text", value: "The layers in this setting are defined by the relationship between the spaces and their respective functions. The first setting serves as the viewer’s entry point, framed by openings that reveal glimpses of the second structure. This first layer functions as a threshold, guiding the observer’s gaze toward the panoramic windows of the second layer. The second structure is where the action happens, with the windows serving as both a physical and conceptual interface between the interior and the backdrop of the terraces. The backdrop layer, represented by the panoramic view of the terraces, is the focal point, giving depth to the space while remaining visually distant." },
-      { type: "image", value: "64.jpg" },
-      { type: "image", value: "65.jpg" },
-      { type: "text", value: "VENICE, ACT 2" },
-      { type: "image", value: "66.png" },
-      { type: "image", value: "67.png" },
-      { type: "image", value: "68.jpg" },
-      { type: "image", value: "69.png" },
-      { type: "text", value: "The composition unfolds in three distinct layers. The first is the viewer’s position, elevated and looking through a structured opening, creating a focused perspective. The action layer consists of people walking through the colonnade, and the colonnade itself serves as the backdrop, its structure not only framing but also shaping the way movement is perceived. Figures pass in and out of view, temporarily appearing and disappearing within the archways." },
-      { type: "image", value: "70.jpg" },
-      { type: "image", value: "71.jpg" },
-      { type: "text", value: "VENICE, ACT 3" },
-      { type: "image", value: "72.png" },
-      { type: "image", value: "73.png" },
-      { type: "image", value: "74.jpg" },
-      { type: "image", value: "75.png" },
-      { type: "text", value: "The layers in this setting are interwoven between the viewer, the action, and the backdrop. The viewer, positioned within the structure, experiences the space through the windows, which serve as an intermediary layer between the observer and the gondola services. The action layer exists on a terrace within the structure, where the viewer’s elevated position allows them to observe the gondola services below, with the terrace itself acting as a dynamic interface between the internal structure and the external activity. The backdrop, composed of the gondola services on the water, provides the final layer, serving as the living, moving backdrop." },
-      { type: "image", value: "76.jpg" },
-      { type: "image", value: "77.jpg" },
-      { type: "text", value: "MILAN, ACT 1" },
-      { type: "image", value: "78.png" },
-      { type: "image", value: "79.png" },
-      { type: "image", value: "80.jpg" },
-      { type: "image", value: "81.png" },
-      { type: "text", value: "The first layer consists of the viewer’s position on the staircase, establishing their vantage point. The second layer is the elevated platform of the structure, where the act of looking takes place, framing those engaged in observation. The third layer consists of the openings in the building’s façade, forming a backdrop that frames the exterior space beyond." },
-      { type: "image", value: "82.jpg" },
-      { type: "image", value: "83.jpg" },
-      { type: "text", value: "MILAN, ACT 2" },
-      { type: "image", value: "84.png" },
-      { type: "image", value: "85.png" },
-      { type: "image", value: "86.jpg" },
-      { type: "text", value: "The layers in this setting are interwoven seamlessly within the structure itself. The viewer, standing at the base of the staircase, serves as the first layer, where they begin their visual journey. The action layer, composed of a ramp, is the central part of the experience, offering a transition between the different spatial planes. As the viewer moves through the space, their perspective shifts, revealing the backdrop layer—the vertical structure made of translucent materials." },
-      { type: "image", value: "87.jpg" },
-      { type: "image", value: "88.jpg" },
-      { type: "text", value: "MILAN, ACT 3" },
-      { type: "image", value: "89.png" },
-      { type: "image", value: "90.png" },
-      { type: "image", value: "91.jpg" },
-      { type: "image", value: "92.png" },
-      { type: "text", value: "The viewer’s gaze moves from the podium with steps (view layer) to the people sitting on the steps of the second structure (action layer), which can be observed through a window. The second window offers another view of the eastern door, reinforcing the importance of this architectural element as the backdrop layer in the setting." },
-      { type: "image", value: "93.jpg" },
-      { type: "image", value: "94.jpg" },
-      { type: "text", value: "BRUSSELS, ACT 1" },
-      { type: "image", value: "95.png" },
-      { type: "image", value: "96.png" },
-      { type: "image", value: "97.jpg" },
-      { type: "text", value: "The layers in this setting are all intricately built into the architecture. The first layer, the viewer, is positioned on the staircase, offering an elevated perspective of the surrounding space. The action layer exists within the built-in terraces, where the activities and movements of people add life and interaction to the scene. These terraces are visible from the viewer’s position, enhancing the sense of engagement. The backdrop layer, composed of the steps seen through the windows, acts as a frame for the entire composition." },
-      { type: "image", value: "98.jpg" },
-      { type: "image", value: "99.jpg" },
-      { type: "text", value: "BRUSSELS, ACT 2" },
-      { type: "image", value: "100.png" },
-      { type: "image", value: "101.png" },
-      { type: "image", value: "102.jpg" },
-      { type: "image", value: "103.png" },
-      { type: "text", value: "The layers in this setting are defined by the viewer’s position on the steps, the action occurring within the enclosed walls, and the street scene that forms the backdrop. The viewer, standing on the steps, forms the first layer and is positioned to observe the internal action. Inside the enclosed walls, the action layer comes to life, and the backdrop layer is the street outside." },
-      { type: "image", value: "104.jpg" },
-      { type: "image", value: "105.jpg" },
-      { type: "text", value: "BRUSSELS, ACT 3" },
-      { type: "image", value: "106.png" },
-      { type: "image", value: "107.png" },
-      { type: "image", value: "108.jpg" },
-      { type: "image", value: "109.png" },
-      { type: "text", value: "The viewer, positioned within the setting, forms the first layer, while the action unfolds on the terrace at the front, offering a direct view through the window. The backdrop consists of people on the steps, visible through the window." },
-      { type: "image", value: "110.jpg" },
-      { type: "text", value: "THE CURTAIN-CALL the script" },
-      { type: "text", value: "The project follows a calendar that sets when each setting appears and disappears, shaping its rhythm over time. In Venice, the first setting takes place from January to March, during winter and Carnival. The second follows from April to June, through spring and Easter. The third happens in August and September, during the summer and peak gondola season. In Milan, the first setting runs from January to April, marking the shift from winter to spring. The second, from April to May, includes Design Week. The third, from September to November, unfolds in autumn. In Brussels, the first setting appears from March to April, overlapping with early spring and festival season. The second, from May to July, stretches into summer. The third, from October to December, leads into winter and the Christmas period." },
-      { type: "image", value: "111.jpg" },
-      { type: "text", value: "family head shot" },
-      { type: "image", value: "112.jpg" },
-      { type: "text", value: "thesis book" }
-    ];
-
-    const headings = new Set([
-      "MEDITATION VS. ACTION",
-      "OBSERVANT / OBSERVED",
-      "IN THE FRAME OF CONFINEMENT",
-      "EXCHANGING WITH THE WHITE NOISE",
-      "SPOTTING PLEASURABLE ALONE-NESS IN MASS PRESENCE",
-      "PROJECT SITES",
-      "THE PRE-SHOW",
-      "VENICE",
-      "MILAN",
-      "BRUSSELS",
-      "BERLIN",
-      "TEHRAN",
-      "THE CAST",
-      "VENICE, ACT 1",
-      "VENICE, ACT 2",
-      "VENICE, ACT 3",
-      "MILAN, ACT 1",
-      "MILAN, ACT 2",
-      "MILAN, ACT 3",
-      "BRUSSELS, ACT 1",
-      "BRUSSELS, ACT 2",
-      "BRUSSELS, ACT 3",
-      "THE CURTAIN-CALL",
-      "THE CURTAIN-CALL the script"
-    ]);
-
-    const subheadings = [
-      "framing the play",
-      "voyeurism in Edward Hopper’s work",
-      "the bridge of sighs and the reversed spectacle of observation",
-      "liminality and its materiality in space",
-      "a study of adjacent solitude in public places through words and images",
-      "nine settings, three cities",
-      "the script"
-    ];
-
-    const fullImages = new Set([
-      "6.png",
-      "7.png",
-      "8.png",
-      "9.png",
-      "10.png",
-      "11.png",
-      "15.jpg",
-      "26.png",
-      "28.jpg",
-      "29.jpg",
-      "30.jpg",
-      "34.png",
-      "37.png",
-      "40.png",
-      "43.png",
-      "46.png",
-      "49.png",
-      "51.png",
-      "54.png",
-      "56.png",
-      "59.jpg",
-      "63.png",
-      "65.jpg",
-      "69.png",
-      "71.jpg",
-      "75.png",
-      "77.jpg",
-      "81.png",
-      "83.jpg",
-      "88.jpg",
-      "92.png",
-      "94.jpg",
-      "99.jpg",
-      "103.png",
-      "105.jpg",
-      "109.png",
-      "111.jpg",
-      "112.jpg"
-    ]);
-
-    const smallImages = new Set([
-      "1.png",
-      "2.png",
-      "3.png",
-      "14.png"
-    ]);
-
-    const story = document.getElementById("story");
-
-    const classifyText = (value, index) => {
-      if (headings.has(value)) return "heading";
-      if (subheadings.includes(value)) return "subheading";
-      if ([...headings].some((heading) => value.startsWith(heading + " ") && value.length < heading.length + 60)) return "heading";
-      if (index > 0 && events[index - 1].type === "image" && value.length < 150) return "caption";
-      return "";
-    };
-
-    let lastImageFigure = null;
-
-    events.forEach((event, index) => {
-      if (event.type === "text") {
-        if (classifyText(event.value, index) === "caption" && lastImageFigure) {
-          lastImageFigure.dataset.caption = event.value;
-          return;
-        }
-
-        const block = document.createElement("div");
-        const paragraph = document.createElement("p");
-        block.className = ("text-block " + classifyText(event.value, index)).trim();
-        paragraph.textContent = event.value;
-        block.append(paragraph);
-        story.append(block);
-        return;
+    document.querySelectorAll(".survey-copy h3").forEach((heading)=>{
+      const match=heading.textContent.trim().match(/^([A-Z]+),\s*(\d+)([\s\S]*)$/);
+      if(!match) return;
+      const name=match[1].charAt(0)+match[1].slice(1).toLowerCase();
+      heading.textContent=name+", "+match[2];
+      const overflow=match[3].trim();
+      if(overflow){
+        const paragraph=document.createElement("p");
+        paragraph.textContent=overflow;
+        heading.insertAdjacentElement("afterend",paragraph);
       }
-
-      const figure = document.createElement("figure");
-      const image = document.createElement("img");
-      const caption = document.createElement("figcaption");
-      figure.className = "image-block";
-      if (fullImages.has(event.value)) {
-        figure.classList.add("full");
-      } else if (smallImages.has(event.value)) {
-        figure.classList.add("small");
-      }
-      figure.dataset.image = event.value;
-      image.src = "images/offstage/" + event.value;
-      image.alt = "offstage image " + event.value.replace(/\..+$/, "");
-      image.loading = "lazy";
-      image.decoding = "async";
-      caption.textContent = event.value;
-      figure.append(image, caption);
-      story.append(figure);
-      lastImageFigure = figure;
-
-      image.addEventListener("load", () => {
-        const ratio = image.naturalWidth / image.naturalHeight;
-        if (!fullImages.has(event.value) && !smallImages.has(event.value) && ratio < 0.75) {
-          figure.classList.add("narrow");
-        }
-      });
+    });
+  </script>
+  <script>
+    function makeEditorialPair(copy,figure,reverse=false){
+      if(!copy||!figure) return;
+      const origin=figure.parentElement;
+      const pair=document.createElement("div");
+      pair.className="editorial-pair"+(reverse?" reverse":"");
+      origin.insertAdjacentElement("beforebegin",pair);
+      pair.append(copy,figure);
+      if(!origin.children.length) origin.remove();
+    }
+    document.querySelectorAll(".city-study").forEach((chapter)=>{
+      const copies=[...chapter.querySelectorAll(":scope > .copy")];
+      const figures=[...chapter.querySelectorAll("figure")];
+      makeEditorialPair(copies[0],figures[0],false);
+      makeEditorialPair(copies[1],figures[2],true);
+      makeEditorialPair(copies[2],figures[3],false);
+    });
+    document.querySelectorAll(".stage").forEach((chapter)=>{
+      const copies=[...chapter.querySelectorAll(":scope > .copy")];
+      const figures=[...chapter.querySelectorAll("figure")];
+      if(copies.length&&figures.length>3) makeEditorialPair(copies[copies.length-1],figures[3],true);
     });
   </script>
 </body>
-
 </html>
