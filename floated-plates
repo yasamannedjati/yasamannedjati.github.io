@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>floated plates - Yasaman Nedjati</title>
+  <meta name="description" content="floated plates, a computational design and fabrication project at the University of Tehran.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root { --background:#fff; --foreground:#111; --line:rgba(17,17,17,.22); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--background); color:var(--foreground); font-family:"HK Grotesk","Helvetica Neue",Arial,sans-serif; font-size:15px; line-height:1.35; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { opacity:.65; }
+    .site-title { width:min(780px,calc(100vw - 56px)); margin:28px 28px 8px 20px; font-size:clamp(42px,6vw,84px); font-weight:400; line-height:.95; }
+    .site-subtitle { width:min(780px,calc(100vw - 56px)); margin:0 0 76px 28px; font-size:clamp(22px,2.25vw,30px); }
+    .compact-brand { position:fixed; top:16px; left:20px; z-index:6; padding:6px 10px 6px 0; opacity:0; transform:translateY(-10px); pointer-events:none; transition:opacity 420ms cubic-bezier(.22,1,.36,1),transform 420ms cubic-bezier(.22,1,.36,1); }
+    .compact-brand-name { display:block; font-size:24px; line-height:1; }
+    body.is-scrolled .compact-brand { opacity:1; transform:translateY(0); pointer-events:auto; }
+    nav { position:fixed; right:28px; bottom:24px; z-index:5; display:flex; gap:18px; align-items:center; font-size:18px; }
+    nav a { display:inline-flex; min-width:44px; min-height:44px; align-items:center; justify-content:center; }
+    main { padding:0 28px 92px 20px; }
+    .project-header { width:min(980px,100%); margin-bottom:56px; }
+    h1 { margin:0 0 18px; font-size:24px; font-weight:700; line-height:1.1; }
+    .meta { display:grid; grid-template-columns:150px minmax(0,1fr); gap:7px 18px; padding-top:12px; border-top:1px solid var(--line); }
+    .meta-label { opacity:.7; }
+    .copy { width:min(880px,100%); margin:42px 0; }
+    .copy p { margin:0; }
+    .gallery { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:28px 18px; width:min(1280px,100%); align-items:start; }
+    figure { margin:0; }
+    figure.full { grid-column:1 / -1; }
+    figure.half { grid-column:span 6; }
+    img { display:block; width:100%; height:auto; }
+    .about,.contact { width:min(560px,calc(100vw - 40px)); margin-top:140px; padding-top:18px; border-top:1px solid var(--line); }
+    .section-title { margin-bottom:20px; font-size:28px; }
+    .about p,.contact p { margin:0 0 14px; }
+    @media (max-width:800px) {
+      .site-title { margin:78px 18px 10px; }
+      .site-subtitle { width:calc(100vw - 36px); margin:0 18px 62px; }
+      .compact-brand { top:12px; left:18px; }
+      nav { right:18px; bottom:14px; gap:12px; font-size:15px; }
+      main { padding:0 18px 74px; }
+      .meta { grid-template-columns:118px minmax(0,1fr); gap:8px 12px; }
+      .gallery { display:block; }
+      figure { margin-bottom:18px; }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="site-title">Yasaman Nedjati</h1>
+  <section class="site-subtitle" aria-label="Introduction">set designer and scenographer based in Berlin</section>
+  <a class="compact-brand" href="index.html"><span class="compact-brand-name">Yasaman Nedjati</span></a>
+  <main>
+    <section class="project-header">
+      <h1>floated plates</h1>
+      <div class="meta">
+        <div class="meta-label">project</div><div>academic project</div>
+        <div class="meta-label">course</div><div>Computational Design and Fabrication</div>
+        <div class="meta-label">university</div><div>University of Tehran</div>
+        <div class="meta-label">format</div><div>team project</div>
+        <div class="meta-label">period</div><div>winter 2020</div>
+        <div class="meta-label">city</div><div>Tehran, Iran</div>
+        <div class="meta-label">supervisor</div><div>Ramtin Haghnazar</div>
+      </div>
+    </section>
+
+    <section class="gallery"><figure class="full"><img src="images/floated-plates/1.png" alt="Floated Plates installation" loading="eager"></figure></section>
+
+    <div class="copy"><p>CADF98 is a 2-credit course for undergraduate students at the University of Tehran in 2020, aimed at introducing integrated computational design and fabrication. The course covers the basic logic of computational design and utilizes Grasshopper software. Students create preliminary sketches of installations and then finalize designs, developing Grasshopper code to generate models and shop drawings. The structure consists of a cubic frame measuring 2.4 x 2.4 x 2.4 m³ and suspended panels with cables, all cut from 9 mm plywood sheets using a CNC milling machine and assembled by students at the Faculty of Fine Arts courtyard.</p></div>
+
+    <section class="gallery" aria-label="Design and assembly process">
+      <figure class="full"><img src="images/floated-plates/2.png" alt="Floated Plates design sequence" loading="lazy"></figure>
+      <figure class="full"><img src="images/floated-plates/3.png" alt="Floated Plates fabrication process" loading="lazy"></figure>
+      <figure class="full"><img src="images/floated-plates/4.png" alt="Floated Plates structure details" loading="lazy"></figure>
+    </section>
+
+    <div class="copy"><p>The course comprises training and experiential phases. In the training section, students learn about Grasshopper and digital fabrication tools. They progress to designing simple structures and then move on to integrated computational design and fabrication, creating installations and developing Grasshopper code.</p></div>
+
+    <section class="gallery">
+      <figure class="half"><img src="images/floated-plates/5.png" alt="Suspended panels" loading="lazy"></figure>
+      <figure class="half"><img src="images/floated-plates/6.png" alt="Floated Plates assembly" loading="lazy"></figure>
+    </section>
+
+    <div class="copy"><p>One student's model is selected for final real-scale production, involving meticulous joint detailing given material and technique constraints. The final product involves creating a G-code for the CNC milling machine to cut the elements. The structure, comprising a cubic frame and suspended panels, is assembled by students according to numbered elements and cable lengths determined by Grasshopper software, ensuring precise placement.</p></div>
+
+    <section class="gallery">
+      <figure class="full"><img src="images/floated-plates/7.png" alt="Floated Plates frame assembly" loading="lazy"></figure>
+      <figure class="full"><img src="images/floated-plates/8.png" alt="Completed Floated Plates installation" loading="lazy"></figure>
+    </section>
+
+    <section id="about" class="about"><div class="section-title">About</div><p>I work across architecture, scenography, and design. I'm interested in how people experience space, especially in cities, and how stories can change the way a place is perceived. For me, projects are often a way to investigate a question and understand a subject rather than arrive at a fixed answer.</p></section>
+    <section id="contact" class="contact"><div class="section-title">Contact</div><p><a href="mailto:yasamannedjati@gmail.com">yasamannedjati@gmail.com</a></p><p><a href="https://www.linkedin.com/in/yasamannedjati/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><p><a href="https://www.instagram.com/yasiizz/" target="_blank" rel="noopener noreferrer">Instagram</a></p></section>
+  </main>
+  <nav aria-label="Main navigation"><a href="index.html#works">works</a><a href="#about">about</a><a href="#contact">contact</a></nav>
+  <script>const headerObserver=new IntersectionObserver(([entry])=>{document.body.classList.toggle("is-scrolled",!entry.isIntersecting);},{threshold:0});headerObserver.observe(document.querySelector(".site-subtitle"));</script>
+</body>
+</html>
