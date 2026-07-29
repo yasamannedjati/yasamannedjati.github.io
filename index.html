@@ -407,6 +407,47 @@
       }
     }
   </style>
+<style id="yasaman-header-name-adjustment">
+.site-name,
+.brand-name,
+.site-title,
+.brand-title,
+.header-name,
+.site-header .site-name,
+.site-header .brand-name,
+.site-header .site-title,
+header .site-name,
+header .brand-name,
+header .site-title {
+  font-weight: 700 !important;
+  background: transparent !important;
+}
+</style>
+<script id="yasaman-header-name-sizing">
+(function () {
+  function adjustHeaderName() {
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('a,h1,h2,div,p,span'));
+    var name = nodes.find(function (el) {
+      return el.textContent && el.textContent.trim() === 'Yasaman Nedjati';
+    });
+    var subtitle = nodes.find(function (el) {
+      return el.textContent && el.textContent.trim() === 'set designer and scenographer based in Berlin';
+    });
+    if (!name || !subtitle) return;
+    var subtitleStyle = window.getComputedStyle(subtitle);
+    name.style.fontSize = subtitleStyle.fontSize;
+    name.style.lineHeight = subtitleStyle.lineHeight;
+    name.style.fontWeight = '700';
+    name.style.background = 'transparent';
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', adjustHeaderName);
+  } else {
+    adjustHeaderName();
+  }
+  window.addEventListener('resize', adjustHeaderName);
+})();
+</script>
 </head>
 
 <body>
@@ -437,7 +478,7 @@
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="https://www.berlinerfestspiele.de/en/what-if-berlin" target="_blank" rel="noopener">What If Berlin</a>
+          <a href="https://www.berlinerfestspiele.de/en/what-if-berlin" target="_blank" rel="noopener" class="project-title">What If Berlin</a>
           <div class="project-details">2026 / Berlin, Germany / <span class="venue">Berliner Festspiele</span></div>
         </div>
       </article>
@@ -456,12 +497,12 @@
 
       <article class="project wandering-spaces">
         <a href="gotterdammerung.html">
-          <div class="project-media" aria-label="Götterdämmerung">
-            <img src="images/götterdämmerung/cover.jpg" alt="Götterdämmerung">
+          <div class="project-media" aria-label="GÃ¶tterdÃ¤mmerung">
+            <img src="images/gÃ¶tterdÃ¤mmerung/cover.jpg" alt="GÃ¶tterdÃ¤mmerung">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="gotterdammerung.html">Götterdämmerung</a>
+          <a class="project-title" href="gotterdammerung.html">GÃ¶tterdÃ¤mmerung</a>
           <div class="project-details">2024 / Brussels, Belgium / <span class="venue">La Monnaie / De Munt</span></div>
         </div>
       </article>
@@ -480,13 +521,13 @@
 
       <article class="project moulin-de-ferrieres">
         <a href="moulin-de-ferrieres.html">
-          <div class="project-media" aria-label="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
-            <img src="images/moulin-de-ferrières/cover.jpg" alt="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
+          <div class="project-media" aria-label="Centre dâ€™interprÃ©tation de la Meunerie - Moulin de FerriÃ¨res">
+            <img src="images/moulin-de-ferriÃ¨res/cover.jpg" alt="Centre dâ€™interprÃ©tation de la Meunerie - Moulin de FerriÃ¨res">
           </div>
         </a>
         <div class="project-info">
-          <a class="project-title" href="moulin-de-ferrieres.html">Centre d’interprétation de la Meunerie - Moulin de Ferrières</a>
-          <div class="project-details">2024 / Héron, Belgium / <span class="venue">KASCEN</span></div>
+          <a class="project-title" href="moulin-de-ferrieres.html">Centre dâ€™interprÃ©tation de la Meunerie - Moulin de FerriÃ¨res</a>
+          <div class="project-details">2024 / HÃ©ron, Belgium / <span class="venue">KASCEN</span></div>
         </div>
       </article>
 
