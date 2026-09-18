@@ -49,7 +49,7 @@
 
     .site-title {
       width: min(780px, calc(100vw - 56px));
-      margin: 28px 28px 8px 20px;
+      margin: 28px 28px 8px;
       font-size: clamp(42px, 6vw, 84px);
       font-weight: 400;
       line-height: 0.95;
@@ -132,7 +132,7 @@
     }
 
     .project:nth-child(1) {
-      grid-column: 1 / span 4;
+      grid-column: 1 / span 6;
     }
 
     .project:nth-child(2) {
@@ -459,6 +459,10 @@ header .site-title {
     if (!subtitleWidth || !nameWidth) return;
     var fontSize = parseFloat(subtitleStyle.fontSize) * subtitleWidth / nameWidth;
     name.style.fontSize = fontSize + 'px';
+    nameWidth = textWidth(name);
+    if (nameWidth) {
+      name.style.fontSize = (fontSize * subtitleWidth / nameWidth) + 'px';
+    }
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', adjustHeaderName);
