@@ -435,10 +435,25 @@ header .site-title {
     });
     if (!name || !subtitle) return;
     var subtitleStyle = window.getComputedStyle(subtitle);
+    var textWidth = function (element) {
+      var range = document.createRange();
+      range.selectNodeContents(element);
+      return range.getBoundingClientRect().width;
+    };
     name.style.fontSize = subtitleStyle.fontSize;
-    name.style.lineHeight = subtitleStyle.lineHeight;
+    name.style.lineHeight = '0.95';
+    name.style.whiteSpace = 'nowrap';
     name.style.fontWeight = '700';
     name.style.background = 'transparent';
+    var subtitleWidth = textWidth(subtitle);
+    var nameWidth = textWidth(name);
+    if (!subtitleWidth || !nameWidth) return;
+    var fontSize = parseFloat(subtitleStyle.fontSize) * subtitleWidth / nameWidth;
+    name.style.fontSize = fontSize + 'px';
+    nameWidth = textWidth(name);
+    if (nameWidth) {
+      name.style.fontSize = (fontSize * subtitleWidth / nameWidth) + 'px';
+    }
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', adjustHeaderName);
@@ -768,4 +783,3 @@ header .site-title {
 </body>
 
 </html>
-
