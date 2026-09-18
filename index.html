@@ -426,19 +426,28 @@ header .site-title {
 <script id="yasaman-header-name-sizing">
 (function () {
   function adjustHeaderName() {
-    var nodes = Array.prototype.slice.call(document.querySelectorAll('a,h1,h2,div,p,span'));
-    var name = nodes.find(function (el) {
-      return el.textContent && el.textContent.trim() === 'Yasaman Nedjati';
-    });
-    var subtitle = nodes.find(function (el) {
-      return el.textContent && el.textContent.trim() === 'set designer and scenographer based in Berlin';
-    });
+    var name = document.querySelector('.site-title');
+    var subtitle = document.querySelector('.intro');
     if (!name || !subtitle) return;
     var subtitleStyle = window.getComputedStyle(subtitle);
     var textWidth = function (element) {
-      var range = document.createRange();
-      range.selectNodeContents(element);
-      return range.getBoundingClientRect().width;
+      var style = window.getComputedStyle(element);
+      var measure = document.createElement('span');
+      measure.textContent = element.textContent.trim();
+      measure.style.cssText = [
+        'position:absolute',
+        'visibility:hidden',
+        'white-space:nowrap',
+        'font-family:' + style.fontFamily,
+        'font-size:' + style.fontSize,
+        'font-weight:' + style.fontWeight,
+        'font-style:' + style.fontStyle,
+        'letter-spacing:' + style.letterSpacing
+      ].join(';');
+      document.body.appendChild(measure);
+      var width = measure.getBoundingClientRect().width;
+      measure.remove();
+      return width;
     };
     name.style.fontSize = subtitleStyle.fontSize;
     name.style.lineHeight = '0.95';
@@ -450,10 +459,6 @@ header .site-title {
     if (!subtitleWidth || !nameWidth) return;
     var fontSize = parseFloat(subtitleStyle.fontSize) * subtitleWidth / nameWidth;
     name.style.fontSize = fontSize + 'px';
-    nameWidth = textWidth(name);
-    if (nameWidth) {
-      name.style.fontSize = (fontSize * subtitleWidth / nameWidth) + 'px';
-    }
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', adjustHeaderName);
