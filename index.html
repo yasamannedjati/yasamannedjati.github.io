@@ -136,20 +136,22 @@
     #works .project.what-if-berlin {
       grid-row: 1;
       grid-column: 4 / span 6;
-      align-self: stretch;
+      align-self: start;
     }
 
     #works .project.kreuzungen-intersections,
     #works .project.what-if-berlin {
-      transform: scale(0.97);
-      transform-origin: top left;
+      height: min(722px, 30vw);
     }
 
+    #works .project.kreuzungen-intersections > a,
     #works .project.what-if-berlin > a,
+    #works .project.kreuzungen-intersections .project-media,
     #works .project.what-if-berlin .project-media {
-      height: 100% !important;
+      height: 100%;
     }
 
+    #works .project.kreuzungen-intersections .project-media,
     #works .project.what-if-berlin .project-media {
       aspect-ratio: auto !important;
     }
@@ -727,7 +729,7 @@ header .site-title {
       <article class="project kreuzungen-intersections">
         <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener">
           <div class="project-media" aria-label="Kreuzungen - Intersections. 250 - Kleist">
-            <img src="images/kreuzungen-intersections/cover.png" alt="Kreuzungen - Intersections. 250 - Kleist">
+            <img src="images/kreuzungen/cover.png" alt="Kreuzungen - Intersections. 250 - Kleist">
           </div>
         </a>
         <div class="project-info">
@@ -792,7 +794,7 @@ header .site-title {
     const fitFrameToImage = (image) => {
       const frame = image.closest(".project-media");
       if (!frame || !image.naturalWidth || !image.naturalHeight) return;
-      if (image.closest(".kreuzungen-intersections, .what-if-berlin")) return;
+      if (image.closest(".kreuzungen-intersections")) return;
 
       frame.style.aspectRatio = `${image.naturalWidth} / ${image.naturalHeight}`;
     };
