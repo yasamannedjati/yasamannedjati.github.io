@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +7,7 @@
   <title>Yasaman Nedjati</title>
   <meta name="description" content="Yasaman Nedjati - set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
   <link rel="icon" type="image/png" href="favicon.png">
+
   <style>
     :root {
       --background: #050505;
@@ -116,15 +117,14 @@
     .project.kreuzungen-intersections {
       grid-row: 1;
       grid-column: 1 / span 3;
+      justify-self: start;
+      width: min(539.2px, 22.394vw);
+      height: min(722px, 30vw);
     }
 
     .project.what-if-berlin {
       grid-row: 1;
       grid-column: 4 / span 6;
-    }
-
-    .project.kreuzungen-intersections,
-    .project.what-if-berlin {
       height: min(722px, 30vw);
     }
 
@@ -133,6 +133,15 @@
     .project.kreuzungen-intersections .project-media,
     .project.what-if-berlin .project-media {
       height: 100%;
+    }
+
+    .project.kreuzungen-intersections .project-media {
+      width: 100%;
+      aspect-ratio: 978 / 1309;
+    }
+
+    .project.what-if-berlin .project-media {
+      width: 100%;
     }
 
     .project.offstage { grid-column: 1 / -1; }
@@ -159,10 +168,6 @@
 
     .project.offstage .project-media {
       aspect-ratio: 6237 / 3508;
-    }
-
-    .project.kreuzungen-intersections .project-media {
-      aspect-ratio: 978 / 1309;
     }
 
     .project:nth-child(3) .project-media,
@@ -348,9 +353,24 @@
         height: auto;
       }
 
+      .project.kreuzungen-intersections {
+        width: 100%;
+      }
+
+      .project.kreuzungen-intersections > a,
+      .project.what-if-berlin > a,
       .project.kreuzungen-intersections .project-media,
       .project.what-if-berlin .project-media {
         height: auto;
+      }
+
+      .project.kreuzungen-intersections .project-media {
+        width: 100%;
+        aspect-ratio: 978 / 1309;
+      }
+
+      .project.what-if-berlin .project-media {
+        width: 100%;
       }
 
       .project-info { gap: 4px; }
@@ -400,6 +420,19 @@
     <section class="intro" aria-label="Introduction">set designer and scenographer based in Berlin</section>
 
     <section id="works" class="projects" aria-label="Selected works">
+
+      <article class="project kreuzungen-intersections">
+        <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener">
+          <div class="project-media">
+            <img src="images/kreuzungen/cover.png" alt="Kreuzungen - Intersections. 250 - Kleist">
+          </div>
+        </a>
+        <div class="project-info">
+          <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener" class="project-title">Kreuzungen - Intersections. 250 - Kleist</a>
+          <div class="project-details">2026 / Frankfurt (Oder), Germany / <span class="venue">Kleist-Museum / collaboration with Guerilla Architects</span></div>
+        </div>
+      </article>
+
       <article class="project what-if-berlin">
         <a href="https://www.berlinerfestspiele.de/en/what-if-berlin" target="_blank" rel="noopener">
           <div class="project-media">
@@ -616,17 +649,6 @@
         </div>
       </article>
 
-      <article class="project kreuzungen-intersections">
-        <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener">
-          <div class="project-media">
-            <img src="images/kreuzungen/cover.png" alt="Kreuzungen - Intersections. 250 - Kleist">
-          </div>
-        </a>
-        <div class="project-info">
-          <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener" class="project-title">Kreuzungen - Intersections. 250 - Kleist</a>
-          <div class="project-details">2026 / Frankfurt (Oder), Germany / <span class="venue">Kleist-Museum / collaboration with Guerilla Architects</span></div>
-        </div>
-      </article>
     </section>
 
     <section id="contact" class="contact">
@@ -680,8 +702,10 @@
 
     const fitFrameToImage = image => {
       const frame = image.closest('.project-media');
+
       if (!frame || !image.naturalWidth || !image.naturalHeight ||
           image.closest('.kreuzungen-intersections')) return;
+
       frame.style.aspectRatio = `${image.naturalWidth} / ${image.naturalHeight}`;
     };
 
@@ -698,3 +722,4 @@
   </script>
 </body>
 </html>
+```
