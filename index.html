@@ -1,33 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Yasaman Nedjati</title>
-
-  <meta name="description"
-    content="Yasaman Nedjati - set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
-
+  <meta name="description" content="Yasaman Nedjati - set designer and scenographer. Portfolio, projects, exhibitions, and contact." />
   <link rel="icon" type="image/png" href="favicon.png">
-
   <style>
     :root {
       --background: #050505;
       --foreground: #f4f2ee;
-      --muted: #a0a0a0;
-      --line: rgba(244, 242, 238, 0.22);
-      --panel: #000000;
+      --muted: #b7b5b1;
+      --line: rgba(244,242,238,.22);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -38,14 +27,8 @@
       line-height: 1.35;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--muted);
-    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #b7b5b1; }
 
     .site-title {
       position: fixed;
@@ -56,9 +39,10 @@
       margin: 0;
       font-size: clamp(42px, 6vw, 84px);
       font-weight: 700;
-      line-height: 0.95;
+      line-height: .95;
       letter-spacing: 0;
       text-align: right;
+      white-space: nowrap;
     }
 
     nav {
@@ -70,10 +54,6 @@
       align-items: center;
       gap: 18px;
       font-size: 18px;
-      background: rgba(5, 5, 5, 0.7);
-      padding: 6px 16px;
-      border-radius: 24px;
-      backdrop-filter: blur(8px);
     }
 
     nav a {
@@ -82,11 +62,6 @@
       min-height: 44px;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.2s ease;
-    }
-
-    nav a:hover {
-      opacity: 0.7;
     }
 
     main {
@@ -100,7 +75,6 @@
       right: 28px;
       z-index: 2;
       width: min(780px, calc(100vw - 56px));
-      max-width: calc(100vw - 56px);
       margin: 0;
       color: var(--muted);
       font-size: clamp(15px, 1.5vw, 20px);
@@ -113,8 +87,6 @@
       column-gap: 2px;
       row-gap: 34px;
       width: 100%;
-      max-width: none;
-      margin-top: 120px;
     }
 
     .project {
@@ -123,99 +95,65 @@
       align-self: start;
     }
 
-    #works .project.kreuzungen-intersections {
-      order: -1;
+    .project:nth-child(1) { grid-column: 1 / span 6; }
+    .project:nth-child(2) { grid-column: 7 / span 6; }
+    .project:nth-child(3) { grid-column: 2 / span 5; }
+    .project:nth-child(4n) { grid-column: 8 / span 4; }
+
+    .project:nth-child(4n + 1):not(:nth-child(1)) {
+      grid-column: 4 / span 6;
+    }
+
+    .project:nth-child(4n + 2):not(:nth-child(2)) {
+      grid-column: 6 / span 7;
+    }
+
+    .project:nth-child(4n + 3):not(:nth-child(3)) {
+      grid-column: 1 / span 5;
+    }
+
+    /* First row: Kreuzungen, then What If Berlin */
+    .project.kreuzungen-intersections {
       grid-row: 1;
       grid-column: 1 / span 3;
-      justify-self: start;
     }
 
-    #works .project.what-if-berlin {
+    .project.what-if-berlin {
       grid-row: 1;
       grid-column: 4 / span 6;
-      align-self: start;
     }
 
-    #works .project.kreuzungen-intersections,
-    #works .project.what-if-berlin {
+    .project.kreuzungen-intersections,
+    .project.what-if-berlin {
       height: min(722px, 30vw);
     }
 
-    #works .project.kreuzungen-intersections > a,
-    #works .project.what-if-berlin > a,
-    #works .project.kreuzungen-intersections .project-media,
-    #works .project.what-if-berlin .project-media {
+    .project.kreuzungen-intersections > a,
+    .project.what-if-berlin > a,
+    .project.kreuzungen-intersections .project-media,
+    .project.what-if-berlin .project-media {
       height: 100%;
     }
 
-    #works .project.kreuzungen-intersections .project-media,
-    #works .project.what-if-berlin .project-media {
-      aspect-ratio: auto !important;
-    }
-
-    .project.offstage {
-      grid-column: 1 / -1;
-    }
-
-    .project.moody-mazes {
-      grid-column: 6 / span 6;
-    }
-
-    .project.valextra {
-      grid-column: 5 / span 7;
-    }
-
-    .project.acid-base {
-      grid-column: 2 / span 1;
-    }
-
-    .project.wandering-spaces {
-      grid-column: 1 / span 4;
-    }
-
-    .project.greyish-blue {
-      grid-column: 7 / span 4;
-    }
-
-    .project.vub {
-      grid-column: 2 / span 4;
-    }
-
-    .project.moulin-de-ferrieres {
-      grid-column: 1 / span 6;
-    }
-
-    .project.fanny-and-alexander {
-      grid-column: 5 / span 8;
-    }
-
-    .project.train-world {
-      grid-column: 9 / span 3;
-    }
-
-    .project.its-your-lucky-day {
-      grid-column: 2 / span 6;
-    }
-
-    .project.floated-plates {
-      grid-column: 5 / span 7;
-    }
-
-    .project.music-house-of-isfahan .project-media,
-    .project.music-house-of-isfahan img {
-      background: var(--background);
-    }
-
-    .project a {
-      display: block;
-    }
+    .project.offstage { grid-column: 1 / -1; }
+    .project.moody-mazes { grid-column: 6 / span 6; }
+    .project.valextra { grid-column: 5 / span 7; }
+    .project.acid-base { grid-column: 2 / span 1; }
+    .project.wandering-spaces { grid-column: 1 / span 4; }
+    .project.greyish-blue { grid-column: 7 / span 4; }
+    .project.vub { grid-column: 2 / span 4; }
+    .project.moulin-de-ferrieres { grid-column: 1 / span 6; }
+    .project.fanny-and-alexander { grid-column: 5 / span 8; }
+    .project.train-world { grid-column: 9 / span 3; }
+    .project.its-your-lucky-day { grid-column: 2 / span 6; }
+    .project.floated-plates { grid-column: 5 / span 7; }
 
     .project-media {
       position: relative;
       width: 100%;
       aspect-ratio: 4 / 3;
       min-height: 180px;
-      background: var(--panel);
+      background: #101010;
       overflow: hidden;
     }
 
@@ -227,33 +165,29 @@
       aspect-ratio: 978 / 1309;
     }
 
-    .project.moody-mazes .project-media {
-      aspect-ratio: 2 / 3;
+    .project:nth-child(3) .project-media,
+    .project:nth-child(4n) .project-media {
+      aspect-ratio: 1 / 1;
     }
 
-    .project.moody-mazes img {
-      object-fit: cover;
-    }
-
-    .project.valextra .project-media {
-      aspect-ratio: 3021 / 2158;
-    }
-
-    .project.acid-base .project-media {
-      aspect-ratio: 3 / 4;
-    }
-
-    .project.greyish-blue .project-media {
-      aspect-ratio: 946 / 1165;
-    }
-
-    .project.vub .project-media {
+    .project:nth-child(4n + 1):not(:nth-child(1)) .project-media {
       aspect-ratio: 4 / 3;
     }
 
-    .project.train-world .project-media {
-      aspect-ratio: 1 / 1;
+    .project:nth-child(4n + 2):not(:nth-child(2)) .project-media {
+      aspect-ratio: 16 / 10;
     }
+
+    .project:nth-child(4n + 3):not(:nth-child(3)) .project-media {
+      aspect-ratio: 3 / 4;
+    }
+
+    .project.moody-mazes .project-media { aspect-ratio: 2 / 3; }
+    .project.valextra .project-media { aspect-ratio: 3021 / 2158; }
+    .project.acid-base .project-media { aspect-ratio: 3 / 4; }
+    .project.greyish-blue .project-media { aspect-ratio: 946 / 1165; }
+    .project.vub .project-media { aspect-ratio: 4 / 3; }
+    .project.train-world .project-media { aspect-ratio: 1 / 1; }
 
     .project img {
       display: block;
@@ -261,10 +195,6 @@
       height: 100%;
       background: var(--background);
       object-fit: cover;
-    }
-
-    .project img.is-missing {
-      display: none;
     }
 
     .project-info {
@@ -278,10 +208,10 @@
       padding: 18px;
       color: var(--foreground);
       font-size: clamp(14px, 1.25vw, 18px);
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent 58%);
+      background: linear-gradient(to top, rgba(0,0,0,.68), transparent 58%);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 180ms ease;
+      transition: opacity 160ms ease;
     }
 
     .project-title {
@@ -289,9 +219,7 @@
       font-weight: 700;
     }
 
-    .project-details {
-      text-align: left;
-    }
+    .project-details { text-align: left; }
 
     .project:hover .project-info,
     .project:focus-within .project-info {
@@ -312,88 +240,78 @@
       font-size: 28px;
     }
 
-    .contact p {
-      margin: 0 0 14px;
-    }
+    .contact p { margin: 0 0 14px; }
 
+    /* Fullscreen About overlay */
     .about-overlay {
       position: fixed;
       inset: 0;
-      z-index: 999;
+      z-index: 8;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(5, 5, 5, 0.92);
-      backdrop-filter: blur(12px);
+      padding: 76px 28px;
+      background: rgba(0,0,0,.86);
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: opacity 250ms ease;
-      padding: 28px;
+      transition: opacity 180ms ease, visibility 180ms ease;
+      overflow-y: auto;
     }
 
-    .about-overlay.is-active {
+    .about-overlay.is-open {
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
 
-    .about-modal {
-      position: relative;
-      max-width: 620px;
-      width: 100%;
-      color: var(--foreground);
+    .about-content {
+      width: min(760px, 100%);
+      margin: auto;
       text-align: center;
+      font-size: clamp(14px, 1.25vw, 17px);
+      line-height: 1.5;
+    }
+
+    .about-content p { margin: 0 0 15px; }
+
+    .about-content .about-meta {
+      margin-top: 26px;
+      color: #969696;
+      font-size: clamp(12px, 1.05vw, 14px);
+      line-height: 1.6;
+    }
+
+    .about-content .about-meta p { margin-bottom: 8px; }
+
+    .about-content .about-meta strong {
+      color: #b5b5b5;
+      font-weight: 500;
     }
 
     .about-close {
-      position: absolute;
-      top: -48px;
-      right: 0;
-      background: transparent;
-      border: none;
+      position: fixed;
+      top: 24px;
+      left: 28px;
+      z-index: 11;
+      display: none;
+      border: 0;
+      background: none;
       color: var(--foreground);
-      font-size: 36px;
-      line-height: 1;
+      font: inherit;
+      font-size: 16px;
       cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.2s ease;
+      padding: 10px;
     }
 
-    .about-close:hover {
-      opacity: 1;
-    }
-
-    .about-body {
-      font-size: 13.5px;
-      line-height: 1.65;
-      color: rgba(244, 242, 238, 0.88);
-      margin-bottom: 28px;
-    }
-
-    .about-body p {
-      margin: 0 0 14px;
-    }
-
-    .about-details {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 12.5px;
-      line-height: 1.5;
-      color: rgba(244, 242, 238, 0.72);
-      border-top: 1px solid rgba(244, 242, 238, 0.12);
-      padding-top: 20px;
-    }
-
-    .about-label {
-      color: rgba(244, 242, 238, 0.45);
-      margin-right: 4px;
-    }
+    body.about-open { overflow: hidden; }
+    body.about-open .about-close { display: block; }
 
     @media (max-width: 900px) {
       .site-title {
         top: 18px;
         right: 18px;
-        margin: 0;
+        font-size: clamp(36px, 8vw, 64px);
       }
 
       nav {
@@ -403,116 +321,89 @@
         font-size: 15px;
       }
 
-      main {
-        padding: 16px 18px 74px;
-      }
-
-      .intro,
-      .projects,
-      .contact {
-        width: 100%;
-      }
+      main { padding: 16px 18px 74px; }
 
       .intro {
         top: 70px;
         right: 18px;
         width: calc(100vw - 36px);
-        margin-bottom: 62px;
       }
 
       .projects {
-        display: block;
+        display: flex;
+        flex-direction: column;
         width: 100%;
       }
+
+      .project.kreuzungen-intersections { order: -2; }
+      .project.what-if-berlin { order: -1; }
 
       .project {
         width: 100%;
-        margin-left: 0;
-        margin-bottom: 64px;
+        margin: 0 0 76px;
+      }
+
+      .project.kreuzungen-intersections,
+      .project.what-if-berlin {
+        height: auto;
+      }
+
+      .project.kreuzungen-intersections .project-media,
+      .project.what-if-berlin .project-media {
+        height: auto;
+      }
+
+      .project-info { gap: 4px; }
+      .project-details { text-align: left; }
+
+      .about-overlay { padding: 74px 22px 86px; }
+      .about-content { font-size: 15px; }
+
+      .about-content .about-meta { font-size: 13px; }
+
+      .about-close {
+        top: 12px;
+        left: 12px;
       }
     }
   </style>
-
-  <style id="yasaman-header-name-adjustment">
-    .site-title {
-      font-weight: 700 !important;
-      background: transparent !important;
-    }
-  </style>
-
-  <script id="yasaman-header-name-sizing">
-    (function () {
-      function adjustHeaderName() {
-        var name = document.querySelector('.site-title');
-        var subtitle = document.querySelector('.intro');
-        if (!name || !subtitle) return;
-        var subtitleStyle = window.getComputedStyle(subtitle);
-        var textWidth = function (element) {
-          var style = window.getComputedStyle(element);
-          var measure = document.createElement('span');
-          measure.textContent = element.textContent.trim();
-          measure.style.cssText = [
-            'position:absolute',
-            'visibility:hidden',
-            'white-space:nowrap',
-            'font-family:' + style.fontFamily,
-            'font-size:' + style.fontSize,
-            'font-weight:' + style.fontWeight,
-            'font-style:' + style.fontStyle,
-            'letter-spacing:' + style.letterSpacing
-          ].join(';');
-          document.body.appendChild(measure);
-          var width = measure.getBoundingClientRect().width;
-          measure.remove();
-          return width;
-        };
-        name.style.fontSize = subtitleStyle.fontSize;
-        name.style.lineHeight = '0.95';
-        name.style.whiteSpace = 'nowrap';
-        name.style.fontWeight = '700';
-        name.style.background = 'transparent';
-        var subtitleWidth = textWidth(subtitle);
-        var nameWidth = textWidth(name);
-        if (!subtitleWidth || !nameWidth) return;
-        var fontSize = parseFloat(subtitleStyle.fontSize) * subtitleWidth / nameWidth;
-        name.style.fontSize = fontSize + 'px';
-        nameWidth = textWidth(name);
-        if (nameWidth) {
-          name.style.fontSize = (fontSize * subtitleWidth / nameWidth) + 'px';
-        }
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', adjustHeaderName);
-      } else {
-        adjustHeaderName();
-      }
-      window.addEventListener('resize', adjustHeaderName);
-    })();
-  </script>
 </head>
 
-<body>
-
+<body id="top">
   <h1 class="site-title">Yasaman Nedjati</h1>
 
   <nav aria-label="Main navigation">
     <a href="#works">works</a>
-    <a href="#about" id="about-link">about</a>
+    <a href="#about" id="about-link" aria-controls="about-overlay" aria-expanded="false">about</a>
     <a href="#contact">contact</a>
   </nav>
 
-  <main>
+  <button class="about-close" id="about-close" type="button" aria-label="Close about section">close ✕</button>
 
-    <section class="intro" aria-label="Introduction">
-      set designer and scenographer based in Berlin
+  <div class="about-overlay" id="about-overlay" aria-hidden="true">
+    <section class="about-content" aria-label="About Yasaman Nedjati">
+      <p>Yasaman Nedjati (she/her) is a Berlin-based set and spatial designer working across theatre, film, exhibition design, and architecture.</p>
+      <p>Her professional experience spans Berlin, Milan, Brussels, and Tehran. She has worked in theatre, exhibition design, film, and interior architecture across a range of projects and scales.</p>
+      <p>She studied Architecture at the University of Tehran, Interior and Spatial Design at Politecnico di Milano, and Scenography at ESA Saint-Luc Brussels.</p>
+      <p>Her work explores the relationship between people and space through narrative and scenography. Alongside her design practice, her research focuses on spatial conditions that allow for observation, solitude, and shifting relationships between what is onstage and offstage.</p>
+
+      <div class="about-meta">
+        <p><strong>digital skills:</strong> 2D and 3D — Rhino / AutoCAD / SketchUp / Cinema4D / Adobe Suite</p>
+        <p><strong>currently learning:</strong> TouchDesigner</p>
+        <p><strong>languages:</strong> fluent in English, French, and Persian / intermediate in German and Italian</p>
+        <p><strong>interests:</strong> set design for theatre and exhibitions / spatial design / research / teaching</p>
+      </div>
     </section>
+  </div>
+
+  <main>
+    <section class="intro" aria-label="Introduction">set designer and scenographer based in Berlin</section>
 
     <section id="works" class="projects" aria-label="Selected works">
-
       <article class="project what-if-berlin">
         <a href="https://www.berlinerfestspiele.de/en/what-if-berlin" target="_blank" rel="noopener">
-          <div class="project-media" aria-label="What If Berlin">
-            <img src="images/what-if-berlin/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=What+If+Berlin'" alt="What If Berlin">
+          <div class="project-media">
+            <img src="images/what-if-berlin/cover.jpg" alt="What If Berlin">
           </div>
         </a>
         <div class="project-info">
@@ -523,8 +414,8 @@
 
       <article class="project offstage">
         <a href="offstage.html">
-          <div class="project-media" aria-label="offstage">
-            <img src="images/offstage/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/111111/f4f2ee?text=offstage'" alt="offstage">
+          <div class="project-media">
+            <img src="images/offstage/cover.jpg" alt="offstage">
           </div>
         </a>
         <div class="project-info">
@@ -535,8 +426,8 @@
 
       <article class="project wandering-spaces">
         <a href="gotterdammerung.html">
-          <div class="project-media" aria-label="Götterdämmerung">
-            <img src="images/götterdämmerung/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=G%C3%B6tterd%C3%A4mmerung'" alt="Götterdämmerung">
+          <div class="project-media">
+            <img src="images/götterdämmerung/cover.jpg" alt="Götterdämmerung">
           </div>
         </a>
         <div class="project-info">
@@ -547,8 +438,8 @@
 
       <article class="project fanny-and-alexander">
         <a href="fanny-and-alexander.html">
-          <div class="project-media" aria-label="Fanny and Alexander">
-            <img src="images/fanny-and-alexander/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=Fanny+and+Alexander'" alt="Fanny and Alexander">
+          <div class="project-media">
+            <img src="images/fanny-and-alexander/cover.jpg" alt="Fanny and Alexander">
           </div>
         </a>
         <div class="project-info">
@@ -559,8 +450,8 @@
 
       <article class="project moulin-de-ferrieres">
         <a href="moulin-de-ferrieres.html">
-          <div class="project-media" aria-label="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
-            <img src="images/moulin-de-ferrières/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=Moulin+de+Ferri%C3%A8res'" alt="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
+          <div class="project-media">
+            <img src="images/moulin-de-ferrières/cover.jpg" alt="Moulin de Ferrières">
           </div>
         </a>
         <div class="project-info">
@@ -571,8 +462,8 @@
 
       <article class="project train-world">
         <a href="train-world.html">
-          <div class="project-media" aria-label="Dessine-moi un train - Train World">
-            <img src="images/train-world/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x600/111111/f4f2ee?text=Train+World'" alt="Dessine-moi un train - Train World">
+          <div class="project-media">
+            <img src="images/train-world/cover.jpg" alt="Train World">
           </div>
         </a>
         <div class="project-info">
@@ -583,8 +474,8 @@
 
       <article class="project vub">
         <a href="vub.html">
-          <div class="project-media" aria-label="VUB">
-            <img src="images/vub/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=VUB'" alt="VUB">
+          <div class="project-media">
+            <img src="images/vub/cover.jpg" alt="VUB">
           </div>
         </a>
         <div class="project-info">
@@ -595,8 +486,8 @@
 
       <article class="project moody-mazes">
         <a href="moody-mazes.html">
-          <div class="project-media" aria-label="moody mazes" style="aspect-ratio: 2 / 3;">
-            <img src="images/moody-mazes/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/111111/f4f2ee?text=moody+mazes'" alt="moody mazes">
+          <div class="project-media">
+            <img src="images/moody-mazes/cover.jpg" alt="moody mazes">
           </div>
         </a>
         <div class="project-info">
@@ -605,10 +496,130 @@
         </div>
       </article>
 
+      <article class="project">
+        <a href="project.html?p=wandering-spaces-interior-design-in-motion">
+          <div class="project-media">
+            <img src="images/wandering-spaces/cover.jpg" alt="wandering spaces: interior design in motion">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="project.html?p=wandering-spaces-interior-design-in-motion">wandering spaces: interior design in motion</a>
+          <div class="project-details">2019 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project valextra">
+        <a href="valextra.html">
+          <div class="project-media">
+            <img src="images/valextra/cover.png" alt="Valextra">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="valextra.html">Valextra</a>
+          <div class="project-details">2023 / Milan, Italy / <span class="venue">Poli Design</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="alone-together.html">
+          <div class="project-media">
+            <img src="images/alone-together/cover.png" alt="alone, together">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="alone-together.html">alone, together</a>
+          <div class="project-details">2023 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a href="city-lights.html">
+          <div class="project-media">
+            <img src="images/city-lights/cover.jpg" alt="city lights">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="city-lights.html">city lights</a>
+          <div class="project-details">2022 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
+        </div>
+      </article>
+
+      <article class="project greyish-blue">
+        <a href="greyish-blue.html">
+          <div class="project-media">
+            <img src="images/greyish-blue/cover.png" alt="Greyish-Blue">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="greyish-blue.html">Greyish-Blue</a>
+          <div class="project-details">2022 / Tehran, Iran / <span class="venue">-</span></div>
+        </div>
+      </article>
+
+      <article class="project acid-base">
+        <a href="acid-base.html">
+          <div class="project-media">
+            <img src="images/acid-base/cover.jpg" alt="Acid Base">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="acid-base.html">Acid Base</a>
+          <div class="project-details">2021 / Tehran, Iran / <span class="venue">-</span></div>
+        </div>
+      </article>
+
+      <article class="project its-your-lucky-day">
+        <a href="its-your-lucky-day.html">
+          <div class="project-media">
+            <img src="images/it's-your-lucky-day/cover.png" alt="It's Your Lucky Day">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="its-your-lucky-day.html">It's Your Lucky Day</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">Nahal Short Film Festival</span></div>
+        </div>
+      </article>
+
+      <article class="project music-house-of-isfahan">
+        <a href="music-house-of-isfahan.html">
+          <div class="project-media">
+            <img src="images/music-house-of-isfahan/cover.png" alt="music house of Isfahan">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="music-house-of-isfahan.html">music house of Isfahan</a>
+          <div class="project-details">2021 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project floated-plates">
+        <a href="floated-plates.html">
+          <div class="project-media">
+            <img src="images/floated-plates/cover.png" alt="floated plates">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="floated-plates.html">floated plates</a>
+          <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
+        </div>
+      </article>
+
+      <article class="project high-rise">
+        <a href="high-rise.html">
+          <div class="project-media">
+            <img src="images/high-rise/cover.jpg" alt="high-rise">
+          </div>
+        </a>
+        <div class="project-info">
+          <a class="project-title" href="high-rise.html">high-rise</a>
+          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Geneva</span></div>
+        </div>
+      </article>
+
       <article class="project kreuzungen-intersections">
         <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener">
-          <div class="project-media" aria-label="Kreuzungen - Intersections. 250 - Kleist">
-            <img src="images/kreuzungen/cover.png" onerror="this.onerror=null; this.src='https://placehold.co/600x800/111111/f4f2ee?text=Kreuzungen'" alt="Kreuzungen - Intersections. 250 - Kleist">
+          <div class="project-media">
+            <img src="images/kreuzungen/cover.png" alt="Kreuzungen - Intersections. 250 - Kleist">
           </div>
         </a>
         <div class="project-info">
@@ -616,113 +627,67 @@
           <div class="project-details">2026 / Frankfurt (Oder), Germany / <span class="venue">Kleist-Museum / collaboration with Guerilla Architects</span></div>
         </div>
       </article>
-
     </section>
 
     <section id="contact" class="contact">
       <div class="section-title">Contact</div>
-
-      <p>
-        <a href="mailto:yasamannedjati@gmail.com">
-          yasamannedjati@gmail.com
-        </a>
-      </p>
-
-      <p>
-        <a href="https://www.linkedin.com/in/yasamannedjati/"
-          target="_blank"
-          rel="noopener noreferrer">
-          LinkedIn
-        </a>
-      </p>
-
-      <p>
-        <a href="https://www.instagram.com/yasiizz/"
-          target="_blank"
-          rel="noopener noreferrer">
-          Instagram
-        </a>
-      </p>
+      <p><a href="mailto:yasamannedjati@gmail.com">yasamannedjati@gmail.com</a></p>
+      <p><a href="https://www.linkedin.com/in/yasamannedjati/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      <p><a href="https://www.instagram.com/yasiizz/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
     </section>
-
   </main>
 
-  <div id="about-overlay" class="about-overlay" aria-hidden="true">
-    <div class="about-modal">
-      <button class="about-close" id="about-close" aria-label="Close about overlay">&times;</button>
-      
-      <div class="about-body">
-        <p>Yasaman Nedjati (she/her) is a Berlin-based set and spatial designer working across theatre, film, exhibition design, and architecture.</p>
-        <p>Her professional experience spans Berlin, Milan, Brussels, and Tehran. She has worked in theatre, exhibition design, film, and interior architecture across a range of projects and scales.</p>
-        <p>She studied Architecture at the University of Tehran, Interior and Spatial Design at Politecnico di Milano, and Scenography at ESA Saint-Luc Brussels.</p>
-        <p>Her work explores the relationship between people and space through narrative and scenography. Alongside her design practice, her research focuses on spatial conditions that allow for observation, solitude, and shifting relationships between what is onstage and offstage.</p>
-      </div>
-
-      <div class="about-details">
-        <div><span class="about-label">digital skills:</span> 2D and 3D - Rhino / AutoCAD / Sketchup / Cinema4D / AdobeSuite</div>
-        <div><span class="about-label">currently learning:</span> TouchDesigner</div>
-        <div><span class="about-label">languages:</span> fluent in English, French, and Persian / intermediate in German and Italian</div>
-        <div><span class="about-label">interests:</span> set design for theatre and exhibitions / spatial design / research / teaching</div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    document.body.id = "top";
-
-    // Overlay Modal Interactions
-    const aboutOverlay = document.getElementById('about-overlay');
     const aboutLink = document.getElementById('about-link');
+    const aboutOverlay = document.getElementById('about-overlay');
     const aboutClose = document.getElementById('about-close');
 
-    const openAbout = (e) => {
-      if (e) e.preventDefault();
-      aboutOverlay.classList.add('is-active');
+    function openAbout(event) {
+      if (event) event.preventDefault();
+      document.body.classList.add('about-open');
+      aboutOverlay.classList.add('is-open');
       aboutOverlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    };
-
-    const closeAbout = () => {
-      aboutOverlay.classList.remove('is-active');
-      aboutOverlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    };
-
-    if (aboutLink) aboutLink.addEventListener('click', openAbout);
-    if (aboutClose) aboutClose.addEventListener('click', closeAbout);
-
-    if (aboutOverlay) {
-      aboutOverlay.addEventListener('click', (e) => {
-        if (e.target === aboutOverlay) closeAbout();
-      });
+      aboutLink.setAttribute('aria-expanded', 'true');
+      aboutClose.focus();
     }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && aboutOverlay && aboutOverlay.classList.contains('is-active')) {
+    function closeAbout() {
+      document.body.classList.remove('about-open');
+      aboutOverlay.classList.remove('is-open');
+      aboutOverlay.setAttribute('aria-hidden', 'true');
+      aboutLink.setAttribute('aria-expanded', 'false');
+      aboutLink.focus();
+    }
+
+    aboutLink.addEventListener('click', openAbout);
+    aboutClose.addEventListener('click', closeAbout);
+
+    aboutOverlay.addEventListener('click', event => {
+      if (event.target === aboutOverlay) closeAbout();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && aboutOverlay.classList.contains('is-open')) {
         closeAbout();
       }
     });
 
-    // Dynamic Image Loading Handler
-    const markMissingImage = (image) => {
-      const frame = image.closest(".project-media");
-      if (frame) {
-        frame.classList.add("is-missing");
-      }
-      image.classList.add("is-missing");
+    const markMissingImage = image => {
+      const frame = image.closest('.project-media');
+      if (frame) frame.classList.add('is-missing');
+      image.classList.add('is-missing');
     };
 
-    const fitFrameToImage = (image) => {
-      const frame = image.closest(".project-media");
-      if (!frame || !image.naturalWidth || !image.naturalHeight) return;
-      if (image.closest(".kreuzungen-intersections")) return;
-
+    const fitFrameToImage = image => {
+      const frame = image.closest('.project-media');
+      if (!frame || !image.naturalWidth || !image.naturalHeight ||
+          image.closest('.kreuzungen-intersections')) return;
       frame.style.aspectRatio = `${image.naturalWidth} / ${image.naturalHeight}`;
     };
 
-    document.querySelectorAll(".project img").forEach((image) => {
-      image.addEventListener("error", () => markMissingImage(image));
-      image.addEventListener("load", () => fitFrameToImage(image));
+    document.querySelectorAll('.project img').forEach(image => {
+      image.addEventListener('error', () => markMissingImage(image));
+      image.addEventListener('load', () => fitFrameToImage(image));
 
       if (image.complete && image.naturalWidth === 0) {
         markMissingImage(image);
@@ -731,7 +696,5 @@
       }
     });
   </script>
-
 </body>
-
 </html>
