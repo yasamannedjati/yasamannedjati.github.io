@@ -16,7 +16,7 @@
     :root {
       --background: #050505;
       --foreground: #f4f2ee;
-      --muted: #f4f2ee;
+      --muted: #a0a0a0;
       --line: rgba(244, 242, 238, 0.22);
       --panel: #000000;
     }
@@ -55,7 +55,7 @@
       width: min(780px, calc(100vw - 56px));
       margin: 0;
       font-size: clamp(42px, 6vw, 84px);
-      font-weight: 400;
+      font-weight: 700;
       line-height: 0.95;
       letter-spacing: 0;
       text-align: right;
@@ -65,11 +65,15 @@
       position: fixed;
       right: 28px;
       bottom: 24px;
-      z-index: 5;
+      z-index: 10;
       display: flex;
       align-items: center;
       gap: 18px;
       font-size: 18px;
+      background: rgba(5, 5, 5, 0.7);
+      padding: 6px 16px;
+      border-radius: 24px;
+      backdrop-filter: blur(8px);
     }
 
     nav a {
@@ -78,11 +82,11 @@
       min-height: 44px;
       align-items: center;
       justify-content: center;
+      transition: opacity 0.2s ease;
     }
 
-    nav a:last-child {
-      font-size: inherit;
-      line-height: 1;
+    nav a:hover {
+      opacity: 0.7;
     }
 
     main {
@@ -101,7 +105,7 @@
       color: var(--muted);
       font-size: clamp(15px, 1.5vw, 20px);
       text-align: right;
-      }
+    }
 
     .projects {
       display: grid;
@@ -110,20 +114,13 @@
       row-gap: 34px;
       width: 100%;
       max-width: none;
+      margin-top: 120px;
     }
 
     .project {
       margin: 0;
       position: relative;
       align-self: start;
-    }
-
-    .project:nth-child(1) {
-      grid-column: 1 / span 6;
-    }
-
-    .project:nth-child(2) {
-      grid-column: 7 / span 6;
     }
 
     #works .project.kreuzungen-intersections {
@@ -158,22 +155,6 @@
 
     .project.offstage {
       grid-column: 1 / -1;
-    }
-
-    .project:nth-child(3) {
-      grid-column: 2 / span 5;
-    }
-
-    .project:nth-child(4n) {
-      grid-column: 8 / span 4;
-    }
-
-    .project:nth-child(4n + 1):not(:nth-child(1)) {
-      grid-column: 4 / span 6;
-    }
-
-    .project:nth-child(4n + 2):not(:nth-child(2)) {
-      grid-column: 6 / span 7;
     }
 
     .project.moody-mazes {
@@ -225,10 +206,6 @@
       background: var(--background);
     }
 
-    .project:nth-child(4n + 3):not(:nth-child(3)) {
-      grid-column: 1 / span 5;
-    }
-
     .project a {
       display: block;
     }
@@ -242,36 +219,12 @@
       overflow: hidden;
     }
 
-    .project-media::before {
-      content: none;
-    }
-
     .project.offstage .project-media {
       aspect-ratio: 6237 / 3508;
     }
 
     .project.kreuzungen-intersections .project-media {
       aspect-ratio: 978 / 1309;
-    }
-
-    .project:nth-child(3) .project-media {
-      aspect-ratio: 1 / 1;
-    }
-
-    .project:nth-child(4n) .project-media {
-      aspect-ratio: 1 / 1;
-    }
-
-    .project:nth-child(4n + 1):not(:nth-child(1)) .project-media {
-      aspect-ratio: 4 / 3;
-    }
-
-    .project:nth-child(4n + 2):not(:nth-child(2)) .project-media {
-      aspect-ratio: 16 / 10;
-    }
-
-    .project:nth-child(4n + 3):not(:nth-child(3)) .project-media {
-      aspect-ratio: 3 / 4;
     }
 
     .project.moody-mazes .project-media {
@@ -325,10 +278,10 @@
       padding: 18px;
       color: var(--foreground);
       font-size: clamp(14px, 1.25vw, 18px);
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.68), transparent 58%);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.78), transparent 58%);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 160ms ease;
+      transition: opacity 180ms ease;
     }
 
     .project-title {
@@ -345,7 +298,6 @@
       opacity: 1;
     }
 
-    .about,
     .contact {
       width: min(560px, calc(100vw - 40px));
       margin-top: 140px;
@@ -360,9 +312,81 @@
       font-size: 28px;
     }
 
-    .contact p,
-    .about p {
+    .contact p {
       margin: 0 0 14px;
+    }
+
+    .about-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 250ms ease;
+      padding: 28px;
+    }
+
+    .about-overlay.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .about-modal {
+      position: relative;
+      max-width: 620px;
+      width: 100%;
+      color: var(--foreground);
+      text-align: center;
+    }
+
+    .about-close {
+      position: absolute;
+      top: -48px;
+      right: 0;
+      background: transparent;
+      border: none;
+      color: var(--foreground);
+      font-size: 36px;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+
+    .about-close:hover {
+      opacity: 1;
+    }
+
+    .about-body {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: rgba(244, 242, 238, 0.88);
+      margin-bottom: 28px;
+    }
+
+    .about-body p {
+      margin: 0 0 14px;
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: rgba(244, 242, 238, 0.72);
+      border-top: 1px solid rgba(244, 242, 238, 0.12);
+      padding-top: 20px;
+    }
+
+    .about-label {
+      color: rgba(244, 242, 238, 0.45);
+      margin-right: 4px;
     }
 
     @media (max-width: 900px) {
@@ -379,17 +403,12 @@
         font-size: 15px;
       }
 
-      nav a:last-child {
-        font-size: inherit;
-      }
-
       main {
         padding: 16px 18px 74px;
       }
 
       .intro,
       .projects,
-      .about,
       .contact {
         width: 100%;
       }
@@ -398,6 +417,7 @@
         top: 70px;
         right: 18px;
         width: calc(100vw - 36px);
+        margin-bottom: 62px;
       }
 
       .projects {
@@ -405,91 +425,70 @@
         width: 100%;
       }
 
-      .intro {
-        margin-bottom: 62px;
-      }
-
       .project {
         width: 100%;
         margin-left: 0;
-        margin-bottom: 76px;
-      }
-
-      .project-info {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-
-      .project-details {
-        text-align: left;
+        margin-bottom: 64px;
       }
     }
   </style>
-<style id="yasaman-header-name-adjustment">
-.site-name,
-.brand-name,
-.site-title,
-.brand-title,
-.header-name,
-.site-header .site-name,
-.site-header .brand-name,
-.site-header .site-title,
-header .site-name,
-header .brand-name,
-header .site-title {
-  font-weight: 700 !important;
-  background: transparent !important;
-}
-</style>
-<script id="yasaman-header-name-sizing">
-(function () {
-  function adjustHeaderName() {
-    var name = document.querySelector('.site-title');
-    var subtitle = document.querySelector('.intro');
-    if (!name || !subtitle) return;
-    var subtitleStyle = window.getComputedStyle(subtitle);
-    var textWidth = function (element) {
-      var style = window.getComputedStyle(element);
-      var measure = document.createElement('span');
-      measure.textContent = element.textContent.trim();
-      measure.style.cssText = [
-        'position:absolute',
-        'visibility:hidden',
-        'white-space:nowrap',
-        'font-family:' + style.fontFamily,
-        'font-size:' + style.fontSize,
-        'font-weight:' + style.fontWeight,
-        'font-style:' + style.fontStyle,
-        'letter-spacing:' + style.letterSpacing
-      ].join(';');
-      document.body.appendChild(measure);
-      var width = measure.getBoundingClientRect().width;
-      measure.remove();
-      return width;
-    };
-    name.style.fontSize = subtitleStyle.fontSize;
-    name.style.lineHeight = '0.95';
-    name.style.whiteSpace = 'nowrap';
-    name.style.fontWeight = '700';
-    name.style.background = 'transparent';
-    var subtitleWidth = textWidth(subtitle);
-    var nameWidth = textWidth(name);
-    if (!subtitleWidth || !nameWidth) return;
-    var fontSize = parseFloat(subtitleStyle.fontSize) * subtitleWidth / nameWidth;
-    name.style.fontSize = fontSize + 'px';
-    nameWidth = textWidth(name);
-    if (nameWidth) {
-      name.style.fontSize = (fontSize * subtitleWidth / nameWidth) + 'px';
+
+  <style id="yasaman-header-name-adjustment">
+    .site-title {
+      font-weight: 700 !important;
+      background: transparent !important;
     }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', adjustHeaderName);
-  } else {
-    adjustHeaderName();
-  }
-  window.addEventListener('resize', adjustHeaderName);
-})();
-</script>
+  </style>
+
+  <script id="yasaman-header-name-sizing">
+    (function () {
+      function adjustHeaderName() {
+        var name = document.querySelector('.site-title');
+        var subtitle = document.querySelector('.intro');
+        if (!name || !subtitle) return;
+        var subtitleStyle = window.getComputedStyle(subtitle);
+        var textWidth = function (element) {
+          var style = window.getComputedStyle(element);
+          var measure = document.createElement('span');
+          measure.textContent = element.textContent.trim();
+          measure.style.cssText = [
+            'position:absolute',
+            'visibility:hidden',
+            'white-space:nowrap',
+            'font-family:' + style.fontFamily,
+            'font-size:' + style.fontSize,
+            'font-weight:' + style.fontWeight,
+            'font-style:' + style.fontStyle,
+            'letter-spacing:' + style.letterSpacing
+          ].join(';');
+          document.body.appendChild(measure);
+          var width = measure.getBoundingClientRect().width;
+          measure.remove();
+          return width;
+        };
+        name.style.fontSize = subtitleStyle.fontSize;
+        name.style.lineHeight = '0.95';
+        name.style.whiteSpace = 'nowrap';
+        name.style.fontWeight = '700';
+        name.style.background = 'transparent';
+        var subtitleWidth = textWidth(subtitle);
+        var nameWidth = textWidth(name);
+        if (!subtitleWidth || !nameWidth) return;
+        var fontSize = parseFloat(subtitleStyle.fontSize) * subtitleWidth / nameWidth;
+        name.style.fontSize = fontSize + 'px';
+        nameWidth = textWidth(name);
+        if (nameWidth) {
+          name.style.fontSize = (fontSize * subtitleWidth / nameWidth) + 'px';
+        }
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', adjustHeaderName);
+      } else {
+        adjustHeaderName();
+      }
+      window.addEventListener('resize', adjustHeaderName);
+    })();
+  </script>
 </head>
 
 <body>
@@ -498,7 +497,7 @@ header .site-title {
 
   <nav aria-label="Main navigation">
     <a href="#works">works</a>
-    <a href="#about">about</a>
+    <a href="#about" id="about-link">about</a>
     <a href="#contact">contact</a>
   </nav>
 
@@ -513,7 +512,7 @@ header .site-title {
       <article class="project what-if-berlin">
         <a href="https://www.berlinerfestspiele.de/en/what-if-berlin" target="_blank" rel="noopener">
           <div class="project-media" aria-label="What If Berlin">
-            <img src="images/what-if-berlin/cover.jpg" alt="What If Berlin">
+            <img src="images/what-if-berlin/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=What+If+Berlin'" alt="What If Berlin">
           </div>
         </a>
         <div class="project-info">
@@ -525,7 +524,7 @@ header .site-title {
       <article class="project offstage">
         <a href="offstage.html">
           <div class="project-media" aria-label="offstage">
-            <img src="images/offstage/cover.jpg" alt="offstage">
+            <img src="images/offstage/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/1200x500/111111/f4f2ee?text=offstage'" alt="offstage">
           </div>
         </a>
         <div class="project-info">
@@ -537,7 +536,7 @@ header .site-title {
       <article class="project wandering-spaces">
         <a href="gotterdammerung.html">
           <div class="project-media" aria-label="Götterdämmerung">
-            <img src="images/götterdämmerung/cover.jpg" alt="Götterdämmerung">
+            <img src="images/götterdämmerung/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=G%C3%B6tterd%C3%A4mmerung'" alt="Götterdämmerung">
           </div>
         </a>
         <div class="project-info">
@@ -549,7 +548,7 @@ header .site-title {
       <article class="project fanny-and-alexander">
         <a href="fanny-and-alexander.html">
           <div class="project-media" aria-label="Fanny and Alexander">
-            <img src="images/fanny-and-alexander/cover.jpg" alt="Fanny and Alexander">
+            <img src="images/fanny-and-alexander/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=Fanny+and+Alexander'" alt="Fanny and Alexander">
           </div>
         </a>
         <div class="project-info">
@@ -561,7 +560,7 @@ header .site-title {
       <article class="project moulin-de-ferrieres">
         <a href="moulin-de-ferrieres.html">
           <div class="project-media" aria-label="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
-            <img src="images/moulin-de-ferrières/cover.jpg" alt="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
+            <img src="images/moulin-de-ferrières/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=Moulin+de+Ferri%C3%A8res'" alt="Centre d’interprétation de la Meunerie - Moulin de Ferrières">
           </div>
         </a>
         <div class="project-info">
@@ -573,7 +572,7 @@ header .site-title {
       <article class="project train-world">
         <a href="train-world.html">
           <div class="project-media" aria-label="Dessine-moi un train - Train World">
-            <img src="images/train-world/cover.jpg" alt="Dessine-moi un train - Train World">
+            <img src="images/train-world/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x600/111111/f4f2ee?text=Train+World'" alt="Dessine-moi un train - Train World">
           </div>
         </a>
         <div class="project-info">
@@ -585,7 +584,7 @@ header .site-title {
       <article class="project vub">
         <a href="vub.html">
           <div class="project-media" aria-label="VUB">
-            <img src="images/vub/cover.jpg" alt="VUB">
+            <img src="images/vub/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/800x600/111111/f4f2ee?text=VUB'" alt="VUB">
           </div>
         </a>
         <div class="project-info">
@@ -597,7 +596,7 @@ header .site-title {
       <article class="project moody-mazes">
         <a href="moody-mazes.html">
           <div class="project-media" aria-label="moody mazes" style="aspect-ratio: 2 / 3;">
-            <img src="images/moody-mazes/cover.jpg" alt="moody mazes">
+            <img src="images/moody-mazes/cover.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x900/111111/f4f2ee?text=moody+mazes'" alt="moody mazes">
           </div>
         </a>
         <div class="project-info">
@@ -606,130 +605,10 @@ header .site-title {
         </div>
       </article>
 
-      <article class="project">
-        <a href="project.html?p=wandering-spaces-interior-design-in-motion">
-          <div class="project-media" aria-label="wandering spaces: interior design in motion">
-            <img src="images/wandering-spaces/cover.jpg" alt="wandering spaces: interior design in motion">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="project.html?p=wandering-spaces-interior-design-in-motion">wandering spaces: interior design in motion</a>
-          <div class="project-details">2019 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
-        </div>
-      </article>
-
-      <article class="project valextra">
-        <a href="valextra.html">
-          <div class="project-media" aria-label="Valextra">
-            <img src="images/valextra/cover.png" alt="Valextra">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="valextra.html">Valextra</a>
-          <div class="project-details">2023 / Milan, Italy / <span class="venue">Poli Design</span></div>
-        </div>
-      </article>
-
-      <article class="project">
-        <a href="alone-together.html">
-          <div class="project-media" aria-label="alone, together">
-            <img src="images/alone-together/cover.png" alt="alone, together">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="alone-together.html">alone, together</a>
-          <div class="project-details">2023 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
-        </div>
-      </article>
-
-      <article class="project">
-        <a href="city-lights.html">
-          <div class="project-media" aria-label="city lights">
-            <img src="images/city-lights/cover.jpg" alt="city lights">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="city-lights.html">city lights</a>
-          <div class="project-details">2022 / Milan, Italy / <span class="venue">Politecnico di Milano</span></div>
-        </div>
-      </article>
-
-      <article class="project greyish-blue">
-        <a href="greyish-blue.html">
-          <div class="project-media" aria-label="Greyish-Blue">
-            <img src="images/greyish-blue/cover.png" alt="Greyish-Blue">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="greyish-blue.html">Greyish-Blue</a>
-          <div class="project-details">2022 / Tehran, Iran / <span class="venue">-</span></div>
-        </div>
-      </article>
-
-      <article class="project acid-base">
-        <a href="acid-base.html">
-          <div class="project-media" aria-label="Acid Base">
-            <img src="images/acid-base/cover.jpg" alt="Acid Base">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="acid-base.html">Acid Base</a>
-          <div class="project-details">2021 / Tehran, Iran / <span class="venue">-</span></div>
-        </div>
-      </article>
-
-      <article class="project its-your-lucky-day">
-        <a href="its-your-lucky-day.html">
-          <div class="project-media" aria-label="It's Your Lucky Day">
-            <img src="images/it's-your-lucky-day/cover.png" alt="It's Your Lucky Day">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="its-your-lucky-day.html">It's Your Lucky Day</a>
-          <div class="project-details">2019 / Tehran, Iran / <span class="venue">Nahal Short Film Festival</span></div>
-        </div>
-      </article>
-
-      <article class="project music-house-of-isfahan">
-        <a href="music-house-of-isfahan.html">
-          <div class="project-media" aria-label="music house of Isfahan">
-            <img src="images/music-house-of-isfahan/cover.png" alt="music house of Isfahan">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="music-house-of-isfahan.html">music house of Isfahan</a>
-          <div class="project-details">2021 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
-        </div>
-      </article>
-
-      <article class="project floated-plates">
-        <a href="floated-plates.html">
-          <div class="project-media" aria-label="floated plates">
-            <img src="images/floated-plates/cover.png" alt="floated plates">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="floated-plates.html">floated plates</a>
-          <div class="project-details">2020 / Tehran, Iran / <span class="venue">University of Tehran</span></div>
-        </div>
-      </article>
-
-      <article class="project high-rise">
-        <a href="high-rise.html">
-          <div class="project-media" aria-label="high-rise">
-            <img src="images/high-rise/cover.jpg" alt="high-rise">
-          </div>
-        </a>
-        <div class="project-info">
-          <a class="project-title" href="high-rise.html">high-rise</a>
-          <div class="project-details">2019 / Tehran, Iran / <span class="venue">University of Geneva</span></div>
-        </div>
-      </article>
-
       <article class="project kreuzungen-intersections">
         <a href="https://www.kleist-museum.de/termine/250-kleist" target="_blank" rel="noopener">
           <div class="project-media" aria-label="Kreuzungen - Intersections. 250 - Kleist">
-            <img src="images/kreuzungen/cover.png" alt="Kreuzungen - Intersections. 250 - Kleist">
+            <img src="images/kreuzungen/cover.png" onerror="this.onerror=null; this.src='https://placehold.co/600x800/111111/f4f2ee?text=Kreuzungen'" alt="Kreuzungen - Intersections. 250 - Kleist">
           </div>
         </a>
         <div class="project-info">
@@ -738,18 +617,6 @@ header .site-title {
         </div>
       </article>
 
-    </section>
-
-    <section id="about" class="about">
-      <div class="section-title">About</div>
-
-      <p>
-        I work across architecture, scenography, and design. I'm interested in how
-        people experience space, especially in cities, and how stories can change
-        the way a place is perceived. For me, projects are often a way to
-        investigate a question and understand a subject rather than arrive at a
-        fixed answer.
-      </p>
     </section>
 
     <section id="contact" class="contact">
@@ -780,9 +647,63 @@ header .site-title {
 
   </main>
 
+  <div id="about-overlay" class="about-overlay" aria-hidden="true">
+    <div class="about-modal">
+      <button class="about-close" id="about-close" aria-label="Close about overlay">&times;</button>
+      
+      <div class="about-body">
+        <p>Yasaman Nedjati (she/her) is a Berlin-based set and spatial designer working across theatre, film, exhibition design, and architecture.</p>
+        <p>Her professional experience spans Berlin, Milan, Brussels, and Tehran. She has worked in theatre, exhibition design, film, and interior architecture across a range of projects and scales.</p>
+        <p>She studied Architecture at the University of Tehran, Interior and Spatial Design at Politecnico di Milano, and Scenography at ESA Saint-Luc Brussels.</p>
+        <p>Her work explores the relationship between people and space through narrative and scenography. Alongside her design practice, her research focuses on spatial conditions that allow for observation, solitude, and shifting relationships between what is onstage and offstage.</p>
+      </div>
+
+      <div class="about-details">
+        <div><span class="about-label">digital skills:</span> 2D and 3D - Rhino / AutoCAD / Sketchup / Cinema4D / AdobeSuite</div>
+        <div><span class="about-label">currently learning:</span> TouchDesigner</div>
+        <div><span class="about-label">languages:</span> fluent in English, French, and Persian / intermediate in German and Italian</div>
+        <div><span class="about-label">interests:</span> set design for theatre and exhibitions / spatial design / research / teaching</div>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.body.id = "top";
 
+    // Overlay Modal Interactions
+    const aboutOverlay = document.getElementById('about-overlay');
+    const aboutLink = document.getElementById('about-link');
+    const aboutClose = document.getElementById('about-close');
+
+    const openAbout = (e) => {
+      if (e) e.preventDefault();
+      aboutOverlay.classList.add('is-active');
+      aboutOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeAbout = () => {
+      aboutOverlay.classList.remove('is-active');
+      aboutOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    if (aboutLink) aboutLink.addEventListener('click', openAbout);
+    if (aboutClose) aboutClose.addEventListener('click', closeAbout);
+
+    if (aboutOverlay) {
+      aboutOverlay.addEventListener('click', (e) => {
+        if (e.target === aboutOverlay) closeAbout();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && aboutOverlay && aboutOverlay.classList.contains('is-active')) {
+        closeAbout();
+      }
+    });
+
+    // Dynamic Image Loading Handler
     const markMissingImage = (image) => {
       const frame = image.closest(".project-media");
       if (frame) {
@@ -809,7 +730,6 @@ header .site-title {
         fitFrameToImage(image);
       }
     });
-
   </script>
 
 </body>
